@@ -3,17 +3,28 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { primaryNavigation } from "@/lib/site-config";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { cn } from "@/lib/utils";
 
 export function MobileNavigation() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+  const { t } = useLanguage();
+
+  const navigationItems = [
+    { label: t("navFrontPage"), href: "/" },
+    { label: t("navLegalNews"), href: "/legal-news" },
+    { label: t("navAnnouncements"), href: "/announcements" },
+    { label: t("navCaseArchive"), href: "/case-archive" },
+    { label: t("navRegulationWatch"), href: "/regulation-watch" },
+    { label: t("navIntellectualProperty"), href: "/intellectual-property" },
+    { label: t("navAbout"), href: "/about" },
+  ];
 
   return (
     <div className="md:hidden select-none border-b border-rule">
       <div className="flex items-center justify-between py-2 px-1">
-        <span className="kicker text-xs text-ink-muted">Sections</span>
+        <span className="kicker text-xs text-ink-muted">{t("sectionsMenu")}</span>
         <button
           type="button"
           onClick={() => setIsOpen(!isOpen)}
@@ -21,7 +32,7 @@ export function MobileNavigation() {
           aria-label="Toggle navigation menu"
           className="kicker flex items-center gap-1.5 border border-ink px-2.5 py-1 text-xs text-ink hover:bg-ink hover:text-paper"
         >
-          <span>{isOpen ? "Close" : "Menu"}</span>
+          <span>{isOpen ? t("menuClose") : t("menuOpen")}</span>
           <span aria-hidden="true">{isOpen ? "✕" : "☰"}</span>
         </button>
       </div>
@@ -29,7 +40,7 @@ export function MobileNavigation() {
       {isOpen && (
         <nav aria-label="Mobile navigation" className="border-t border-rule-soft bg-paper-light py-2">
           <ul className="flex flex-col space-y-1">
-            {primaryNavigation.map((item) => {
+            {navigationItems.map((item) => {
               const isActive = pathname === item.href || (item.href !== "/" && pathname?.startsWith(item.href));
               return (
                 <li key={item.href}>

@@ -1,8 +1,21 @@
+"use client";
+
 import Link from "next/link";
-import { siteConfig, footerNavigation } from "@/lib/site-config";
+import { siteConfig } from "@/lib/site-config";
 import { PaperDivider } from "@/components/ui/PaperDivider";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export function SiteFooter() {
+  const { t } = useLanguage();
+
+  const footerLinks = [
+    { label: t("aboutTheLawTimes"), href: "/about" },
+    { label: t("editorialPolicy"), href: "/editorial-policy" },
+    { label: t("correctionsPolicy"), href: "/corrections-policy" },
+    { label: t("privacyPolicy"), href: "/privacy-policy" },
+    { label: t("contactDesk"), href: "/contact" },
+  ];
+
   return (
     <footer className="mt-16 border-t-[3px] border-ink bg-paper pt-8 pb-12">
       <div className="paper-container">
@@ -12,18 +25,17 @@ export function SiteFooter() {
               {siteConfig.name}
             </h2>
             <p className="font-serif text-xs leading-relaxed text-ink-muted mb-4 max-w-sm">
-              An independent editorial record and documentation service for Indonesian
-              legal affairs, official announcements, regulatory instruments, and court notices.
+              {t("footerDesc")}
             </p>
             <div className="kicker text-[0.625rem] text-ink-muted">
-              Published in {siteConfig.location} · Broadhseet Editorial Standard
+              {t("editorialStandards")}
             </div>
           </div>
 
           <div className="md:col-span-3">
-            <h3 className="kicker text-xs text-ink mb-3">Editorial & Ethics</h3>
+            <h3 className="kicker text-xs text-ink mb-3">{t("editorialEthicsHeading")}</h3>
             <ul className="space-y-1.5 font-serif text-xs text-ink-muted">
-              {footerNavigation.map((item) => (
+              {footerLinks.map((item) => (
                 <li key={item.href}>
                   <Link href={item.href} className="hover:text-ink hover:underline">
                     {item.label}
@@ -34,16 +46,13 @@ export function SiteFooter() {
           </div>
 
           <div className="md:col-span-4">
-            <h3 className="kicker text-xs text-ink mb-3">Notice on Factual Integrity</h3>
+            <h3 className="kicker text-xs text-ink mb-3">{t("factualIntegrityHeading")}</h3>
             <p className="font-serif text-xs leading-relaxed text-ink-muted mb-3">
-              The Law Times strictly adheres to factual verification standards. In Phase 1,
-              all displayed records and articles are sample material intended to preview
-              layout architecture. Fictional cases and notices carry no legal force.
+              {t("factualIntegrityDesc")}
             </p>
             <p className="meta text-[0.6875rem]">
-              Corrections inquiries:{" "}
-              <Link href="/contact" className="underline text-ink">
-                editorial desk
+              <Link href="/admin/login" className="underline text-ink hover:text-ink-muted">
+                Editorial Login (CMS Console)
               </Link>
             </p>
           </div>
@@ -52,8 +61,8 @@ export function SiteFooter() {
         <PaperDivider variant="hairline" className="mb-4" />
 
         <div className="flex flex-col sm:flex-row items-center justify-between gap-2 meta text-[0.6875rem] text-ink-muted">
-          <p>© 2026 {siteConfig.name}. All rights reserved.</p>
-          <p>Phase 1 Editorial Prototype · Next.js & Tailwind CSS</p>
+          <p>© 2026 {siteConfig.name}. {t("allRightsReserved")}</p>
+          <p>Phase 3 Editorial Platform · Jakarta, Indonesia</p>
         </div>
       </div>
     </footer>

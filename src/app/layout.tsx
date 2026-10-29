@@ -8,6 +8,7 @@ import { EditionHeader } from "@/components/navigation/EditionHeader";
 import { PrimaryNavigation } from "@/components/navigation/PrimaryNavigation";
 import { MobileNavigation } from "@/components/navigation/MobileNavigation";
 import { SiteFooter } from "@/components/navigation/SiteFooter";
+import { LanguageProvider } from "@/lib/i18n/LanguageContext";
 import "./globals.css";
 
 const unifraktur = UnifrakturMaguntia({
@@ -50,7 +51,7 @@ export const metadata: Metadata = {
     title: siteConfig.name,
     description: siteConfig.description,
     siteName: siteConfig.name,
-    locale: "en_GB",
+    locale: "id_ID",
     type: "website",
   },
 };
@@ -68,25 +69,27 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="id"
       className={`${unifraktur.variable} ${playfair.variable} ${sourceSerif.variable} ${franklin.variable}`}
     >
       <body className="min-h-screen flex flex-col justify-between antialiased selection:bg-ink selection:text-paper">
-        <div>
-          <DemoContentNotice variant="banner" />
-          <div className="paper-container">
-            <Masthead />
-            <EditionHeader />
-            <Suspense fallback={<div className="h-10 border-b border-rule" />}>
-              <PrimaryNavigation />
-              <MobileNavigation />
-            </Suspense>
-            <main id="main-content" className="mt-6">
-              {children}
-            </main>
+        <LanguageProvider>
+          <div>
+            <DemoContentNotice variant="banner" />
+            <div className="paper-container">
+              <Masthead />
+              <EditionHeader />
+              <Suspense fallback={<div className="h-10 border-b border-rule" />}>
+                <PrimaryNavigation />
+                <MobileNavigation />
+              </Suspense>
+              <main id="main-content" className="mt-6">
+                {children}
+              </main>
+            </div>
           </div>
-        </div>
-        <SiteFooter />
+          <SiteFooter />
+        </LanguageProvider>
       </body>
     </html>
   );
