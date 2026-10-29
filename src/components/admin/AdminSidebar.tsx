@@ -31,6 +31,7 @@ export function AdminSidebar({ userRole = "editor", className, onNavigate }: Adm
     { label: "Dashboard", href: "/admin", icon: LayoutDashboard },
     { label: "Articles & News", href: "/admin/articles", icon: FileText },
     { label: "Review Queue", href: "/admin/review", icon: ClipboardCheck },
+    { label: "Sources & Pipeline", href: "/admin/sources", icon: Scale },
     { label: "Announcements", href: "/admin/announcements", icon: Megaphone },
     { label: "Case Archive", href: "/admin/cases", icon: Briefcase },
     { label: "Regulations", href: "/admin/regulations", icon: Scale },
