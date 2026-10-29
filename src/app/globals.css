@@ -1,26 +1,182 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ==========================================================================
+   THE LAW TIMES — DESIGN TOKENS
+   A restrained newsprint palette and an editorial type system.
+   ========================================================================== */
+
+@theme {
+  /* Palette */
+  --color-paper: #f3f0e8; /* newsprint background */
+  --color-paper-light: #f9f7f2; /* raised paper surface */
+  --color-paper-dark: #e7e2d6; /* beige surface variation */
+  --color-ink: #171715; /* primary text */
+  --color-ink-soft: #2b2925; /* heavy rules */
+  --color-ink-muted: #5f5b54; /* secondary text (≈6:1 on paper) */
+  --color-rule: #3a3732; /* standard rules */
+  --color-rule-soft: #c3bcae; /* hairline dividers */
+  --color-notice: #fbfaf6; /* formal notice surface */
+
+  /* Typography — font variables are provided by next/font in layout.tsx */
+  --font-blackletter: var(--font-unifraktur), "Old English Text MT", serif;
+  --font-display: var(--font-playfair), "Times New Roman", serif;
+  --font-serif: var(--font-source-serif), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-franklin), "Franklin Gothic", "Helvetica Neue", Arial, sans-serif;
+
+  /* Layout */
+  --container-paper: 82rem;
+  --container-measure: 40rem;
+
+  /* Breakpoint for narrow phones */
+  --breakpoint-xs: 26rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* ==========================================================================
+   BASE
+   ========================================================================== */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    scroll-padding-top: 1rem;
+  }
+
+  body {
+    background-color: var(--color-paper);
+    /* Lightweight procedural paper grain (inline SVG, ~400 bytes). */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.22 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    color: var(--color-ink);
+    font-family: var(--font-serif);
+    font-feature-settings: "kern", "liga", "onum";
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: var(--color-ink);
+    color: var(--color-paper);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 3px;
+  }
+
+  a {
+    text-underline-offset: 0.18em;
+    text-decoration-thickness: 1px;
+  }
+
+  input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ==========================================================================
+   EDITORIAL COMPONENT CLASSES
+   ========================================================================== */
+
+@layer components {
+  /* Centered paper container */
+  .paper-container {
+    width: 100%;
+    max-width: var(--container-paper);
+    margin-inline: auto;
+    padding-inline: 1rem;
+  }
+  @media (min-width: 40rem) {
+    .paper-container {
+      padding-inline: 1.5rem;
+    }
+  }
+  @media (min-width: 80rem) {
+    .paper-container {
+      padding-inline: 2rem;
+    }
+  }
+
+  /* Small uppercase label used for kickers, categories and metadata */
+  .kicker {
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    line-height: 1.3;
+  }
+
+  .meta {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    letter-spacing: 0.02em;
+    color: var(--color-ink-muted);
+  }
+
+  /* Headline link — underline only on hover/focus */
+  .headline-link {
+    text-decoration: none;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0 1px;
+    background-repeat: no-repeat;
+    background-position: 0 92%;
+    transition: background-size 200ms ease;
+  }
+  .headline-link:hover,
+  .headline-link:focus-visible {
+    background-size: 100% 1px;
+  }
+
+  /* Article body typography */
+  .prose-news {
+    font-family: var(--font-serif);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    max-width: var(--container-measure);
+  }
+  .prose-news > p + p {
+    margin-top: 1.1em;
+  }
+  @media (min-width: 48rem) {
+    .prose-news {
+      font-size: 1.125rem;
+    }
+  }
+
+  /* Classic drop cap */
+  .drop-cap::first-letter {
+    float: left;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 3.6em;
+    line-height: 0.82;
+    padding: 0.06em 0.1em 0 0;
+  }
+
+  /* Newspaper column rules between grid columns */
+  .column-rule > * + * {
+    border-top: 1px solid var(--color-rule-soft);
+  }
+
+  /* Inner frame for formal notices */
+  .notice-frame {
+    border: 1px solid var(--color-ink);
+    outline: 1px solid var(--color-ink);
+    outline-offset: 3px;
+    background-color: var(--color-notice);
+  }
+
+  /* Engraving images sit on paper */
+  .engraving {
+    mix-blend-mode: multiply;
+    filter: grayscale(1) contrast(1.05);
+  }
 }

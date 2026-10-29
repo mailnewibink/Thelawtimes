@@ -1,0 +1,113 @@
+import type { Regulation } from "@/types/content";
+import { DEMO_PROVENANCE, placeholderSource } from "./helpers";
+
+/**
+ * DEMO REGULATIONS — fictional sample records for Phase 1.
+ *
+ * Numbers, issuing institutions, effective dates and legal statuses are left
+ * `null` (unverified). Titles are generic and do not refer to any real
+ * instrument. Nothing here implies that a regulation exists or is in force.
+ */
+const body = (topic: string): string[] => [
+  `This fictional record demonstrates how Regulation Watch will present a regulatory development concerning ${topic}. It does not describe any real regulation and has no legal effect.`,
+  "Once verified, a record will show the official number and year, the issuing institution, the dates of promulgation and entry into force, its current legal status, and a link to the official source text.",
+];
+
+export const demoRegulations: Regulation[] = [
+  {
+    id: "reg-001",
+    slug: "sample-regulation-electronic-records",
+    title: "Sample Record: Regulation Concerning Electronic Records",
+    type: "Government Regulation",
+    number: null,
+    year: null,
+    issuingInstitution: null,
+    publishedAt: "2026-10-27",
+    effectiveDate: null,
+    status: null,
+    summary: "A fictional entry illustrating the Regulation Watch format for an electronic-records topic.",
+    body: body("electronic records"),
+    source: placeholderSource("Official gazette entry (placeholder — not yet verified)"),
+    provenance: DEMO_PROVENANCE,
+  },
+  {
+    id: "reg-002",
+    slug: "sample-regulation-business-licensing",
+    title: "Sample Record: Ministerial Regulation on Business Licensing Procedures",
+    type: "Ministerial Regulation",
+    number: null,
+    year: null,
+    issuingInstitution: null,
+    publishedAt: "2026-10-24",
+    effectiveDate: null,
+    status: null,
+    summary: "Demonstrates a ministerial-level record with unverified number, year and status.",
+    body: body("business licensing procedures"),
+    source: placeholderSource("Ministry publication (placeholder)"),
+    provenance: DEMO_PROVENANCE,
+  },
+  {
+    id: "reg-003",
+    slug: "sample-regulation-consumer-protection",
+    title: "Sample Record: Draft Law on Consumer Protection Updates",
+    type: "Law",
+    number: null,
+    year: null,
+    issuingInstitution: null,
+    publishedAt: "2026-10-20",
+    effectiveDate: null,
+    status: null,
+    summary: "A fictional legislative record used to show how draft instruments would be labelled.",
+    body: body("consumer protection"),
+    source: placeholderSource("Legislative record (placeholder)"),
+    provenance: DEMO_PROVENANCE,
+  },
+  {
+    id: "reg-004",
+    slug: "sample-regulation-data-handling",
+    title: "Sample Record: Agency Regulation on Data Handling Standards",
+    type: "Agency Regulation",
+    number: null,
+    year: null,
+    issuingInstitution: null,
+    publishedAt: "2026-10-15",
+    effectiveDate: null,
+    status: null,
+    summary: "Illustrates an agency-level instrument entry with all legal fields unverified.",
+    body: body("data handling standards"),
+    source: placeholderSource("Agency publication (placeholder)"),
+    provenance: DEMO_PROVENANCE,
+  },
+  {
+    id: "reg-005",
+    slug: "sample-regulation-regional-zoning",
+    title: "Sample Record: Regional Regulation on Zoning Notices",
+    type: "Regional Regulation",
+    number: null,
+    year: null,
+    issuingInstitution: null,
+    publishedAt: "2026-10-08",
+    effectiveDate: null,
+    status: null,
+    summary: "A regional-level sample showing how local instruments are catalogued.",
+    body: body("zoning notices"),
+    source: placeholderSource("Regional gazette (placeholder)"),
+    provenance: DEMO_PROVENANCE,
+  },
+  {
+    id: "reg-006",
+    slug: "sample-regulation-ip-fees",
+    title: "Sample Record: Presidential Regulation on Service Fee Schedules",
+    type: "Presidential Regulation",
+    number: null,
+    year: null,
+    issuingInstitution: null,
+    publishedAt: "2026-10-02",
+    effectiveDate: null,
+    status: null,
+    summary: "Demonstration record for a fee-schedule topic. No real fee or instrument is described.",
+    body: body("service fee schedules"),
+    source: placeholderSource("Official source (placeholder)"),
+    provenance: DEMO_PROVENANCE,
+  },
+];
