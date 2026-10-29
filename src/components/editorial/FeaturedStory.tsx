@@ -58,6 +58,8 @@ export function FeaturedStory({ article, className }: FeaturedStoryProps) {
               src={article.image.src}
               alt={article.image.alt}
               fill
+              loading="eager"
+              fetchPriority="high"
               className="object-cover engraving"
               sizes="(min-width: 1024px) 40vw, 100vw"
             />

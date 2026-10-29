@@ -9,6 +9,7 @@ interface ArticleListItemProps {
   showExcerpt?: boolean;
   showImage?: boolean;
   compact?: boolean;
+  priorityImage?: boolean;
   className?: string;
 }
 
@@ -17,6 +18,7 @@ export function ArticleListItem({
   showExcerpt = true,
   showImage = false,
   compact = false,
+  priorityImage = false,
   className,
 }: ArticleListItemProps) {
   const detailHref = `/${article.section}/${article.slug}`;
@@ -30,6 +32,8 @@ export function ArticleListItem({
               src={article.image.src}
               alt={article.image.alt}
               fill
+              loading={priorityImage ? "eager" : "lazy"}
+              {...(priorityImage ? { fetchPriority: "high" as const } : {})}
               className="object-cover engraving"
               sizes="(min-width: 768px) 30vw, 100vw"
             />

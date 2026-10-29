@@ -117,11 +117,12 @@ export default async function FrontPage() {
             action={{ label: "IP Section", href: "/intellectual-property" }}
           />
           <div className="space-y-4">
-            {featuredIP.map((art) => (
+            {featuredIP.map((art, idx) => (
               <ArticleListItem
                 key={art.id}
                 article={art}
                 showImage={!!art.image}
+                priorityImage={idx === 0}
                 className="border-b border-rule-soft pb-4 last:border-b-0 last:pb-0"
               />
             ))}
