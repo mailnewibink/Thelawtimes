@@ -14,6 +14,7 @@ import {
   Tags,
   Settings,
   ExternalLink,
+  Sparkles,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { UserRole } from "@/types/database";
@@ -32,6 +33,7 @@ export function AdminSidebar({ userRole = "editor", className, onNavigate }: Adm
     { label: "Articles & News", href: "/admin/articles", icon: FileText },
     { label: "Review Queue", href: "/admin/review", icon: ClipboardCheck },
     { label: "Sources & Pipeline", href: "/admin/sources", icon: Scale },
+    { label: "AI Intelligence", href: "/admin/ai-workspace", icon: Sparkles },
     { label: "Announcements", href: "/admin/announcements", icon: Megaphone },
     { label: "Case Archive", href: "/admin/cases", icon: Briefcase },
     { label: "Regulations", href: "/admin/regulations", icon: Scale },
