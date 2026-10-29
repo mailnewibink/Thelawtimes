@@ -11,16 +11,22 @@ interface FeaturedStoryProps {
 }
 
 export function FeaturedStory({ article, className }: FeaturedStoryProps) {
-  const detailHref = `/${article.section}/${article.slug}`;
+  const detailHref = `/artikel/${article.slug}`;
 
   return (
     <article className={cn("grid grid-cols-1 gap-6 lg:grid-cols-12", className)}>
       <div className="lg:col-span-7 flex flex-col justify-between">
         <div>
+          {article.publicationType === "client_publication" && (
+            <div className="mb-3 inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-ink text-paper text-xs kicker font-bold uppercase tracking-wider">
+              <span>Publikasi Khusus Klien / Kasus Terkait</span>
+            </div>
+          )}
           <ArticleMetadata
             publishedAt={article.publishedAt}
             category={article.category}
             byline={article.byline}
+            publicationType={article.publicationType}
             provenance={article.provenance}
             className="mb-3"
           />

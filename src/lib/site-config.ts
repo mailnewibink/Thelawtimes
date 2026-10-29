@@ -24,32 +24,34 @@ export interface NavItem {
 }
 
 export const primaryNavigation: NavItem[] = [
-  { label: "Front Page", href: "/" },
-  { label: "Legal News", href: "/legal-news" },
-  { label: "Official Announcements", href: "/announcements" },
-  { label: "Court & Case Archive", href: "/case-archive" },
-  { label: "Regulation Watch", href: "/regulation-watch" },
-  { label: "Intellectual Property", href: "/intellectual-property" },
-  { label: "About", href: "/about" },
+  { label: "Halaman Utama", href: "/" },
+  { label: "Publikasi Perkara", href: "/perkara" },
+  { label: "Berita Hukum", href: "/berita-hukum" },
+  { label: "Merek & HKI", href: "/merek-hki" },
+  { label: "Regulasi", href: "/regulasi" },
+  { label: "Tentang Kami", href: "/tentang-kami" },
 ];
 
 export const footerNavigation: NavItem[] = [
-  { label: "About The Law Times", href: "/about" },
-  { label: "Editorial Policy", href: "/editorial-policy" },
-  { label: "Corrections Policy", href: "/corrections-policy" },
-  { label: "Privacy Policy", href: "/privacy-policy" },
-  { label: "Contact", href: "/contact" },
+  { label: "Tentang The Law Times", href: "/tentang-kami" },
+  { label: "Publikasi Perkara", href: "/perkara" },
+  { label: "Berita Hukum", href: "/berita-hukum" },
+  { label: "Merek & HKI", href: "/merek-hki" },
+  { label: "Regulasi", href: "/regulasi" },
+  { label: "Kebijakan Redaksi", href: "/editorial-policy" },
+  { label: "Kebijakan Ralat", href: "/corrections-policy" },
+  { label: "Privasi", href: "/privacy-policy" },
+  { label: "Kontak", href: "/contact" },
 ];
 
 /** Static, non-demo routes listed in the sitemap. */
 export const staticRoutes = [
   "/",
-  "/legal-news",
-  "/announcements",
-  "/case-archive",
-  "/regulation-watch",
-  "/intellectual-property",
-  "/about",
+  "/perkara",
+  "/berita-hukum",
+  "/merek-hki",
+  "/regulasi",
+  "/tentang-kami",
   "/editorial-policy",
   "/corrections-policy",
   "/privacy-policy",

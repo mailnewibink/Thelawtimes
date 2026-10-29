@@ -29,8 +29,14 @@ export default async function EditArticlePage({ params }: EditArticlePageProps) 
     excerpt: string | null;
     body: string | null;
     content_type: string;
+    publication_type?: "client_publication" | "general_news" | null;
     status: string;
     featured_image_path: string | null;
+    source_name?: string | null;
+    source_url?: string | null;
+    document_url?: string | null;
+    seo_title?: string | null;
+    seo_description?: string | null;
     is_demo: boolean;
   } | null;
 
@@ -62,9 +68,15 @@ export default async function EditArticlePage({ params }: EditArticlePageProps) 
           excerpt: article.excerpt || "",
           body: article.body || "",
           contentType: article.content_type as ArticleContentType,
+          publicationType: (article.publication_type as "client_publication" | "general_news") || "general_news",
           status: article.status as ArticleStatus,
           categoryId: catRel?.category_id || "",
           featuredImagePath: article.featured_image_path || "",
+          sourceName: article.source_name || "",
+          sourceUrl: article.source_url || "",
+          documentUrl: article.document_url || "",
+          seoTitle: article.seo_title || "",
+          seoDescription: article.seo_description || "",
           isDemo: article.is_demo,
         }}
       />

@@ -3,9 +3,16 @@ import type {
   Article,
   ArticleSection,
   CaseRecord,
+  PublicationType,
   Regulation,
 } from "@/types/content";
-import { fetchPublishedArticles, fetchArticleBySlug } from "./repositories/articles";
+import {
+  fetchPublishedArticles,
+  fetchArticleBySlug,
+  fetchClientPublications,
+  fetchGeneralNews,
+  searchPublishedArticles,
+} from "./repositories/articles";
 import { fetchPublicCases, fetchCaseBySlug } from "./repositories/cases";
 import { fetchPublishedAnnouncements } from "./repositories/announcements";
 import { fetchPublishedRegulations } from "./repositories/regulations";
@@ -13,10 +20,10 @@ import { fetchPublishedRegulations } from "./repositories/regulations";
 /**
  * Content repository façade.
  *
- * This connects the presentation layer to the repository services.
+ * Connects the presentation layer to the repository services.
  * When Supabase environment variables are provided, queries run through
  * Supabase PostgreSQL respecting Row Level Security (RLS).
- * When unconfigured, it seamlessly returns the verified demo dataset.
+ * When unconfigured, it seamlessly returns the demo dataset.
  */
 
 /* ------------------------------- Articles ------------------------------- */
@@ -33,8 +40,31 @@ export async function getArticleBySlug(
 }
 
 export async function getFeaturedArticle(): Promise<Article | undefined> {
-  const news = await getArticles("legal-news");
+  const news = await getArticles();
   return news.find((a) => a.featured) ?? news[0];
+}
+
+export async function getFeaturedClientPublication(): Promise<Article | undefined> {
+  const clientPubs = await fetchClientPublications(5);
+  return clientPubs.find((a) => a.featured) ?? clientPubs[0];
+}
+
+export async function getClientPublications(limit = 10): Promise<Article[]> {
+  return fetchClientPublications(limit);
+}
+
+export async function getGeneralNews(limit = 10): Promise<Article[]> {
+  return fetchGeneralNews(limit);
+}
+
+export async function searchArticles(options: {
+  query?: string;
+  category?: string;
+  publicationType?: PublicationType;
+  limit?: number;
+  offset?: number;
+}): Promise<{ articles: Article[]; total: number }> {
+  return searchPublishedArticles(options);
 }
 
 export async function getArticlesBySlugs(slugs: string[]): Promise<Article[]> {

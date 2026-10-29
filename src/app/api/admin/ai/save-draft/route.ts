@@ -48,6 +48,7 @@ export async function POST(req: NextRequest) {
       excerpt: excerpt || null,
       body,
       content_type: contentType,
+      publication_type: payload.publicationType || (["case_summary", "announcement"].includes(contentType) ? "client_publication" : "general_news"),
       status: "draft", // ENFORCED DRAFT STATUS
       author_id: user?.id || null,
       is_demo: process.env.NEXT_PUBLIC_DEMO_MODE === "true",

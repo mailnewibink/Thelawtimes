@@ -23,6 +23,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Navigation
     navFrontPage: "Halaman Utama",
+    navCasesClient: "Publikasi Perkara",
     navLegalNews: "Berita Hukum",
     navAnnouncements: "Pengumuman Resmi",
     navCaseArchive: "Arsip Perkara",
@@ -86,6 +87,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Navigation
     navFrontPage: "Front Page",
+    navCasesClient: "Client Cases",
     navLegalNews: "Legal News",
     navAnnouncements: "Official Announcements",
     navCaseArchive: "Court & Case Archive",

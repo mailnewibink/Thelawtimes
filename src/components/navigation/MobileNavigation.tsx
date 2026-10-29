@@ -12,13 +12,12 @@ export function MobileNavigation() {
   const { t } = useLanguage();
 
   const navigationItems = [
-    { label: t("navFrontPage"), href: "/" },
-    { label: t("navLegalNews"), href: "/legal-news" },
-    { label: t("navAnnouncements"), href: "/announcements" },
-    { label: t("navCaseArchive"), href: "/case-archive" },
-    { label: t("navRegulationWatch"), href: "/regulation-watch" },
-    { label: t("navIntellectualProperty"), href: "/intellectual-property" },
-    { label: t("navAbout"), href: "/about" },
+    { label: t("navFrontPage") || "Halaman Utama", href: "/" },
+    { label: t("navCasesClient") || "Publikasi Perkara", href: "/perkara" },
+    { label: t("navLegalNews") || "Berita Hukum", href: "/berita-hukum" },
+    { label: t("navIntellectualProperty") || "Merek & HKI", href: "/merek-hki" },
+    { label: t("navRegulationWatch") || "Regulasi", href: "/regulasi" },
+    { label: t("navAbout") || "Tentang Kami", href: "/tentang-kami" },
   ];
 
   return (

@@ -64,11 +64,14 @@ export type IntellectualPropertyCategory =
 
 export type ArticleCategory = LegalNewsCategory | IntellectualPropertyCategory;
 
+export type PublicationType = "client_publication" | "general_news";
+
 export interface Article {
   id: string;
   slug: string;
   section: ArticleSection;
   category: ArticleCategory;
+  publicationType?: PublicationType;
   headline: string;
   /** Optional secondary headline / deck. */
   deck?: string;
@@ -82,6 +85,11 @@ export interface Article {
   image?: ContentImage;
   sources: SourceReference[];
   featured?: boolean;
+  seoTitle?: string | null;
+  seoDescription?: string | null;
+  sourceName?: string | null;
+  sourceUrl?: string | null;
+  documentUrl?: string | null;
   provenance: Provenance;
 }
 

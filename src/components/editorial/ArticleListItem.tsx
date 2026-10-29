@@ -21,7 +21,7 @@ export function ArticleListItem({
   priorityImage = false,
   className,
 }: ArticleListItemProps) {
-  const detailHref = `/${article.section}/${article.slug}`;
+  const detailHref = `/artikel/${article.slug}`;
 
   return (
     <article className={cn("group flex flex-col justify-between", className)}>
@@ -42,6 +42,7 @@ export function ArticleListItem({
         <ArticleMetadata
           publishedAt={article.publishedAt}
           category={article.category}
+          publicationType={article.publicationType}
           provenance={article.provenance}
           className="mb-1.5"
         />

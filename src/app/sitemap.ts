@@ -16,10 +16,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   const articleUrls: MetadataRoute.Sitemap = articles.map((a) => ({
-    url: `${siteConfig.url}/${a.section}/${a.slug}`,
+    url: `${siteConfig.url}/artikel/${a.slug}`,
     lastModified: new Date(a.updatedAt ?? a.publishedAt),
     changeFrequency: "monthly",
-    priority: 0.6,
+    priority: a.publicationType === "client_publication" ? 0.9 : 0.7,
   }));
 
   const caseUrls: MetadataRoute.Sitemap = cases.map((c) => ({

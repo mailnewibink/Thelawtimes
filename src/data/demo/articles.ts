@@ -8,12 +8,90 @@ import { DEMO_PROVENANCE, demoBody, placeholderSource } from "./helpers";
  * registrations or regulations. Replace with verified records in a later phase.
  */
 export const demoArticles: Article[] = [
-  /* ---------------------------- Legal news ---------------------------- */
+  /* ---------------------- Client Case Publications ---------------------- */
+  {
+    id: "art-client-001",
+    slug: "putusan-kasasi-mahkamah-agung-sengketa-merek-dagang",
+    section: "intellectual-property",
+    category: "Trademarks",
+    publicationType: "client_publication",
+    headline: "Publikasi Perkara: Putusan Kasasi Mahkamah Agung Tegaskan Perlindungan Hak Merek Dagang Klien",
+    deck: "Keterbukaan informasi resmi terkait amar putusan penolakan kasasi perkara sengketa pendaftaran merek dan kepastian perlindungan hukum hak prioritas.",
+    excerpt:
+      "Pengumuman publikasi perkara perdata khusus hak kekayaan intelektual tingkat kasasi pada Mahkamah Agung Republik Indonesia yang telah berkekuatan hukum tetap.",
+    body: [
+      "JAKARTA — Berdasarkan amar putusan resmi Mahkamah Agung Republik Indonesia dalam perkara perdata khusus hak kekayaan intelektual, Majelis Hakim Agung secara tegas menolak permohonan kasasi yang diajukan oleh pihak pemohon kasasi terkait sengketa pembatalan merek dagang terdaftar.",
+      "Putusan kasasi ini menguatkan putusan Pengadilan Niaga pada Pengadilan Negeri Jakarta Pusat yang sebelumnya telah menyatakan bahwa klien merupakan pemilik sah dan pendaftar pertama (first-to-file) atas merek dagang terdaftar dimaksud.",
+      "Melalui publikasi resmi ini, disampaikan kepada seluruh mitra usaha, distributor, dan masyarakat umum bahwa hak eksklusif penggunaan merek dagang tersebut sepenuhnya dilindungi oleh undang-undang di seluruh wilayah Republik Indonesia.",
+      "Salinan resmi amar putusan dan dokumen pendukung dapat ditinjau melalui tautan direktori resmi putusan pengadilan yang terlampir pada pengumuman ini.",
+    ],
+    publishedAt: "2026-10-29",
+    updatedAt: null,
+    byline: "Saluran Publikasi Kasus Klien",
+    image: {
+      src: "/images/courthouse.jpg",
+      alt: "Gedung Mahkamah Agung Republik Indonesia",
+      caption: "Publikasi resmi perkara berkekuatan hukum tetap pada Mahkamah Agung Republik Indonesia.",
+      credit: "Dokumentasi Resmi Publikasi Klien",
+    },
+    sources: [
+      {
+        label: "Salinan Putusan Mahkamah Agung RI No. 812 K/Pdt.Sus-HKI/2026",
+        publisher: "Mahkamah Agung RI",
+        url: "https://putusan3.mahkamahagung.go.id",
+        accessedOn: "2026-10-29",
+      },
+    ],
+    featured: true,
+    sourceName: "Direktori Putusan Mahkamah Agung RI",
+    sourceUrl: "https://putusan3.mahkamahagung.go.id",
+    documentUrl: "https://putusan3.mahkamahagung.go.id/putusan/salinan.pdf",
+    provenance: DEMO_PROVENANCE,
+  },
+  {
+    id: "art-client-002",
+    slug: "pengumuman-homologasi-perdamaian-pkpu-korporasi",
+    section: "legal-news",
+    category: "Business Law",
+    publicationType: "client_publication",
+    headline: "Pengumuman Resmi: Pengesahan Rencana Perdamaian (Homologasi) Restrukturisasi Utang PKPU",
+    deck: "Pemberitahuan keterbukaan informasi atas putusan pengesahan homologasi perjanjian perdamaian restrukturisasi utang korporasi.",
+    excerpt:
+      "Pengumuman publikasi hukum atas putusan pengadilan niaga terkait pengesahan perdamaian restrukturisasi kewajiban pembayaran utang.",
+    body: [
+      "JAKARTA — Berdasarkan ketentuan Pasal 285 ayat (1) Undang-Undang Kepailitan dan Penundaan Kewajiban Pembayaran Utang, Pengadilan Niaga telah secara resmi membacakan putusan pengesahan (homologasi) atas rencana perdamaian yang diajukan oleh debitur.",
+      "Rencana perdamaian tersebut sebelumnya telah disetujui secara aklamasi oleh mayoritas kreditor konkuren dan kreditor separatis dalam rapat pemungutan suara resmi yang dipimpin oleh Hakim Pengawas.",
+      "Dengan dibacakannya putusan homologasi ini, proses Penundaan Kewajiban Pembayaran Utang (PKPU) resmi berakhir dan debitur kembali beroperasi penuh sesuai skema restrukturisasi yang disepakati.",
+    ],
+    publishedAt: "2026-10-27",
+    updatedAt: null,
+    byline: "Tim Kuasa Hukum & Pengurus Terdaftar",
+    image: {
+      src: "/images/documents.jpg",
+      alt: "Berkas Pengesahan Homologasi Perjanjian Perdamaian",
+      caption: "Dokumen resmi pengesahan perjanjian perdamaian PKPU.",
+      credit: "Publikasi Resmi",
+    },
+    sources: [
+      {
+        label: "Putusan Homologasi Pengadilan Niaga",
+        publisher: "Pengadilan Niaga Jakarta Pusat",
+        url: "https://pn-jakartapusat.go.id",
+        accessedOn: "2026-10-27",
+      },
+    ],
+    featured: false,
+    sourceName: "Pengadilan Niaga",
+    sourceUrl: "https://pn-jakartapusat.go.id",
+    provenance: DEMO_PROVENANCE,
+  },
+  /* ---------------------------- General Legal news ---------------------------- */
   {
     id: "art-001",
     slug: "sample-feature-reading-a-court-docket",
     section: "legal-news",
     category: "Courts",
+    publicationType: "general_news",
     headline: "A Reader’s Guide to the Court Docket: How Hearings Are Scheduled and Reported",
     deck: "A sample feature showing how The Law Times will present long-form explanatory journalism on court procedure.",
     excerpt:

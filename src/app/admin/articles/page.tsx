@@ -21,6 +21,7 @@ export default async function AdminArticlesPage({ searchParams }: AdminArticlesP
     title: string;
     slug: string;
     content_type: string;
+    publication_type?: string | null;
     status: string;
     is_demo: boolean;
     published_at: string | null;
@@ -30,7 +31,7 @@ export default async function AdminArticlesPage({ searchParams }: AdminArticlesP
   if (supabase) {
     let query = supabase
       .from("articles")
-      .select("id, title, slug, content_type, status, is_demo, published_at, updated_at")
+      .select("id, title, slug, content_type, publication_type, status, is_demo, published_at, updated_at")
       .order("updated_at", { ascending: false });
 
     if (status) {
@@ -138,9 +139,16 @@ export default async function AdminArticlesPage({ searchParams }: AdminArticlesP
               articles.map((art) => (
                 <tr key={art.id} className="hover:bg-paper-dark/30 transition-colors">
                   <td className="p-3 font-semibold text-ink max-w-sm">
-                    <Link href={`/admin/articles/${art.id}/edit`} className="hover:underline">
-                      {art.title}
-                    </Link>
+                    <div className="flex items-center gap-1.5 flex-wrap">
+                      {art.publication_type === "client_publication" && (
+                        <span className="px-1.5 py-0.5 bg-ink text-paper text-[0.58rem] kicker font-bold uppercase tracking-wider">
+                          Klien
+                        </span>
+                      )}
+                      <Link href={`/admin/articles/${art.id}/edit`} className="hover:underline">
+                        {art.title}
+                      </Link>
+                    </div>
                   </td>
                   <td className="p-3 uppercase font-sans text-[0.625rem] text-ink-muted">
                     {art.content_type}
