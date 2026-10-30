@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { getSupabaseServerClient } from "@/lib/supabase/server";
 import { AdminPageHeader } from "@/components/admin/AdminPageHeader";
 import { ArticleForm } from "@/components/admin/ArticleForm";
+import { isDummyArticle } from "@/lib/repositories/articles";
 
 interface EditArticlePageProps {
   params: Promise<{ id: string }>;
@@ -9,6 +10,9 @@ interface EditArticlePageProps {
 
 export default async function EditArticlePage({ params }: EditArticlePageProps) {
   const { id } = await params;
+  if (isDummyArticle({ id })) {
+    notFound();
+  }
   const supabase = await getSupabaseServerClient();
 
   let articleData: any = null;
@@ -20,7 +24,7 @@ export default async function EditArticlePage({ params }: EditArticlePageProps) 
       .eq("id", id)
       .maybeSingle();
 
-    if (data) {
+    if (data && !isDummyArticle(data)) {
       articleData = {
         id: data.id,
         title: data.title || "",

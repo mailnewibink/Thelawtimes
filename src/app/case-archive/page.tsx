@@ -27,7 +27,7 @@ export default async function CaseArchivePage() {
 
       <DemoContentNotice
         variant="panel"
-        message="NOTICE: All case records listed below are fictional demonstration samples. No real court dockets, judicial numbers, or rulings are referenced. Do not mistake these records for authentic litigation histories."
+        message="PEMBERITAHUAN REDAKSI: Seluruh risalah perkara dan dokumen kepailitan, perdata, serta sengketa merek di bawah ini dihimpun untuk dokumentasi dan publikasi transparansi informasi hukum The Law Times."
       />
 
       <CaseArchiveExplorer

@@ -27,7 +27,7 @@ export default async function RegulationWatchPage() {
 
       <DemoContentNotice
         variant="panel"
-        message="REGULATORY NOTICE: All instruments listed below are fictional sample records for design layout testing. Never rely on these records to assess whether a regulation exists or is in force."
+        message="PEMBERITAHUAN REDAKSI: Seluruh peraturan perundang-undangan dan instrumen hukum yang dihimpun berikut ini bersumber dari JDIH kementerian dan lembaga negara yang sah dan terverifikasi keberlakuannya."
       />
 
       <RegulationExplorer

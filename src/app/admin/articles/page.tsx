@@ -3,6 +3,7 @@ import { Plus, Search, ExternalLink } from "lucide-react";
 import { getSupabaseServerClient } from "@/lib/supabase/server";
 import { AdminPageHeader } from "@/components/admin/AdminPageHeader";
 import { formatDate } from "@/lib/utils";
+import { isDummyArticle } from "@/lib/repositories/articles";
 
 interface AdminArticlesPageProps {
   searchParams: Promise<{
@@ -16,7 +17,7 @@ export default async function AdminArticlesPage({ searchParams }: AdminArticlesP
   const { q, status, type } = await searchParams;
   const supabase = await getSupabaseServerClient();
 
-  let articles: Array<{
+  let dbArticles: Array<{
     id: string;
     title: string;
     slug: string;
@@ -45,16 +46,18 @@ export default async function AdminArticlesPage({ searchParams }: AdminArticlesP
     }
 
     const { data } = await query;
-    articles = (data as any) || [];
+    dbArticles = ((data as any) || []).filter((r: any) => !isDummyArticle(r));
   }
 
-  // Fallback to real verified dataset if database is in local/demo mode
-  if (articles.length === 0) {
-    const { demoArticles } = await import("@/data/demo/articles");
+  // Merge real verified dataset so authentic Indonesian content is always accessible in CMS
+  const { demoArticles } = await import("@/data/demo/articles");
+  const combined = [...dbArticles];
+  const seenIds = new Set(combined.map((a) => a.id));
 
-    articles = demoArticles.map((a) => {
+  for (const a of demoArticles) {
+    if (!isDummyArticle(a) && !seenIds.has(a.id)) {
       const isNewContent = a.id.startsWith("art-edu-") || a.id.startsWith("art-hki-");
-      return {
+      combined.push({
         id: a.id,
         title: a.headline,
         slug: a.slug,
@@ -66,19 +69,21 @@ export default async function AdminArticlesPage({ searchParams }: AdminArticlesP
         is_demo: false,
         published_at: isNewContent ? null : a.publishedAt,
         updated_at: a.updatedAt || a.publishedAt,
-      };
-    });
+      });
+      seenIds.add(a.id);
+    }
+  }
 
-    if (status) {
-      articles = articles.filter((a) => a.status === status);
-    }
-    if (type) {
-      articles = articles.filter((a) => a.publication_type === type);
-    }
-    if (q) {
-      const queryLower = q.toLowerCase();
-      articles = articles.filter((a) => a.title.toLowerCase().includes(queryLower));
-    }
+  let articles = combined;
+  if (status) {
+    articles = articles.filter((a) => a.status === status);
+  }
+  if (type) {
+    articles = articles.filter((a) => a.publication_type === type);
+  }
+  if (q) {
+    const queryLower = q.toLowerCase();
+    articles = articles.filter((a) => a.title.toLowerCase().includes(queryLower));
   }
 
   return (

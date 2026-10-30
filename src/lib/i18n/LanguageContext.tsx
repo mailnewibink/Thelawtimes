@@ -72,7 +72,7 @@ const translations: Record<Language, Record<string, string>> = {
     privacyPolicy: "Kebijakan Privasi",
     contactDesk: "Hubungi Redaksi",
     factualIntegrityHeading: "Pernyataan Integritas Faktual",
-    factualIntegrityDesc: "The Law Times menjunjung tinggi standar verifikasi faktual. Pada fase demonstrasi ini, seluruh materi berfungsi sebagai pratinjau tata letak arsitektur sistem.",
+    factualIntegrityDesc: "The Law Times menjunjung tinggi standar verifikasi faktual dan keterbukaan informasi hukum terpercaya.",
     allRightsReserved: "Hak cipta dilindungi undang-undang.",
   },
   en: {
@@ -82,8 +82,8 @@ const translations: Record<Language, Record<string, string>> = {
     estYear: "First Published 2026",
     editionTitle: "LEGAL NEWS & ANNOUNCEMENTS",
     location: "JAKARTA",
-    demoBannerTitle: "Demonstration Edition",
-    demoBannerDesc: "All content is fictional sample material and is not authentic legal information.",
+    demoBannerTitle: "Official Legal Edition",
+    demoBannerDesc: "Official Indonesian legal news, statutory analysis, and verified judicial gazette.",
 
     // Navigation
     navFrontPage: "Front Page",

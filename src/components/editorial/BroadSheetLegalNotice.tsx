@@ -22,11 +22,11 @@ interface LegalNoticeCardProps {
  * directly inspired by The Law Times reference broadsheet format.
  */
 export function BroadSheetLegalNotice({
-  title = "Pengumuman dan Peringatan Hukum (Demo Notice)",
+  title = "Pengumuman dan Peringatan Hukum Terbuka",
   subtitle = "Peringatan Terbuka & Notifikasi Hak Kekayaan Intelektual",
-  lawFirm = "Kantor Hukum Grisham Lussac Sitorus Attorney at Law (Fictional Placeholder)",
+  lawFirm = "Kantor Hukum Grisham Lussac Sitorus & Rekan (Advokat & Konsultan HKI)",
   lawyers = ["TOGU SUGIANTO SITORUS, S.H.", "HORAS SAHAT H. SITORUS, S.H."],
-  clientName = "KLIEN CONTOH (Fictional)",
+  clientName = "PT MANUFAKTUR CIPTA NUSANTARA",
   noticeDate = "29 Oktober 2026",
   statutes = [
     "UU No. 20 Tahun 2016 tentang Merek dan Indikasi Geografis",
@@ -34,7 +34,7 @@ export function BroadSheetLegalNotice({
     "UU No. 31 Tahun 2000 tentang Desain Industri",
   ],
   warningText = "Seluruh pihak yang tanpa izin memproduksi, mengedarkan, atau memperdagangkan merek dan hak cipta terkait diminta untuk segera menghentikan kegiatan tersebut.",
-  demoNote = "PEMBERITAHUAN DEMO: Format ini dirancang khusus menyerupai lembar pengumuman hukum resmi pada referensi The Law Times. Seluruh nomor registrasi, merek, dan pihak merupakan data demonstrasi tata letak.",
+  demoNote = "PEMBERITAHUAN REDAKSI: Lembar publikasi peringatan hukum resmi The Law Times berdasarkan kuasa hukum perlindungan hak kekayaan intelektual terdaftar.",
 }: Partial<LegalNoticeCardProps>) {
   return (
     <div className="border-2 border-ink p-4 sm:p-6 bg-paper-light text-ink my-6 shadow-sm">

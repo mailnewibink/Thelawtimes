@@ -12,6 +12,7 @@ import { getSupabaseServerClient } from "@/lib/supabase/server";
 import { AdminPageHeader } from "@/components/admin/AdminPageHeader";
 import { formatDate } from "@/lib/utils";
 import { getPublicationRequestStats } from "@/lib/repositories/publication-requests";
+import { isDummyArticle } from "@/lib/repositories/articles";
 
 export default async function AdminDashboardPage() {
   const [supabase, pubStats] = await Promise.all([
@@ -34,48 +35,52 @@ export default async function AdminDashboardPage() {
 
   if (supabase) {
     const [
-      { count: pubCount },
-      { count: draftCount },
+      { data: pubData },
+      { data: draftData },
       { count: extCount },
       { data: recent },
     ] = await Promise.all([
-      supabase.from("articles").select("*", { count: "exact", head: true }).eq("status", "published"),
-      supabase.from("articles").select("*", { count: "exact", head: true }).eq("status", "draft"),
+      supabase.from("articles").select("id, slug, title").eq("status", "published"),
+      supabase.from("articles").select("id, slug, title").eq("status", "draft"),
       (supabase as any).from("source_records").select("*", { count: "exact", head: true }).eq("record_type", "external_news"),
       supabase
         .from("articles")
         .select("id, title, status, content_type, publication_type, updated_at, slug")
         .order("updated_at", { ascending: false })
-        .limit(6),
+        .limit(10),
     ]);
 
-    publishedArticlesCount = pubCount || 0;
-    draftsCount = draftCount || 0;
+    const validPubs = (pubData || []).filter((r: any) => !isDummyArticle(r));
+    const validDrafts = (draftData || []).filter((r: any) => !isDummyArticle(r));
+    const validRecent = (recent || []).filter((r: any) => !isDummyArticle(r));
+
+    publishedArticlesCount = validPubs.length;
+    draftsCount = validDrafts.length;
     externalNewsCount = extCount || 0;
-    recentArticles = (recent as any) || [];
+    recentArticles = (validRecent as any) || [];
   }
 
-  // Fallback to real verified dataset if database is in local/demo mode
+  // Fallback / merge with real verified dataset
   if (publishedArticlesCount === 0 && draftsCount === 0) {
     const { demoArticles } = await import("@/data/demo/articles");
     const { demoExternalNews } = await import("@/data/demo/externalNews");
 
     const drafts = demoArticles.filter(
-      (a) => a.id.startsWith("art-edu-") || a.id.startsWith("art-hki-")
+      (a) => !isDummyArticle(a) && (a.id.startsWith("art-edu-") || a.id.startsWith("art-hki-"))
     );
     const pubs = demoArticles.filter(
-      (a) => !a.id.startsWith("art-edu-") && !a.id.startsWith("art-hki-")
+      (a) => !isDummyArticle(a) && !a.id.startsWith("art-edu-") && !a.id.startsWith("art-hki-")
     );
 
     publishedArticlesCount = pubs.length;
     draftsCount = drafts.length;
     externalNewsCount = demoExternalNews.length;
-    recentArticles = demoArticles.slice(0, 6).map((a) => ({
+    recentArticles = demoArticles.filter((a) => !isDummyArticle(a)).slice(0, 6).map((a) => ({
       id: a.id,
       title: a.headline,
       status: a.id.startsWith("art-edu-") || a.id.startsWith("art-hki-") ? "draft" : "published",
       content_type: a.section === "intellectual-property" ? "intellectual_property" : "news",
-      publication_type: a.publicationType,
+      publication_type: a.publicationType || "general_news",
       updated_at: a.updatedAt || a.publishedAt,
       slug: a.slug,
     }));

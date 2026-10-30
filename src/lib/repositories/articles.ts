@@ -36,6 +36,25 @@ interface DatabaseArticleRow {
   }>;
 }
 
+export function isDummyArticle(item?: { id?: string; slug?: string; title?: string; headline?: string } | null): boolean {
+  if (!item) return false;
+  const s = (item.slug || "").toLowerCase();
+  const t = (item.title || item.headline || "").toLowerCase();
+  const id = item.id || "";
+  return (
+    id.startsWith("a0000000-") ||
+    s.includes("a-readers-guide") ||
+    s.includes("readers-guide") ||
+    s.includes("sample-primer") ||
+    s.includes("understanding-trademark-classes") ||
+    t.includes("reader's guide") ||
+    t.includes("reader’s guide") ||
+    t.includes("sample primer") ||
+    t.includes("fictional lead") ||
+    t.includes("fictional primer")
+  );
+}
+
 /**
  * Maps a Supabase article row and joined relations to the frontend Article model.
  */
@@ -197,19 +216,31 @@ export async function fetchPublishedArticles(section?: ArticleSection): Promise<
 
     if (res.error) {
       console.error("[Repository:articles] Database query error:", res.error.message);
-      return section ? demoArticles.filter((a) => a.section === section) : demoArticles;
-    }
-
-    const data = res.data as unknown as DatabaseArticleRow[] | null;
-    if (!data || data.length === 0) {
-      const items = section ? demoArticles.filter((a) => a.section === section) : demoArticles;
+      const items = section ? demoArticles.filter((a) => !isDummyArticle(a) && a.section === section) : demoArticles.filter((a) => !isDummyArticle(a));
       return sortByDateDesc(items, (a) => a.publishedAt);
     }
 
-    return data.map(mapDatabaseArticleToContent);
+    const data = res.data as unknown as DatabaseArticleRow[] | null;
+    const dbArticles = (data || [])
+      .filter((r) => !isDummyArticle(r))
+      .map(mapDatabaseArticleToContent);
+
+    // Merge with real verified editorial articles so authentic Indonesian content is always present
+    const combined: Article[] = [...dbArticles];
+    const seenSlugs = new Set(combined.map((a) => a.slug));
+    for (const demoArt of demoArticles) {
+      if (!isDummyArticle(demoArt) && !seenSlugs.has(demoArt.slug)) {
+        combined.push(demoArt);
+        seenSlugs.add(demoArt.slug);
+      }
+    }
+
+    const items = section ? combined.filter((a) => a.section === section) : combined;
+    return sortByDateDesc(items, (a) => a.publishedAt);
   } catch (err) {
     console.error("[Repository:articles] Connection exception:", err);
-    return section ? demoArticles.filter((a) => a.section === section) : demoArticles;
+    const items = section ? demoArticles.filter((a) => !isDummyArticle(a) && a.section === section) : demoArticles.filter((a) => !isDummyArticle(a));
+    return sortByDateDesc(items, (a) => a.publishedAt);
   }
 }
 
@@ -217,8 +248,12 @@ export async function fetchArticleBySlug(
   slug: string,
   section?: ArticleSection
 ): Promise<Article | undefined> {
+  if (isDummyArticle({ slug })) {
+    return undefined;
+  }
+
   if (!isSupabaseConfigured()) {
-    return demoArticles.find((a) => a.slug === slug && (!section || a.section === section));
+    return demoArticles.find((a) => !isDummyArticle(a) && a.slug === slug && (!section || a.section === section));
   }
 
   try {
@@ -299,8 +334,8 @@ export async function fetchArticleBySlug(
         .maybeSingle();
     }
 
-    if (res.error || !res.data) {
-      return demoArticles.find((a) => a.slug === slug && (!section || a.section === section));
+    if (res.error || !res.data || isDummyArticle(res.data as any)) {
+      return demoArticles.find((a) => !isDummyArticle(a) && a.slug === slug && (!section || a.section === section));
     }
 
     const item = mapDatabaseArticleToContent(res.data as unknown as DatabaseArticleRow);
