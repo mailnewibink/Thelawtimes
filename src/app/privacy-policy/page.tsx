@@ -20,8 +20,7 @@ export default function PrivacyPolicyPage() {
           provisions concerning personal data protection.
         </p>
         <p>
-          In Phase 1, this site operates as a demonstration frontend with no user tracking, advertising cookies,
-          or account databases.
+          The Law Times menghormati privasi pembaca dan patuh terhadap ketentuan Undang-Undang Nomor 27 Tahun 2022 tentang Pelindungan Data Pribadi (UU PDP). Seluruh data korespondensi, permohonan publikasi, dan konsultasi hukum dikelola secara aman dan rahasia.
         </p>
       </div>
     </div>

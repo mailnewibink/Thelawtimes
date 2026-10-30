@@ -64,7 +64,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Footer
     footerDesc: "Layanan dokumentasi independen dan pencatatan publik untuk urusan hukum Indonesia, pengumuman resmi, instrumen regulasi, dan risalah sidang.",
-    editorialStandards: "Diterbitkan di Jakarta · Standar Editorial Broadsheet",
+    editorialStandards: "Diterbitkan di Jakarta · Pers & Publikasi Hukum Independen",
     editorialEthicsHeading: "Editorial & Etika",
     aboutTheLawTimes: "Tentang The Law Times",
     editorialPolicy: "Kebijakan Editorial",
@@ -128,7 +128,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Footer
     footerDesc: "An independent editorial record and documentation service for Indonesian legal affairs, official announcements, regulatory instruments, and court notices.",
-    editorialStandards: "Published in Jakarta · Broadsheet Editorial Standard",
+    editorialStandards: "Published in Jakarta · Independent Legal Journal & Public Records",
     editorialEthicsHeading: "Editorial & Ethics",
     aboutTheLawTimes: "About The Law Times",
     editorialPolicy: "Editorial Policy",
@@ -136,7 +136,7 @@ const translations: Record<Language, Record<string, string>> = {
     privacyPolicy: "Privacy Policy",
     contactDesk: "Contact Editorial Desk",
     factualIntegrityHeading: "Notice on Factual Integrity",
-    factualIntegrityDesc: "The Law Times strictly adheres to factual verification standards. In Phase 1, all displayed records and articles are sample material intended to preview layout architecture.",
+    factualIntegrityDesc: "The Law Times strictly adheres to factual verification standards and authentic Indonesian legal public records.",
     allRightsReserved: "All rights reserved.",
   },
 };

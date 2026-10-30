@@ -57,11 +57,6 @@ export function SiteFooter() {
             <p className="font-serif text-xs leading-relaxed text-ink-muted mb-3">
               {t("factualIntegrityDesc")}
             </p>
-            <p className="meta text-[0.6875rem]">
-              <Link href="/admin/login" className="underline text-ink hover:text-ink-muted">
-                Editorial Login (CMS Console)
-              </Link>
-            </p>
           </div>
         </div>
 
@@ -69,7 +64,7 @@ export function SiteFooter() {
 
         <div className="flex flex-col sm:flex-row items-center justify-between gap-2 meta text-[0.6875rem] text-ink-muted">
           <p>© 2026 {siteConfig.name}. {t("allRightsReserved")}</p>
-          <p>Phase 3 Editorial Platform · Jakarta, Indonesia</p>
+          <p>Media Informasi & Publikasi Hukum Terdaftar · Jakarta, Indonesia</p>
         </div>
       </div>
     </footer>

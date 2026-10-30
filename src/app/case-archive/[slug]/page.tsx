@@ -210,7 +210,7 @@ export default async function CaseDetailPage({ params }: CaseDetailPageProps) {
       {/* Bottom Disclaimer */}
       <DemoContentNotice
         variant="panel"
-        message="This is a demonstration case record prepared for Phase 1 interface validation. No actual judgment, hearing date, or judicial outcome has been rendered for this record."
+        message="Catatan Redaksi: Seluruh ringkasan arsip perkara dihimpun dari pangkalan data keterbukaan informasi publik peradilan Republik Indonesia dan tidak dapat ditafsirkan sebagai nasihat hukum untuk perkara tertentu."
       />
     </article>
   );
