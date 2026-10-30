@@ -108,7 +108,7 @@ export default async function ArticleDetailPage({ params }: ArticleDetailPagePro
           url: siteConfig.url,
           logo: {
             "@type": "ImageObject",
-            url: `${siteConfig.url}/images/courthouse.jpg`,
+            url: `${siteConfig.url}/images/photos/supreme-court.jpg`,
           },
         },
         image: article.image?.src
@@ -212,8 +212,8 @@ export default async function ArticleDetailPage({ params }: ArticleDetailPagePro
 
       {/* Featured Image */}
       {article.image && (
-        <figure className="my-6">
-          <div className="relative aspect-[3/2] w-full border border-rule bg-paper-dark">
+        <figure className="my-6 space-y-2">
+          <div className="relative aspect-[3/2] w-full border border-rule bg-paper-dark overflow-hidden">
             <Image
               src={article.image.src}
               alt={article.image.alt}
@@ -223,12 +223,12 @@ export default async function ArticleDetailPage({ params }: ArticleDetailPagePro
               priority
             />
           </div>
-          {article.image.caption && (
-            <figcaption className="meta mt-2 text-xs italic">
-              {article.image.caption}
-              {article.image.credit && ` — Kredit: ${article.image.credit}`}
-            </figcaption>
-          )}
+          <figcaption className="meta text-xs italic flex items-center justify-between flex-wrap gap-2 border-b border-rule/50 pb-2">
+            <span>{article.image.caption || article.headline}</span>
+            <span className="font-sans text-[0.6875rem] not-italic text-ink-muted/90 shrink-0">
+              {article.image.credit ? `Sumber: ${article.image.credit} • ` : ""}Gambar hanya ilustrasi
+            </span>
+          </figcaption>
         </figure>
       )}
 

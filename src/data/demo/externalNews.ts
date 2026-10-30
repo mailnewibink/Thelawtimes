@@ -8,6 +8,7 @@ export interface ExternalNewsItem {
   publishedAt: string;
   category: string;
   imageUrl?: string | null;
+  imageCredit?: string | null;
 }
 
 /**
@@ -26,7 +27,8 @@ export const demoExternalNews: ExternalNewsItem[] = [
     canonicalUrl: "https://www.mkri.id/index.php?page=web.Berita&id=20815",
     publishedAt: "2026-10-28T10:00:00Z",
     category: "Hukum Pidana & Tata Negara",
-    imageUrl: "/images/courthouse.jpg",
+    imageUrl: "/images/photos/supreme-court.jpg",
+    imageCredit: "Unsplash / Ian Hutchinson",
   },
   {
     id: "ext-news-ma-pleno",
@@ -38,7 +40,8 @@ export const demoExternalNews: ExternalNewsItem[] = [
     canonicalUrl: "https://kepaniteraan.mahkamahagung.go.id/kegiatan/pleno-kamar-2026",
     publishedAt: "2026-10-22T08:30:00Z",
     category: "Pengadilan & Peradilan",
-    imageUrl: "/images/gavel.jpg",
+    imageUrl: "/images/photos/courtroom-gavel.jpg",
+    imageCredit: "Unsplash / Bill Oxford",
   },
   {
     id: "ext-news-ojk-pojk24",
@@ -50,7 +53,8 @@ export const demoExternalNews: ExternalNewsItem[] = [
     canonicalUrl: "https://www.ojk.go.id/id/berita-dan-kegiatan/siaran-pers/Pages/OJK-Terbitkan-POJK-Pengelolaan-Rekening-Bank-Umum.aspx",
     publishedAt: "2026-10-15T14:15:00Z",
     category: "Hukum Bisnis & Perbankan",
-    imageUrl: "/images/documents.jpg",
+    imageUrl: "/images/photos/banking-ojk.jpg",
+    imageCredit: "Unsplash / Austin Distel",
   },
   {
     id: "ext-news-dgip-rekor",
@@ -62,7 +66,8 @@ export const demoExternalNews: ExternalNewsItem[] = [
     canonicalUrl: "https://www.dgip.go.id/artikel/detail-artikel/capaian-kinerja-djki-2026-permohonan-ki-meningkat-pesat",
     publishedAt: "2026-10-24T11:45:00Z",
     category: "Merek & Kekayaan Intelektual",
-    imageUrl: "/images/invention.jpg",
+    imageUrl: "/images/photos/trademark-registry.jpg",
+    imageCredit: "Unsplash / Wesley Tingey",
   },
   {
     id: "ext-news-kpk-stranas",
@@ -74,6 +79,7 @@ export const demoExternalNews: ExternalNewsItem[] = [
     canonicalUrl: "https://www.kpk.go.id/id/berita/siaran-pers/stranas-pk-periode-2025-2026-resmi-diluncurkan",
     publishedAt: "2026-10-18T09:20:00Z",
     category: "Hukum Pidana Korupsi",
-    imageUrl: "/images/courthouse.jpg",
+    imageUrl: "/images/photos/kpk-governance.jpg",
+    imageCredit: "Unsplash / Sean Pollock",
   },
 ];

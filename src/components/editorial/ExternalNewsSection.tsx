@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ExternalNewsItem } from "@/data/demo/externalNews";
 import { formatDate } from "@/lib/utils";
 import { ExternalLink, Rss } from "lucide-react";
@@ -35,6 +36,22 @@ export function ExternalNewsSection({
             className="border border-rule-soft bg-paper-light/30 p-4 flex flex-col justify-between hover:bg-paper-light transition-colors group"
           >
             <div>
+              {/* Optional photographic thumbnail */}
+              {item.imageUrl && (
+                <div className="relative aspect-[16/9] w-full border border-rule bg-paper-dark mb-3 overflow-hidden">
+                  <Image
+                    src={item.imageUrl}
+                    alt={item.title}
+                    fill
+                    sizes="(min-width: 768px) 33vw, 100vw"
+                    className="object-cover group-hover:scale-[1.02] transition-transform duration-300"
+                  />
+                  <div className="absolute bottom-0 right-0 bg-paper/90 px-1.5 py-0.5 text-[0.5625rem] font-sans text-ink-muted border-tl border-rule">
+                    {item.imageCredit ? `${item.imageCredit} • ` : ""}Gambar hanya ilustrasi
+                  </div>
+                </div>
+              )}
+
               <div className="flex items-center justify-between gap-2 mb-2 text-[0.625rem] font-sans">
                 <span className="bg-ink text-paper font-bold uppercase tracking-wider px-1.5 py-0.5">
                   BERITA EKSTERNAL

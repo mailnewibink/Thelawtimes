@@ -111,16 +111,12 @@ export default async function FrontPage() {
                       sizes="(min-width: 1024px) 58vw, 100vw"
                     />
                   </div>
-                  {featuredClient.image.caption && (
-                    <figcaption className="text-[0.68rem] italic text-ink-muted flex items-center justify-between">
-                      <span>{featuredClient.image.caption}</span>
-                      {featuredClient.image.credit && (
-                        <span className="font-mono text-[0.62rem] text-ink-muted/80">
-                          {featuredClient.image.credit}
-                        </span>
-                      )}
-                    </figcaption>
-                  )}
+                  <figcaption className="text-[0.68rem] italic text-ink-muted flex items-center justify-between flex-wrap gap-2 border-b border-rule/40 pb-1">
+                    <span>{featuredClient.image.caption || "Dokumentasi publikasi resmi perkara"}</span>
+                    <span className="font-sans text-[0.62rem] text-ink-muted/90 not-italic shrink-0">
+                      {featuredClient.image.credit ? `Sumber: ${featuredClient.image.credit} • ` : ""}Gambar hanya ilustrasi
+                    </span>
+                  </figcaption>
                 </figure>
               )}
 
@@ -376,15 +372,23 @@ export default async function FrontPage() {
             {ipLead && (
               <article className="space-y-2 pb-4 border-b border-rule/50">
                 {ipLead.image && (
-                  <div className="relative aspect-[16/10] w-full border border-rule bg-paper-dark mb-2">
-                    <Image
-                      src={ipLead.image.src}
-                      alt={ipLead.image.alt}
-                      fill
-                      className="object-cover engraving"
-                      sizes="(min-width: 768px) 30vw, 100vw"
-                    />
-                  </div>
+                  <figure className="space-y-1 mb-2">
+                    <div className="relative aspect-[16/10] w-full border border-rule bg-paper-dark">
+                      <Image
+                        src={ipLead.image.src}
+                        alt={ipLead.image.alt}
+                        fill
+                        className="object-cover engraving"
+                        sizes="(min-width: 768px) 30vw, 100vw"
+                      />
+                    </div>
+                    <figcaption className="text-[0.62rem] text-ink-muted flex items-center justify-between flex-wrap gap-1 border-b border-rule/30 pb-0.5">
+                      <span className="truncate max-w-[60%] italic">{ipLead.image.caption || ipLead.headline}</span>
+                      <span className="font-sans text-[0.58rem] not-italic text-ink-muted/90 shrink-0">
+                        {ipLead.image.credit ? `Sumber: ${ipLead.image.credit} • ` : ""}Gambar hanya ilustrasi
+                      </span>
+                    </figcaption>
+                  </figure>
                 )}
                 <span className="text-[0.62rem] kicker uppercase font-bold tracking-wider text-ink-muted">
                   {ipLead.category}
@@ -444,15 +448,23 @@ export default async function FrontPage() {
             {newsLead && (
               <article className="space-y-2 pb-4 border-b border-rule/50">
                 {newsLead.image && (
-                  <div className="relative aspect-[16/10] w-full border border-rule bg-paper-dark mb-2">
-                    <Image
-                      src={newsLead.image.src}
-                      alt={newsLead.image.alt}
-                      fill
-                      className="object-cover engraving"
-                      sizes="(min-width: 768px) 30vw, 100vw"
-                    />
-                  </div>
+                  <figure className="space-y-1 mb-2">
+                    <div className="relative aspect-[16/10] w-full border border-rule bg-paper-dark">
+                      <Image
+                        src={newsLead.image.src}
+                        alt={newsLead.image.alt}
+                        fill
+                        className="object-cover engraving"
+                        sizes="(min-width: 768px) 30vw, 100vw"
+                      />
+                    </div>
+                    <figcaption className="text-[0.62rem] text-ink-muted flex items-center justify-between flex-wrap gap-1 border-b border-rule/30 pb-0.5">
+                      <span className="truncate max-w-[60%] italic">{newsLead.image.caption || newsLead.headline}</span>
+                      <span className="font-sans text-[0.58rem] not-italic text-ink-muted/90 shrink-0">
+                        {newsLead.image.credit ? `Sumber: ${newsLead.image.credit} • ` : ""}Gambar hanya ilustrasi
+                      </span>
+                    </figcaption>
+                  </figure>
                 )}
                 <span className="text-[0.62rem] kicker uppercase font-bold tracking-wider text-ink-muted">
                   {newsLead.category}

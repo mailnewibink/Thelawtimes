@@ -20,7 +20,7 @@ export function CategoryFeaturedLead({
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Left / Top: Image */}
         {article.image && (
-          <div className="lg:col-span-6 flex flex-col">
+          <figure className="lg:col-span-6 flex flex-col">
             <div className="relative aspect-[16/10] w-full border border-ink bg-paper-dark overflow-hidden">
               <Image
                 src={article.image.src}
@@ -34,12 +34,13 @@ export function CategoryFeaturedLead({
                 {badgeLabel}
               </div>
             </div>
-            {article.image.caption && (
-              <p className="font-serif text-[0.6875rem] italic text-ink-muted mt-1.5 leading-snug">
-                {article.image.caption}
-              </p>
-            )}
-          </div>
+            <figcaption className="mt-2 flex items-center justify-between text-[0.6875rem] text-ink-muted italic flex-wrap gap-1 border-b border-rule/30 pb-1">
+              <span>{article.image.caption || article.headline}</span>
+              <span className="font-sans text-[0.625rem] not-italic text-ink-muted/90 shrink-0">
+                {article.image.credit ? `Sumber: ${article.image.credit} • ` : ""}Gambar hanya ilustrasi
+              </span>
+            </figcaption>
+          </figure>
         )}
 
         {/* Right / Content */}

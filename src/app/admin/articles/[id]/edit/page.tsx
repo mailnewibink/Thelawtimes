@@ -36,7 +36,7 @@ export default async function EditArticlePage({ params }: EditArticlePageProps) 
         status: data.status === "published" ? "published" : "draft",
         author: "Redaksi The Law Times",
         publishedAt: data.published_at ? data.published_at.split("T")[0] : new Date().toISOString().split("T")[0],
-        featuredImagePath: data.featured_image_path || "/images/courthouse.jpg",
+        featuredImagePath: data.featured_image_path || "/images/photos/supreme-court.jpg",
         seoTitle: data.seo_title || "",
         seoDescription: data.seo_description || "",
       };
@@ -63,7 +63,7 @@ export default async function EditArticlePage({ params }: EditArticlePageProps) 
         status: isNewContent ? "draft" : "published",
         author: fallbackArticle.byline || "Redaksi The Law Times",
         publishedAt: fallbackArticle.publishedAt,
-        featuredImagePath: fallbackArticle.image?.src || "/images/courthouse.jpg",
+        featuredImagePath: fallbackArticle.image?.src || "/images/photos/supreme-court.jpg",
         seoTitle: fallbackArticle.seoTitle || "",
         seoDescription: fallbackArticle.seoDescription || "",
       };

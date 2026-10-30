@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     url: siteConfig.url,
     images: [
       {
-        url: `${siteConfig.url}/images/courthouse.jpg`,
+        url: `${siteConfig.url}/images/photos/supreme-court.jpg`,
         width: 1200,
         height: 630,
         alt: siteConfig.name,
@@ -73,7 +73,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteConfig.name,
     description: siteConfig.description,
-    images: [`${siteConfig.url}/images/courthouse.jpg`],
+    images: [`${siteConfig.url}/images/photos/supreme-court.jpg`],
   },
 };
 
@@ -99,7 +99,7 @@ export default function RootLayout({
         url: siteConfig.url,
         logo: {
           "@type": "ImageObject",
-          url: `${siteConfig.url}/images/courthouse.jpg`,
+          url: `${siteConfig.url}/images/photos/supreme-court.jpg`,
         },
         sameAs: [
           "https://twitter.com",

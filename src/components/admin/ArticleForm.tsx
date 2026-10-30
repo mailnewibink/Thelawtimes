@@ -73,7 +73,7 @@ export function ArticleForm({
     initialData?.publishedAt || new Date().toISOString().split("T")[0]
   );
   const [featuredImagePath, setFeaturedImagePath] = useState(
-    initialData?.featuredImagePath || "/images/courthouse.jpg"
+    initialData?.featuredImagePath || "/images/photos/supreme-court.jpg"
   );
 
   // SEO Fields
@@ -108,7 +108,7 @@ export function ArticleForm({
       const supabase = getSupabaseBrowserClient();
       if (!supabase) {
         // Fallback for local demo preview
-        setFeaturedImagePath("/images/courthouse.jpg");
+        setFeaturedImagePath("/images/photos/supreme-court.jpg");
         setSuccessMsg("Mode demo: Menggunakan gambar default peradilan.");
         setUploadingImage(false);
         return;

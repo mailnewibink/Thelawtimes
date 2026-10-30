@@ -37,19 +37,25 @@ export function PaginatedArticleListing({
             >
               {/* Optional Thumbnail */}
               {article.image && (
-                <div className="sm:col-span-4 relative aspect-[16/10] sm:aspect-[4/3] border border-rule bg-paper-dark overflow-hidden">
-                  <Image
-                    src={article.image.src}
-                    alt={article.image.alt}
-                    fill
-                    sizes="(min-width: 640px) 25vw, 100vw"
-                    className="object-cover engraving group-hover:scale-[1.02] transition-transform duration-300"
-                  />
-                  {isClient && highlightClientBadge && (
-                    <div className="absolute top-0 left-0 bg-ink text-paper text-[0.5625rem] font-bold px-1.5 py-0.5 uppercase tracking-widest">
-                      Publikasi Klien
-                    </div>
-                  )}
+                <div className="sm:col-span-4 flex flex-col space-y-1">
+                  <div className="relative aspect-[16/10] sm:aspect-[4/3] border border-rule bg-paper-dark overflow-hidden">
+                    <Image
+                      src={article.image.src}
+                      alt={article.image.alt}
+                      fill
+                      sizes="(min-width: 640px) 25vw, 100vw"
+                      className="object-cover engraving group-hover:scale-[1.02] transition-transform duration-300"
+                    />
+                    {isClient && highlightClientBadge && (
+                      <div className="absolute top-0 left-0 bg-ink text-paper text-[0.5625rem] font-bold px-1.5 py-0.5 uppercase tracking-widest">
+                        Publikasi Klien
+                      </div>
+                    )}
+                  </div>
+                  <div className="text-[0.58rem] font-sans text-ink-muted/80 flex items-center justify-between px-0.5">
+                    <span className="truncate max-w-[65%]">{article.image.credit ? `Sumber: ${article.image.credit}` : ""}</span>
+                    <span className="italic shrink-0">Foto hanya ilustrasi</span>
+                  </div>
                 </div>
               )}
 

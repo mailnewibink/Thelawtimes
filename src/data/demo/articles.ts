@@ -34,10 +34,10 @@ export const demoArticles: Article[] = [
     updatedAt: "2026-10-30",
     byline: "Dr. Hendra Gunawan, S.H., M.H. (Advokat & Praktisi Hukum Perdata)",
     image: {
-      src: "/images/documents.jpg",
-      alt: "Dokumen Kontrak Perjanjian Bersegel dengan Tinta dan Pena",
-      caption: "Format instrumen perikatan komersial dan dokumen pembuktian perdata.",
-      credit: "Arsip The Law Times",
+      src: "/images/photos/electronic-contract.jpg",
+      alt: "Penandatanganan Kontrak Elektronik dan Dokumen Digital melalui Komputer Laptop",
+      caption: "Penggunaan perangkat digital dalam penandatanganan kontrak komersial dan verifikasi transaksi elektronik tersertifikasi.",
+      credit: "Unsplash / John Schnobrich",
     },
     sources: [
       {
@@ -79,9 +79,10 @@ export const demoArticles: Article[] = [
     updatedAt: "2026-10-30",
     byline: "Ronald Siregar, S.H., LL.M. (Konsultan Hukum Korporasi)",
     image: {
-      src: "/images/courthouse.jpg",
-      alt: "Pilar Neoklasik Lambang Integritas Korporasi dan Tata Kelola Perusahaan",
-      caption: "Prinsip transparansi tata kelola perusahaan yang baik (GCG) dan kepatuhan organ perseroan.",
+      src: "/images/photos/corporate-governance.jpg",
+      alt: "Rapat Direksi dan Manajemen Korporasi dalam Pengambilan Keputusan Bisnis",
+      caption: "Pertemuan direksi korporasi dalam evaluasi tata kelola dan kepatuhan perizinan perseroan.",
+      credit: "Unsplash / Hunters Race",
     },
     sources: [
       {
@@ -117,9 +118,10 @@ export const demoArticles: Article[] = [
     updatedAt: "2026-10-30",
     byline: "Dewi Anggraini, S.H. (Konsultan HKI Terdaftar)",
     image: {
-      src: "/images/invention.jpg",
-      alt: "Spesimen Gambar Paten dan Dokumen Sertifikat Hak Merek Komersial",
-      caption: "Perlindungan aset tak berwujud dan kepemilikan sertifikat merek terdaftar DJKI.",
+      src: "/images/photos/trademark-branding.jpg",
+      alt: "Desain Identitas Merek Dagang dan Kemasan Produk Komersial",
+      caption: "Pengembangan identitas merek dagang dan pendaftaran sertifikat hak eksklusif komersial di DJKI.",
+      credit: "Unsplash / Patrik Michalicka",
     },
     sources: [
       {
@@ -154,6 +156,12 @@ export const demoArticles: Article[] = [
     publishedAt: "2026-10-24",
     updatedAt: "2026-10-30",
     byline: "Meja Redaksi Ketenagakerjaan The Law Times",
+    image: {
+      src: "/images/photos/employment-contract.jpg",
+      alt: "Penandatanganan Perjanjian Kerja dan Pemenuhan Hak Ketenagakerjaan",
+      caption: "Penyusunan perjanjian kerja waktu tertentu (PKWT) dan pemenuhan hak kompensasi pekerja.",
+      credit: "Unsplash / Cytonn Photography",
+    },
     sources: [
       {
         label: "PP No. 35 Tahun 2021 tentang PKWT, Alih Daya, dan PHK",
@@ -188,9 +196,10 @@ export const demoArticles: Article[] = [
     updatedAt: "2026-10-30",
     byline: "Farhan Prabowo, S.H., M.Kn. (Spesialis Kepatuhan Privasi Data)",
     image: {
-      src: "/images/scales.jpg",
-      alt: "Timbangan Keadilan Lambang Hak Konstitusional Privasi dan Kepatuhan Hukum",
-      caption: "Keseimbangan antara inovasi ekonomi digital dan jaminan hak privasi warga negara.",
+      src: "/images/photos/data-privacy.jpg",
+      alt: "Sistem Keamanan Siber dan Proteksi Data Pribadi Digital",
+      caption: "Infrastruktur kepatuhan perlindungan data pribadi dan mitigasi risiko kebocoran data digital.",
+      credit: "Unsplash / Markus Spiske",
     },
     sources: [
       {
@@ -229,10 +238,10 @@ export const demoArticles: Article[] = [
     updatedAt: "2026-10-29",
     byline: "Meja Redaksi HKI The Law Times",
     image: {
-      src: "/images/invention.jpg",
+      src: "/images/photos/trademark-registry.jpg",
       alt: "Pencatatan Dokumen Resmi Berita Resmi Merek DJKI",
-      caption: "Dokumentasi publikasi statutori Berita Resmi Merek Seri-A DJKI Kemenkumham RI.",
-      credit: "DJKI Kemenkumham RI",
+      caption: "Dokumentasi publikasi statutori lembaran Berita Resmi Merek Seri-A DJKI Kemenkumham RI.",
+      credit: "Unsplash / Wesley Tingey",
     },
     sources: [
       {
@@ -266,6 +275,12 @@ export const demoArticles: Article[] = [
     publishedAt: "2026-10-28",
     updatedAt: "2026-10-29",
     byline: "Meja Redaksi HKI The Law Times",
+    image: {
+      src: "/images/photos/trademark-registry.jpg",
+      alt: "Pemeriksaan Berkas dan Pendaftaran Merek Baru di Portal PDKI",
+      caption: "Masa pengumuman publik permohonan pendaftaran merek untuk pengajuan surat sanggahan (oposisi).",
+      credit: "Unsplash / Wesley Tingey",
+    },
     sources: [
       {
         label: "Berita Resmi Merek Seri-A No. 218/P-M/X/A/2026",
@@ -297,6 +312,12 @@ export const demoArticles: Article[] = [
     publishedAt: "2026-10-26",
     updatedAt: "2026-10-27",
     byline: "Koresponden Kekayaan Intelektual",
+    image: {
+      src: "/images/photos/trademark-investigation.jpg",
+      alt: "Penelitian dan Uji Silang Dokumen Pendaftaran Merek Dagang",
+      caption: "Pemeriksaan substantif untuk mendeteksi permohonan pendaftaran merek berindikasi itikad buruk.",
+      credit: "Unsplash / Scott Graham",
+    },
     sources: [
       {
         label: "Pedoman Teknis Pemeriksaan Substantif Merek DJKI",
@@ -328,6 +349,12 @@ export const demoArticles: Article[] = [
     publishedAt: "2026-10-22",
     updatedAt: "2026-10-23",
     byline: "Meja Redaksi HKI The Law Times",
+    image: {
+      src: "/images/photos/ai-technology.jpg",
+      alt: "Teknologi Kecerdasan Buatan dan Layanan Komputasi Awan",
+      caption: "Klasifikasi Nice Agreement Edisi 12 mencakup piranti lunak kecerdasan buatan dan komputasi awan.",
+      credit: "Unsplash / Milad Fakurian",
+    },
     sources: [
       {
         label: "Nice Classification 12th Edition — WIPO / DJKI",
@@ -359,6 +386,12 @@ export const demoArticles: Article[] = [
     publishedAt: "2026-10-19",
     updatedAt: "2026-10-20",
     byline: "Koresponden Inovasi & Paten",
+    image: {
+      src: "/images/photos/umkm-innovation.jpg",
+      alt: "Inovasi Usaha Mikro dan Industri Kerajinan Lokal",
+      caption: "Fasilitas pembebasan biaya PNBP perlindungan paten dan merek bagi inventor kampus dan UMKM.",
+      credit: "Unsplash / Tim Mossholder",
+    },
     sources: [
       {
         label: "PP No. 28 Tahun 2019 tentang Tarif PNBP Kemenkumham",
@@ -396,10 +429,10 @@ export const demoArticles: Article[] = [
     updatedAt: null,
     byline: "Saluran Publikasi Kasus Klien",
     image: {
-      src: "/images/courthouse.jpg",
-      alt: "Gedung Mahkamah Agung Republik Indonesia",
+      src: "/images/photos/supreme-court.jpg",
+      alt: "Pilar Gedung Mahkamah Agung Republik Indonesia",
       caption: "Publikasi resmi perkara berkekuatan hukum tetap pada Mahkamah Agung Republik Indonesia.",
-      credit: "Dokumentasi Resmi Publikasi Klien",
+      credit: "Unsplash / Ian Hutchinson",
     },
     sources: [
       {
@@ -434,10 +467,10 @@ export const demoArticles: Article[] = [
     updatedAt: null,
     byline: "Tim Kuasa Hukum & Pengurus Terdaftar",
     image: {
-      src: "/images/documents.jpg",
-      alt: "Berkas Pengesahan Homologasi Perjanjian Perdamaian",
-      caption: "Dokumen resmi pengesahan perjanjian perdamaian PKPU.",
-      credit: "Publikasi Resmi",
+      src: "/images/photos/debt-restructuring.jpg",
+      alt: "Dokumen Pengesahan Homologasi Perjanjian Perdamaian",
+      caption: "Dokumen resmi pengesahan perjanjian perdamaian restrukturisasi utang dalam proses PKPU.",
+      credit: "Unsplash / Scott Graham",
     },
     sources: [
       {
@@ -472,10 +505,10 @@ export const demoArticles: Article[] = [
     updatedAt: null,
     byline: "Kantor Hukum Kuasa Khusus Klien",
     image: {
-      src: "/images/invention.jpg",
-      alt: "Bukti Pendaftaran Merek dan Hak Cipta Komersial",
-      caption: "Dokumentasi resmi sertifikat pendaftaran merek dan desain industri terdaftar.",
-      credit: "Publikasi Khusus Klien",
+      src: "/images/photos/commercial-product.jpg",
+      alt: "Pabrik Manufaktur dan Distribusi Produk Komersial SNOWCAN",
+      caption: "Peringatan hukum terbuka atas hak eksklusif perlindungan merek dagang dan sirkulasi produk di pasar.",
+      credit: "Unsplash / Chuttersnap",
     },
     sources: [
       {
@@ -510,10 +543,10 @@ export const demoArticles: Article[] = [
     updatedAt: null,
     byline: "Kepaniteraan Perdata & Kuasa Penggugat",
     image: {
-      src: "/images/gavel.jpg",
-      alt: "Palu Sidang Majelis Hakim Pengadilan",
-      caption: "Pengumuman jadwal persidangan perkara perdata.",
-      credit: "Dokumentasi Peradilan",
+      src: "/images/photos/courtroom-gavel.jpg",
+      alt: "Palu Sidang dan Buku Hukum di Ruang Persidangan Pengadilan",
+      caption: "Pemberitahuan relaas panggilan sidang perkara perdata di Pengadilan Negeri.",
+      credit: "Unsplash / Bill Oxford",
     },
     sources: [
       {

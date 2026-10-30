@@ -58,8 +58,8 @@ export function FeaturedStory({ article, className }: FeaturedStoryProps) {
       </div>
 
       {article.image && (
-        <div className="lg:col-span-5 flex flex-col">
-          <div className="relative aspect-[3/2] w-full border border-rule bg-paper-dark">
+        <figure className="lg:col-span-5 flex flex-col">
+          <div className="relative aspect-[3/2] w-full border border-rule bg-paper-dark overflow-hidden">
             <Image
               src={article.image.src}
               alt={article.image.alt}
@@ -70,13 +70,13 @@ export function FeaturedStory({ article, className }: FeaturedStoryProps) {
               sizes="(min-width: 1024px) 40vw, 100vw"
             />
           </div>
-          {article.image.caption && (
-            <figcaption className="meta mt-2 text-xs italic">
-              {article.image.caption}
-              {article.image.credit && ` (${article.image.credit})`}
-            </figcaption>
-          )}
-        </div>
+          <figcaption className="meta mt-2 text-xs italic flex items-center justify-between flex-wrap gap-1 border-b border-rule/30 pb-1">
+            <span>{article.image.caption || article.headline}</span>
+            <span className="font-sans text-[0.625rem] not-italic text-ink-muted/90 shrink-0">
+              {article.image.credit ? `Sumber: ${article.image.credit} • ` : ""}Gambar hanya ilustrasi
+            </span>
+          </figcaption>
+        </figure>
       )}
     </article>
   );

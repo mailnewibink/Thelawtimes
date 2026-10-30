@@ -107,14 +107,14 @@ export function Masthead() {
 
       {/* 3. CENTERED BLACKLETTER LOGO WITH SUBTLE ENGRAVING COURTHOUSE */}
       <div className="relative py-2 sm:py-3 text-center flex flex-col items-center justify-center">
-        {/* Subtle engraving courthouse illustration left & right */}
+        {/* Subtle architectural & judicial emblem left & right */}
         <div className="hidden lg:flex absolute left-4 top-1/2 -translate-y-1/2 items-center gap-2 opacity-85 pointer-events-none">
-          <div className="relative w-16 h-12 border border-rule/50 bg-paper-dark/30 p-0.5">
+          <div className="relative w-16 h-12 border border-rule/50 bg-paper-dark/30 p-0.5 overflow-hidden">
             <Image
-              src="/images/courthouse.jpg"
-              alt="Engraving of classical courthouse"
+              src="/images/photos/supreme-court.jpg"
+              alt="Gedung Pengadilan Mahkamah Agung"
               fill
-              className="object-cover engraving"
+              className="object-cover"
               sizes="64px"
               loading="eager"
             />
@@ -130,12 +130,12 @@ export function Masthead() {
             <span>Lex Superior</span>
             <span className="block italic text-[0.52rem] text-ink-muted/80">Jakarta RI</span>
           </div>
-          <div className="relative w-16 h-12 border border-rule/50 bg-paper-dark/30 p-0.5">
+          <div className="relative w-16 h-12 border border-rule/50 bg-paper-dark/30 p-0.5 overflow-hidden">
             <Image
-              src="/images/scales.jpg"
-              alt="Engraving of classical scales of justice"
+              src="/images/photos/courtroom-gavel.jpg"
+              alt="Palu Peradilan dan Hukum"
               fill
-              className="object-cover engraving"
+              className="object-cover"
               sizes="64px"
               loading="eager"
             />

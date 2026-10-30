@@ -27,17 +27,23 @@ export function ArticleListItem({
     <article className={cn("group flex flex-col justify-between", className)}>
       <div>
         {showImage && article.image && (
-          <div className="relative mb-3 aspect-[3/2] w-full border border-rule bg-paper-dark">
-            <Image
-              src={article.image.src}
-              alt={article.image.alt}
-              fill
-              loading={priorityImage ? "eager" : "lazy"}
-              {...(priorityImage ? { fetchPriority: "high" as const } : {})}
-              className="object-cover engraving"
-              sizes="(min-width: 768px) 30vw, 100vw"
-            />
-          </div>
+          <figure className="mb-3 space-y-1">
+            <div className="relative aspect-[3/2] w-full border border-rule bg-paper-dark overflow-hidden">
+              <Image
+                src={article.image.src}
+                alt={article.image.alt}
+                fill
+                loading={priorityImage ? "eager" : "lazy"}
+                {...(priorityImage ? { fetchPriority: "high" as const } : {})}
+                className="object-cover engraving"
+                sizes="(min-width: 768px) 30vw, 100vw"
+              />
+            </div>
+            <figcaption className="text-[0.58rem] font-sans text-ink-muted/80 flex items-center justify-between px-0.5">
+              <span className="truncate max-w-[65%]">{article.image.credit ? `Sumber: ${article.image.credit}` : ""}</span>
+              <span className="italic shrink-0">Gambar hanya ilustrasi</span>
+            </figcaption>
+          </figure>
         )}
         <ArticleMetadata
           publishedAt={article.publishedAt}

@@ -188,9 +188,8 @@
     background-color: var(--color-notice);
   }
 
-  /* Engraving images sit on paper */
+  /* Editorial press photos sit naturally on paper */
   .engraving {
-    mix-blend-mode: multiply;
-    filter: grayscale(1) contrast(1.05);
+    filter: contrast(1.02);
   }
 }
