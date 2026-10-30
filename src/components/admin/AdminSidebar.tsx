@@ -6,6 +6,7 @@ import {
   LayoutDashboard,
   FileText,
   Inbox,
+  MessageSquare,
   Rss,
   Settings,
   ExternalLink,
@@ -27,6 +28,7 @@ export function AdminSidebar({ className, onNavigate }: AdminSidebarProps) {
     { label: "Dashboard", href: "/admin", icon: LayoutDashboard },
     { label: "Articles", href: "/admin/articles", icon: FileText },
     { label: "Publication Requests", href: "/admin/publication-requests", icon: Inbox },
+    { label: "Permintaan Konsultasi", href: "/admin/consultation-requests", icon: MessageSquare },
     { label: "External Sources", href: "/admin/sources", icon: Rss },
     { label: "Settings", href: "/admin/settings", icon: Settings },
   ];

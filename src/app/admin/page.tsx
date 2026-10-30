@@ -4,6 +4,7 @@ import {
   Clock,
   Rss,
   Inbox,
+  MessageSquare,
   Plus,
   ArrowRight,
   ExternalLink,
@@ -12,13 +13,17 @@ import { getSupabaseServerClient } from "@/lib/supabase/server";
 import { AdminPageHeader } from "@/components/admin/AdminPageHeader";
 import { formatDate } from "@/lib/utils";
 import { getPublicationRequestStats } from "@/lib/repositories/publication-requests";
+import { getConsultationRequests } from "@/lib/repositories/consultation-requests";
 import { isDummyArticle } from "@/lib/repositories/articles";
 
 export default async function AdminDashboardPage() {
-  const [supabase, pubStats] = await Promise.all([
+  const [supabase, pubStats, consultRequests] = await Promise.all([
     getSupabaseServerClient(),
     getPublicationRequestStats(),
+    getConsultationRequests(),
   ]);
+
+  const newConsultationsCount = consultRequests.filter((c) => c.status === "Baru").length;
 
   let publishedArticlesCount = 0;
   let draftsCount = 0;
@@ -112,6 +117,13 @@ export default async function AdminDashboardPage() {
       icon: Inbox,
       href: "/admin/publication-requests",
     },
+    {
+      label: "Permintaan Konsultasi",
+      value: consultRequests.length,
+      subValue: newConsultationsCount > 0 ? `${newConsultationsCount} Masuk Baru` : undefined,
+      icon: MessageSquare,
+      href: "/admin/consultation-requests",
+    },
   ];
 
   return (
@@ -131,7 +143,7 @@ export default async function AdminDashboardPage() {
       />
 
       {/* Main Stat Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
         {statCards.map((card) => {
           const Icon = card.icon;
           return (

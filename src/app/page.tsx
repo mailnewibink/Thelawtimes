@@ -10,6 +10,7 @@ import {
 import { PaperDivider } from "@/components/ui/PaperDivider";
 import { ExternalNewsSection } from "@/components/editorial/ExternalNewsSection";
 import { PublicationCtaBox } from "@/components/editorial/PublicationCtaBox";
+import { HomepageLegalServicesSection } from "@/components/services/HomepageLegalServicesSection";
 import { formatDate } from "@/lib/utils";
 import {
   Scale,
@@ -588,6 +589,11 @@ export default async function FrontPage() {
         news={externalNews}
         title="WARTA HUKUM DARI SUMBER EKSTERNAL"
       />
+
+      {/* ==================================================================== */}
+      {/* 2.6 LAYANAN HUKUM THE LAW TIMES SECTION                              */}
+      {/* ==================================================================== */}
+      <HomepageLegalServicesSection />
 
       {/* ==================================================================== */}
       {/* 3. BOTTOM REFERENCE BANNER: READ MORE AT WWW.THELAWTIMES.COM         */}

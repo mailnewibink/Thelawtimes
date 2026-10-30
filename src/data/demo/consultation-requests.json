@@ -1,0 +1,47 @@
+[
+  {
+    "id": "cons-1793347923609-0cg2r",
+    "reference_number": "CONS-20261030-1TW9",
+    "full_name": "Ahmad Fauzi, S.H.",
+    "company_or_brand": "PT Sinar Abadi Terang",
+    "whatsapp": "081234567890",
+    "email": "fauzi@sinarabadi.co.id",
+    "service_type": "Pendaftaran Merek",
+    "needs_description": "Mohon bantuan penelusuran merek dagang dan pendaftaran resmi kelas 35.",
+    "consent_given": true,
+    "status": "Baru",
+    "internal_notes": null,
+    "created_at": "2026-10-30T08:12:03.609Z",
+    "updated_at": "2026-10-30T08:12:03.609Z"
+  },
+  {
+    "id": "cons-001",
+    "reference_number": "CONS-20261028-001",
+    "full_name": "Rian Wicaksono",
+    "company_or_brand": "PT Sentosa Herbal Nusantara",
+    "whatsapp": "081289123456",
+    "email": "rian.w@sentosaherbal.co.id",
+    "service_type": "Perizinan BPOM",
+    "needs_description": "Membutuhkan pendampingan registrasi produk minuman herbal dalam kemasan untuk mendapatkan izin edar BPOM MD dan pengujian laboratorium terakreditasi.",
+    "consent_given": true,
+    "status": "Baru",
+    "internal_notes": "Calon klien baru. Formulir diajukan via website resmi. Perlu dijadwalkan sesi konsultasi awal via WhatsApp.",
+    "created_at": "2026-10-28T09:30:00.000Z",
+    "updated_at": "2026-10-28T09:30:00.000Z"
+  },
+  {
+    "id": "cons-002",
+    "reference_number": "CONS-20261026-002",
+    "full_name": "Dewi Sartika, S.T.",
+    "company_or_brand": "Brand 'KriyaLoka' (Kerajinan Bambu)",
+    "whatsapp": "081377889900",
+    "email": "dewi.kriyaloka@gmail.com",
+    "service_type": "Pendaftaran Merek",
+    "needs_description": "Permohonan penelusuran merek dagang kelas 20 untuk produk furnitur ramah lingkungan dan pendampingan pendaftaran resmi ke DJKI.",
+    "consent_given": true,
+    "status": "Dihubungi",
+    "internal_notes": "Sudah dihubungi via WhatsApp oleh Tim Layanan Hukum. Dokumen logo dan KTP pemohon sedang dipersiapkan.",
+    "created_at": "2026-10-26T14:15:00.000Z",
+    "updated_at": "2026-10-27T10:00:00.000Z"
+  }
+]

@@ -10,7 +10,9 @@ export function SiteFooter() {
 
   const footerLinks = [
     { label: t("aboutTheLawTimes") || "Tentang The Law Times", href: "/tentang-kami" },
+    { label: "Layanan Hukum & Legal Services", href: "/layanan-hukum" },
     { label: "Layanan Publikasi Perkara", href: "/publikasi-perkara" },
+    { label: "Konsultasi Hukum", href: "/konsultasi" },
     { label: "Rubrik Perkara & Putusan", href: "/perkara" },
     { label: "Berita Hukum", href: "/berita-hukum" },
     { label: "Merek & HKI", href: "/merek-hki" },
