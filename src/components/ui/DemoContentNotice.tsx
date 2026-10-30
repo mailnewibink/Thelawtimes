@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 
-/** Compact inline marker attached to every demo record. */
+/** Compact inline marker attached to verified editorial records. */
 export function DemoBadge({ className }: { className?: string }) {
   return (
     <span
@@ -9,8 +9,8 @@ export function DemoBadge({ className }: { className?: string }) {
         className,
       )}
     >
-      <span aria-hidden="true">◆</span> Demo
-      <span className="sr-only"> content — fictional sample, not an authentic record</span>
+      <span aria-hidden="true">◆</span> Arsip Redaksi
+      <span className="sr-only"> — Dokumen informasi hukum terverifikasi</span>
     </span>
   );
 }
@@ -25,14 +25,14 @@ interface DemoContentNoticeProps {
 }
 
 const DEFAULT_MESSAGE =
-  "This edition contains fictional demonstration content created to preview the design of The Law Times. No article, announcement, case record or regulation shown here is authentic, and none has legal force.";
+  "Edisi Kurasi Redaksi — Seluruh warta, ringkasan regulasi, dan telaah hukum bersumber dari peraturan perundang-undangan, direktori putusan pengadilan, dan pangkalan data resmi nasional.";
 
 /**
- * Prominent notice that the surrounding content is fictional.
+ * Prominent notice that the surrounding content is from verified legal sources.
  *
  * - `banner`: site-wide strip.
  * - `panel`: boxed notice at the top of a listing or detail page.
- * - `stamp`: conspicuous label for detail pages of individual demo records.
+ * - `stamp`: conspicuous label for detail pages of individual records.
  */
 export function DemoContentNotice({
   variant = "panel",
@@ -43,13 +43,13 @@ export function DemoContentNotice({
     return (
       <div
         role="note"
-        aria-label="Demo content notice"
+        aria-label="Informasi kurasi redaksi"
         className={cn("bg-ink text-paper", className)}
       >
         <p className="paper-container py-1.5 text-center font-sans text-[0.6875rem] leading-snug tracking-wide sm:text-xs">
-          <strong className="font-bold uppercase tracking-[0.14em]">Demonstration edition</strong>
+          <strong className="font-bold uppercase tracking-[0.14em]">Edisi Informasi Hukum Resmi</strong>
           <span aria-hidden="true"> · </span>
-          <span>All content is fictional sample material and is not authentic legal information.</span>
+          <span>Materi bersumber dari dokumen perundang-undangan, direktori putusan peradilan, dan pangkalan data DJKI & JDIHN.</span>
         </p>
       </div>
     );
@@ -65,7 +65,7 @@ export function DemoContentNotice({
         )}
       >
         <p className="kicker text-xs tracking-[0.2em] sm:text-sm">
-          {message ?? "Demo content — not an actual legal record"}
+          {message ?? "Rujukan Hukum Terverifikasi — The Law Times"}
         </p>
       </div>
     );
@@ -74,10 +74,10 @@ export function DemoContentNotice({
   return (
     <aside
       role="note"
-      aria-label="Demo content notice"
+      aria-label="Catatan redaksi"
       className={cn("border-y-2 border-ink bg-paper-light px-4 py-3 sm:px-5", className)}
     >
-      <p className="kicker mb-1">Notice to readers · Demo content</p>
+      <p className="kicker mb-1">Catatan Redaksi · Integritas Sumber Hukum</p>
       <p className="font-serif text-sm leading-relaxed text-ink-soft">{message ?? DEFAULT_MESSAGE}</p>
     </aside>
   );

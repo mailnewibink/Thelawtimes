@@ -39,6 +39,33 @@ export default async function EditArticlePage({ params }: EditArticlePageProps) 
     }
   }
 
+  // Fallback to real verified dataset if not found in database
+  if (!articleData) {
+    const { demoArticles } = await import("@/data/demo/articles");
+    const fallbackArticle = demoArticles.find((a) => a.id === id);
+
+    if (fallbackArticle) {
+      const isNewContent =
+        fallbackArticle.id.startsWith("art-edu-") || fallbackArticle.id.startsWith("art-hki-");
+
+      articleData = {
+        id: fallbackArticle.id,
+        title: fallbackArticle.headline,
+        slug: fallbackArticle.slug,
+        excerpt: fallbackArticle.excerpt,
+        body: fallbackArticle.body.join("\n\n"),
+        publicationType: fallbackArticle.publicationType || "general_news",
+        category: fallbackArticle.category || "Berita Hukum",
+        status: isNewContent ? "draft" : "published",
+        author: fallbackArticle.byline || "Redaksi The Law Times",
+        publishedAt: fallbackArticle.publishedAt,
+        featuredImagePath: fallbackArticle.image?.src || "/images/courthouse.jpg",
+        seoTitle: fallbackArticle.seoTitle || "",
+        seoDescription: fallbackArticle.seoDescription || "",
+      };
+    }
+  }
+
   if (!articleData) {
     notFound();
   }

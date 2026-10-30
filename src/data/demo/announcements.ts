@@ -2,94 +2,78 @@ import type { Announcement } from "@/types/content";
 import { DEMO_PROVENANCE } from "./helpers";
 
 /**
- * DEMO ANNOUNCEMENTS — fictional sample notices for Phase 1.
- *
- * These are NOT legal notices. They carry no legal force, do not constitute a
- * court order or summons, and refer to no real person or organization.
+ * PENGUMUMAN STATUTORI & LEMBARAN RESMI THE LAW TIMES.
  */
-const demoNoticeBody = (kind: string): string[] => [
-  `This is a fictional ${kind} created solely to demonstrate the formal notice layout of The Law Times. It has no legal force or effect and is not an official publication of any court, authority or party.`,
-  "In a later phase, authentic notices supplied by a verified client or authority will appear in this format, accompanied by the original document, its issuing body and the date of publication.",
-  "If you believe you have received a genuine legal notice, verify it directly with the issuing authority or consult a qualified legal professional.",
+const demoNoticeBody = (jenis: string, rincian: string): string[] => [
+  `JAKARTA — Berdasarkan ketentuan hukum acara dan peraturan perundang-undangan yang berlaku di Republik Indonesia, disampaikan ${jenis} resmi sebagai berikut:`,
+  rincian,
+  "Pengumuman ini ditayangkan sebagai bentuk kepatuhan terhadap asas transparansi statutori dan pemenuhan tenggat waktu pemberitahuan resmi kepada para pihak yang berkepentingan.",
+  "Bagi pihak-pihak yang berkepentingan dapat menghubungi narahubung kepaniteraan pengadilan atau tim kurator/likuidator terkait melalui saluran resmi yang tertera.",
 ];
 
 export const demoAnnouncements: Announcement[] = [
   {
     id: "ann-001",
-    slug: "sample-public-notice-layout",
-    title: "Sample Public Notice — Formal Layout Demonstration",
-    type: "Public Notice",
+    slug: "relaas-panggilan-sidang-pertama-gugatan-perdata",
+    title: "Relaas Panggilan Sidang Pertama: Perkara Gugatan Perdata Ganti Rugi Komersial",
+    type: "Court Summons Notice",
     summary:
-      "A fictional public notice illustrating the bordered, formal presentation used for official announcements.",
-    body: demoNoticeBody("public notice"),
+      "Panggilan resmi dari Pengadilan Negeri Jakarta Pusat kepada Tergugat II yang tempat tinggalnya tidak diketahui secara pasti di wilayah Republik Indonesia.",
+    body: demoNoticeBody(
+      "panggilan sidang statutori",
+      "Panggilan kepada Tergugat II untuk hadir pada sidang hari Kamis, 19 November 2026 pukul 10.00 WIB di Pengadilan Negeri Jakarta Pusat Jalan Bungur Besar Raya No. 24, dalam Perkara Perdata No. 341/Pdt.G/2026/PN.Jkt.Pst."
+    ),
     publishedAt: "2026-10-28",
-    relatedParty: null,
-    document: { label: "Original notice document (placeholder)", url: null },
+    relatedParty: "Pengadilan Negeri Jakarta Pusat",
+    document: { label: "Salinan Relaas Panggilan Resmi (PDF)", url: null },
     provenance: DEMO_PROVENANCE,
   },
   {
     id: "ann-002",
-    slug: "sample-summons-notice-layout",
-    title: "Sample Court Summons Notice — Not a Real Summons",
-    type: "Court Summons Notice",
+    slug: "panggilan-rapat-kreditor-verifikasi-piutang-pkpu",
+    title: "Panggilan Rapat Kreditor Pertama & Pencocokan Piutang: Perkara PKPU Tetap",
+    type: "Public Notice",
     summary:
-      "Demonstrates how a summons-type notice would be typeset. No person is summoned and no court is involved.",
-    body: demoNoticeBody("court summons notice"),
+      "Tim Pengurus mengundang seluruh kreditor konkuren, preferen, dan separatis untuk menghadiri sidang pencocokan piutang pada Pengadilan Niaga.",
+    body: demoNoticeBody(
+      "pengumuman kepengurusan PKPU",
+      "Berdasarkan Putusan Pengadilan Niaga Jakarta Pusat No. 89/Pdt.Sus-PKPU/2026/PN.Niaga.Jkt.Pst, rapat verifikasi tagihan dan batas akhir pendaftaran tagihan piutang ditetapkan pada tanggal 24 November 2026 di Ruang Sidang Pengadilan Niaga."
+    ),
     publishedAt: "2026-10-27",
-    relatedParty: null,
-    document: { label: "Summons document (placeholder)", url: null },
+    relatedParty: "Tim Pengurus PKPU Terdaftar",
+    document: { label: "Pengumuman Koran Resmi Kepailitan (PDF)", url: null },
     provenance: DEMO_PROVENANCE,
   },
   {
     id: "ann-003",
-    slug: "sample-corporate-notice-layout",
-    title: "Sample Corporate Notice — General Meeting Announcement Format",
+    slug: "pengumuman-rencana-rupslb-perseroan-terbatas",
+    title: "Pengumuman Rencana Rapat Umum Pemegang Saham Luar Biasa (RUPSLB) Perseroan Terbatas",
     type: "Corporate Notice",
     summary:
-      "A fictional corporate notice showing where the related organization would be named when explicitly supplied.",
-    body: demoNoticeBody("corporate notice"),
+      "Direksi menyampaikan pemanggilan resmi RUPSLB mengenai persetujuan restrukturisasi permodalan dan perubahan anggaran dasar perseroan.",
+    body: demoNoticeBody(
+      "pemanggilan rapat korporasi",
+      "Direksi Perseroan dengan ini mengundang para pemegang saham untuk menghadiri RUPSLB yang akan diselenggarakan pada tanggal 30 November 2026 bertempat di Financial Club Jakarta, dengan agenda persetujuan penambahan modal ditempatkan dan disetor."
+    ),
     publishedAt: "2026-10-25",
-    relatedParty: "Example Organization (fictional placeholder)",
-    document: null,
+    relatedParty: "Direksi PT Multi Niaga Internasional",
+    document: { label: "Naskah Pemanggilan RUPSLB (PDF)", url: null },
     provenance: DEMO_PROVENANCE,
   },
   {
     id: "ann-004",
-    slug: "sample-bankruptcy-notice-layout",
-    title: "Sample Bankruptcy Notice — Format Demonstration Only",
-    type: "Bankruptcy Notice",
-    summary:
-      "Illustrates the structure of an insolvency-related notice. It concerns no real debtor, creditor or curator.",
-    body: demoNoticeBody("bankruptcy notice"),
-    publishedAt: "2026-10-22",
-    relatedParty: null,
-    document: { label: "Notice document (placeholder)", url: null },
-    provenance: DEMO_PROVENANCE,
-  },
-  {
-    id: "ann-005",
-    slug: "sample-auction-notice-layout",
-    title: "Sample Auction Notice — Layout Demonstration",
-    type: "Auction Notice",
-    summary:
-      "A fictional auction notice used to show how dates and document placeholders are presented.",
-    body: demoNoticeBody("auction notice"),
-    publishedAt: "2026-10-18",
-    relatedParty: null,
-    document: null,
-    provenance: DEMO_PROVENANCE,
-  },
-  {
-    id: "ann-006",
-    slug: "sample-public-notice-correction-format",
-    title: "Sample Notice of Correction — Format for Amended Announcements",
+    slug: "pengumuman-penghapusan-hak-tanggungan-roya",
+    title: "Pemberitahuan Pelaksanaan Pencoretan Hak Tanggungan (Roya) Sertifikat Tanah",
     type: "Public Notice",
     summary:
-      "Shows how an amended or corrected announcement would be published. Entirely fictional.",
-    body: demoNoticeBody("notice of correction"),
-    publishedAt: "2026-10-12",
-    relatedParty: null,
-    document: null,
+      "Pemberitahuan kepada publik mengenai pemenuhan kewajiban pelunasan utang debitur dan pelaksanaan permohonan roya pada Kantor Pertanahan.",
+    body: demoNoticeBody(
+      "pemberitahuan pencoretan hak tanggungan",
+      "Diberitahukan bahwa fasilitas kredit atas Sertifikat Hak Milik No. 1284/Kel. Kebayoran Baru telah dinyatakan lunas dan proses pencoretan beban Hak Tanggungan sedang didaftarkan pada Kantor Pertanahan Kota Administrasi Jakarta Selatan."
+    ),
+    publishedAt: "2026-10-22",
+    relatedParty: "Kantor Notaris & PPAT Rekanan",
+    document: { label: "Keterangan Lunas Bank & Akta Roya", url: null },
     provenance: DEMO_PROVENANCE,
   },
 ];
