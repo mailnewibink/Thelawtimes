@@ -36,8 +36,8 @@ export function PrimaryNavigation() {
 
   return (
     <nav aria-label="Navigasi Surat Kabar" className="hidden md:block select-none my-1">
-      <div className="border-y border-ink py-1.5 bg-paper">
-        <ul className="flex items-center justify-center gap-1 sm:gap-3 lg:gap-5 flex-wrap">
+      <div className="border-y border-ink py-1.5 bg-paper px-1 lg:px-2">
+        <ul className="flex items-center justify-between w-full flex-nowrap">
           {navItems.map((item, index) => {
             const isActive =
               pathname === item.href ||
@@ -47,24 +47,22 @@ export function PrimaryNavigation() {
               return (
                 <li
                   key={item.href}
-                  className="relative flex items-center group"
+                  className="relative flex items-center shrink-0 group"
                   onMouseEnter={() => setDropdownOpen(true)}
                   onMouseLeave={() => setDropdownOpen(false)}
                 >
-                  <div className="flex items-center">
-                    <Link
-                      href={item.href}
-                      className={cn(
-                        "font-sans text-xs tracking-[0.14em] uppercase transition-all py-1 pl-2 pr-1 flex items-center gap-1",
-                        isActive
-                          ? "font-extrabold text-ink underline decoration-2 underline-offset-4"
-                          : "font-semibold text-ink/80 hover:text-ink hover:underline decoration-1 underline-offset-4"
-                      )}
-                    >
-                      <span>{item.label}</span>
-                      <ChevronDown className="w-3 h-3 transition-transform duration-200 group-hover:rotate-180" />
-                    </Link>
-                  </div>
+                  <Link
+                    href={item.href}
+                    className={cn(
+                      "font-sans text-[0.66rem] lg:text-[0.72rem] xl:text-[0.78rem] tracking-[0.05em] lg:tracking-[0.1em] uppercase whitespace-nowrap transition-all py-1 px-1 lg:px-1.5 flex items-center gap-0.5",
+                      isActive
+                        ? "font-extrabold text-ink underline decoration-2 underline-offset-4"
+                        : "font-semibold text-ink/80 hover:text-ink hover:underline decoration-1 underline-offset-4"
+                    )}
+                  >
+                    <span>{item.label}</span>
+                    <ChevronDown className="w-2.5 h-2.5 transition-transform duration-200 group-hover:rotate-180" />
+                  </Link>
 
                   {/* Vintage Newspaper Dropdown Menu */}
                   <div
@@ -123,7 +121,7 @@ export function PrimaryNavigation() {
 
                   {index < navItems.length - 1 && (
                     <span
-                      className="text-rule font-serif text-sm opacity-60 ml-1 sm:ml-3 lg:ml-5"
+                      className="text-rule font-serif text-xs opacity-50 px-0.5 lg:px-1 select-none shrink-0"
                       aria-hidden="true"
                     >
                       |
@@ -134,11 +132,11 @@ export function PrimaryNavigation() {
             }
 
             return (
-              <li key={item.href} className="flex items-center">
+              <li key={item.href} className="flex items-center shrink-0">
                 <Link
                   href={item.href}
                   className={cn(
-                    "font-sans text-xs tracking-[0.14em] uppercase transition-all py-1 px-2",
+                    "font-sans text-[0.66rem] lg:text-[0.72rem] xl:text-[0.78rem] tracking-[0.05em] lg:tracking-[0.1em] uppercase whitespace-nowrap transition-all py-1 px-1 lg:px-1.5",
                     isActive
                       ? "font-extrabold text-ink underline decoration-2 underline-offset-4"
                       : "font-semibold text-ink/80 hover:text-ink hover:underline decoration-1 underline-offset-4"
@@ -148,7 +146,7 @@ export function PrimaryNavigation() {
                 </Link>
                 {index < navItems.length - 1 && (
                   <span
-                    className="text-rule font-serif text-sm opacity-60 ml-1 sm:ml-3 lg:ml-5"
+                    className="text-rule font-serif text-xs opacity-50 px-0.5 lg:px-1 select-none shrink-0"
                     aria-hidden="true"
                   >
                     |
