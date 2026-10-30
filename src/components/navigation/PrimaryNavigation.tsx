@@ -2,44 +2,52 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { cn } from "@/lib/utils";
 
 export function PrimaryNavigation() {
   const pathname = usePathname();
-  const { t } = useLanguage();
 
-  const navigationItems = [
-    { label: t("navFrontPage") || "Halaman Utama", href: "/" },
-    { label: t("navCasesClient") || "Publikasi Perkara", href: "/perkara" },
-    { label: t("navLegalNews") || "Berita Hukum", href: "/berita-hukum" },
-    { label: t("navIntellectualProperty") || "Merek & HKI", href: "/merek-hki" },
-    { label: t("navRegulationWatch") || "Regulasi", href: "/regulasi" },
-    { label: t("navAbout") || "Tentang Kami", href: "/tentang-kami" },
+  const navItems = [
+    { label: "BERANDA", href: "/" },
+    { label: "PERKARA & PUTUSAN", href: "/perkara" },
+    { label: "MEREK & HKI", href: "/merek-hki" },
+    { label: "BERITA HUKUM", href: "/berita-hukum" },
+    { label: "REGULASI", href: "/regulasi" },
+    { label: "TENTANG KAMI", href: "/tentang-kami" },
   ];
 
   return (
-    <nav aria-label="Primary navigation" className="hidden md:block select-none">
-      <ul className="flex items-center justify-between border-b border-rule py-2 px-1">
-        {navigationItems.map((item) => {
-          const isActive = pathname === item.href || (item.href !== "/" && pathname?.startsWith(item.href));
-          return (
-            <li key={item.href}>
-              <Link
-                href={item.href}
-                className={cn(
-                  "kicker text-xs tracking-wider transition-colors py-1 px-1.5",
-                  isActive
-                    ? "font-extrabold text-ink border-b-2 border-ink"
-                    : "text-ink-muted hover:text-ink"
+    <nav aria-label="Navigasi Surat Kabar" className="hidden md:block select-none my-1">
+      <div className="border-y border-ink py-1.5 bg-paper">
+        <ul className="flex items-center justify-center gap-1 sm:gap-4 md:gap-6 flex-wrap">
+          {navItems.map((item, index) => {
+            const isActive =
+              pathname === item.href ||
+              (item.href !== "/" && pathname?.startsWith(item.href));
+
+            return (
+              <li key={item.href} className="flex items-center">
+                <Link
+                  href={item.href}
+                  className={cn(
+                    "font-sans text-xs tracking-[0.14em] uppercase transition-all py-1 px-2",
+                    isActive
+                      ? "font-extrabold text-ink underline decoration-2 underline-offset-4"
+                      : "font-semibold text-ink/80 hover:text-ink hover:underline decoration-1 underline-offset-4"
+                  )}
+                >
+                  {item.label}
+                </Link>
+                {index < navItems.length - 1 && (
+                  <span className="text-rule font-serif text-sm opacity-60 ml-1 sm:ml-4 md:ml-6" aria-hidden="true">
+                    |
+                  </span>
                 )}
-              >
-                {item.label}
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </nav>
   );
 }

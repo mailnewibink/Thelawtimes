@@ -85,6 +85,45 @@ export const demoArticles: Article[] = [
     sourceUrl: "https://pn-jakartapusat.go.id",
     provenance: DEMO_PROVENANCE,
   },
+  {
+    id: "art-client-003",
+    slug: "pengumuman-dan-peringatan-hukum-merek-snowcan",
+    section: "intellectual-property",
+    category: "Trademarks",
+    publicationType: "client_publication",
+    headline: "Pengumuman dan Peringatan Hukum: Hak Eksklusif Merek Dagang, Hak Cipta & Desain Industri",
+    deck: "Pemberitahuan resmi kepada khalayak umum dan kalangan perniagaan atas kepemilikan sah merek dagang SNOWCAN dan EASY GEL terdaftar.",
+    excerpt:
+      "Pengumuman hukum dan peringatan resmi bagi pihak-pihak yang memperbanyak, memproduksi, atau mengedarkan barang tanpa izin pemegang hak terdaftar.",
+    body: [
+      "JAKARTA — Bertindak untuk dan atas nama Klien yang sah, dengan ini mengumumkan dan memperingatkan kepada khalayak umum, instansi pemerintah, swasta, distributor, serta pihak lain terkait hak eksklusif atas Merek Terdaftar SNOWCAN (Kelas 16, No. IDM000592418) dan EASY GEL (Kelas 16, No. IDM000805199).",
+      "Berdasarkan Undang-Undang No. 20 Tahun 2016 tentang Merek dan Indikasi Geografis jo. Undang-Undang No. 28 Tahun 2014 tentang Hak Cipta, pemegang hak terdaftar memiliki hak mutlak untuk melarang pihak lain menggunakan atau memperdagangkan barang serupa tanpa izin tertulis.",
+      "Seluruh pihak yang tanpa hak memproduksi atau memperdagangkan barang tiruan diminta untuk menghentikan seluruh kegiatan tersebut paling lambat 7 (tujuh) hari sejak pengumuman ini disiarkan.",
+      "Apabila batas waktu tersebut tidak diindahkan, kuasa hukum akan menempuh tindakan hukum pidana maupun gugatan ganti rugi perdata sesuai ketentuan perundang-undangan.",
+    ],
+    publishedAt: "2026-10-25",
+    updatedAt: null,
+    byline: "Kantor Hukum Kuasa Khusus Klien",
+    image: {
+      src: "/images/invention.jpg",
+      alt: "Bukti Pendaftaran Merek dan Hak Cipta Komersial",
+      caption: "Dokumentasi resmi sertifikat pendaftaran merek dan desain industri terdaftar.",
+      credit: "Publikasi Khusus Klien",
+    },
+    sources: [
+      {
+        label: "Pangkalan Data Kekayaan Intelektual (PDKI) Indonesia",
+        publisher: "DJKI Kementerian Hukum dan HAM RI",
+        url: "https://pdki-indonesia.dgip.go.id",
+        accessedOn: "2026-10-25",
+      },
+    ],
+    featured: false,
+    sourceName: "PDKI Kemenkumham RI",
+    sourceUrl: "https://pdki-indonesia.dgip.go.id",
+    documentUrl: "https://pdki-indonesia.dgip.go.id/pengumuman-resmi.pdf",
+    provenance: DEMO_PROVENANCE,
+  },
   /* ---------------------------- General Legal news ---------------------------- */
   {
     id: "art-001",

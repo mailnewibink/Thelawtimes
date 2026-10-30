@@ -4,7 +4,6 @@ import { Suspense } from "react";
 import { siteConfig } from "@/lib/site-config";
 import { DemoContentNotice } from "@/components/ui/DemoContentNotice";
 import { Masthead } from "@/components/navigation/Masthead";
-import { EditionHeader } from "@/components/navigation/EditionHeader";
 import { PrimaryNavigation } from "@/components/navigation/PrimaryNavigation";
 import { MobileNavigation } from "@/components/navigation/MobileNavigation";
 import { SiteFooter } from "@/components/navigation/SiteFooter";
@@ -78,7 +77,6 @@ export default function RootLayout({
             <DemoContentNotice variant="banner" />
             <div className="paper-container">
               <Masthead />
-              <EditionHeader />
               <Suspense fallback={<div className="h-10 border-b border-rule" />}>
                 <PrimaryNavigation />
                 <MobileNavigation />
