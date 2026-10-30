@@ -43,8 +43,15 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   robots: {
-    index: !siteConfig.isDemo,
-    follow: !siteConfig.isDemo,
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
   openGraph: {
     title: siteConfig.name,
@@ -52,6 +59,21 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     locale: "id_ID",
     type: "website",
+    url: siteConfig.url,
+    images: [
+      {
+        url: `${siteConfig.url}/images/courthouse.jpg`,
+        width: 1200,
+        height: 630,
+        alt: siteConfig.name,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.name,
+    description: siteConfig.description,
+    images: [`${siteConfig.url}/images/courthouse.jpg`],
   },
 };
 
@@ -66,11 +88,50 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Schema.org Website & Organization structured data
+  const jsonLdOrg = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "NewsMediaOrganization",
+        "@id": `${siteConfig.url}/#organization`,
+        name: siteConfig.name,
+        url: siteConfig.url,
+        logo: {
+          "@type": "ImageObject",
+          url: `${siteConfig.url}/images/courthouse.jpg`,
+        },
+        sameAs: [
+          "https://twitter.com",
+          "https://linkedin.com",
+        ],
+        description: siteConfig.description,
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${siteConfig.url}/#website`,
+        url: siteConfig.url,
+        name: siteConfig.name,
+        description: siteConfig.description,
+        publisher: {
+          "@id": `${siteConfig.url}/#organization`,
+        },
+        inLanguage: "id-ID",
+      },
+    ],
+  };
+
   return (
     <html
       lang="id"
       className={`${unifraktur.variable} ${playfair.variable} ${sourceSerif.variable} ${franklin.variable}`}
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdOrg) }}
+        />
+      </head>
       <body className="min-h-screen flex flex-col justify-between antialiased selection:bg-ink selection:text-paper">
         <LanguageProvider>
           <div>

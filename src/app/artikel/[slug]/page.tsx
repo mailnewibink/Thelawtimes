@@ -80,35 +80,70 @@ export default async function ArticleDetailPage({ params }: ArticleDetailPagePro
   const canonicalUrl = `${siteConfig.url}/artikel/${article.slug}`;
   const isClientPub = article.publicationType === "client_publication";
 
-  // JSON-LD Structured Data
+  // JSON-LD Structured Data: NewsArticle + BreadcrumbList
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "NewsArticle",
-    headline: article.headline,
-    description: article.excerpt,
-    datePublished: article.publishedAt,
-    dateModified: article.updatedAt || article.publishedAt,
-    mainEntityOfPage: canonicalUrl,
-    author: {
-      "@type": "Organization",
-      name: article.byline || "The Law Times Desk",
-    },
-    publisher: {
-      "@type": "Organization",
-      name: siteConfig.name,
-      url: siteConfig.url,
-      logo: {
-        "@type": "ImageObject",
-        url: `${siteConfig.url}/favicon.ico`,
+    "@graph": [
+      {
+        "@type": "NewsArticle",
+        "@id": `${canonicalUrl}#article`,
+        isPartOf: {
+          "@type": "WebSite",
+          "@id": `${siteConfig.url}/#website`,
+        },
+        headline: article.headline,
+        description: article.excerpt,
+        datePublished: article.publishedAt,
+        dateModified: article.updatedAt || article.publishedAt,
+        mainEntityOfPage: canonicalUrl,
+        author: {
+          "@type": "Organization",
+          name: article.byline || "Dewan Redaksi The Law Times",
+          url: siteConfig.url,
+        },
+        publisher: {
+          "@type": "NewsMediaOrganization",
+          name: siteConfig.name,
+          url: siteConfig.url,
+          logo: {
+            "@type": "ImageObject",
+            url: `${siteConfig.url}/images/courthouse.jpg`,
+          },
+        },
+        image: article.image?.src
+          ? [
+              article.image.src.startsWith("http")
+                ? article.image.src
+                : `${siteConfig.url}${article.image.src}`,
+            ]
+          : undefined,
+        inLanguage: "id-ID",
       },
-    },
-    image: article.image?.src
-      ? [
-          article.image.src.startsWith("http")
-            ? article.image.src
-            : `${siteConfig.url}${article.image.src}`,
-        ]
-      : undefined,
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${canonicalUrl}#breadcrumb`,
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Beranda",
+            item: siteConfig.url,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: isClientPub ? "Perkara & Putusan" : "Berita Hukum",
+            item: `${siteConfig.url}${isClientPub ? "/perkara" : "/berita-hukum"}`,
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: article.headline,
+            item: canonicalUrl,
+          },
+        ],
+      },
+    ],
   };
 
   return (
