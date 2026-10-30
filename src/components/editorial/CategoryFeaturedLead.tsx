@@ -28,7 +28,7 @@ export function CategoryFeaturedLead({
                 fill
                 priority
                 sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover engraving"
+                className="object-cover"
               />
               <div className="absolute top-2 left-2 bg-ink text-paper text-[0.625rem] font-bold px-2 py-0.5 tracking-wider uppercase">
                 {badgeLabel}

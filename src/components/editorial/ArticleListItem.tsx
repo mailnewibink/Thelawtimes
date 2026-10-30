@@ -35,7 +35,7 @@ export function ArticleListItem({
                 fill
                 loading={priorityImage ? "eager" : "lazy"}
                 {...(priorityImage ? { fetchPriority: "high" as const } : {})}
-                className="object-cover engraving"
+                className="object-cover"
                 sizes="(min-width: 768px) 30vw, 100vw"
               />
             </div>

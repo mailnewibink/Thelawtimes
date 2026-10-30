@@ -188,8 +188,13 @@
     background-color: var(--color-notice);
   }
 
-  /* Editorial press photos sit naturally on paper */
+  /* Editorial photographs rendered in authentic full color without filters */
   .engraving {
-    filter: contrast(1.02);
+    filter: none !important;
+    mix-blend-mode: normal !important;
+  }
+
+  img {
+    filter: none !important;
   }
 }

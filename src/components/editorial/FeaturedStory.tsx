@@ -66,7 +66,7 @@ export function FeaturedStory({ article, className }: FeaturedStoryProps) {
               fill
               loading="eager"
               fetchPriority="high"
-              className="object-cover engraving"
+              className="object-cover"
               sizes="(min-width: 1024px) 40vw, 100vw"
             />
           </div>

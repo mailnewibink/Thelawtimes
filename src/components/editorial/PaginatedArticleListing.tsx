@@ -44,7 +44,7 @@ export function PaginatedArticleListing({
                       alt={article.image.alt}
                       fill
                       sizes="(min-width: 640px) 25vw, 100vw"
-                      className="object-cover engraving group-hover:scale-[1.02] transition-transform duration-300"
+                      className="object-cover group-hover:scale-[1.02] transition-transform duration-300"
                     />
                     {isClient && highlightClientBadge && (
                       <div className="absolute top-0 left-0 bg-ink text-paper text-[0.5625rem] font-bold px-1.5 py-0.5 uppercase tracking-widest">

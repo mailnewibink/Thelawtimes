@@ -107,7 +107,7 @@ export default async function FrontPage() {
                       fill
                       loading="eager"
                       priority
-                      className="object-cover engraving"
+                      className="object-cover"
                       sizes="(min-width: 1024px) 58vw, 100vw"
                     />
                   </div>
@@ -309,7 +309,7 @@ export default async function FrontPage() {
                           src={item.image.src}
                           alt={item.image.alt}
                           fill
-                          className="object-cover engraving"
+                          className="object-cover"
                           sizes="80px"
                         />
                       </div>
@@ -378,7 +378,7 @@ export default async function FrontPage() {
                         src={ipLead.image.src}
                         alt={ipLead.image.alt}
                         fill
-                        className="object-cover engraving"
+                        className="object-cover"
                         sizes="(min-width: 768px) 30vw, 100vw"
                       />
                     </div>
@@ -454,7 +454,7 @@ export default async function FrontPage() {
                         src={newsLead.image.src}
                         alt={newsLead.image.alt}
                         fill
-                        className="object-cover engraving"
+                        className="object-cover"
                         sizes="(min-width: 768px) 30vw, 100vw"
                       />
                     </div>

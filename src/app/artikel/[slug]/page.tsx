@@ -218,7 +218,7 @@ export default async function ArticleDetailPage({ params }: ArticleDetailPagePro
               src={article.image.src}
               alt={article.image.alt}
               fill
-              className="object-cover engraving"
+              className="object-cover"
               sizes="(min-width: 896px) 896px, 100vw"
               priority
             />
