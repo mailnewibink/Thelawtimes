@@ -37,7 +37,7 @@ export default async function AdminSettingsPage() {
             <dl className="text-xs space-y-2 font-serif">
               <div className="flex justify-between py-1 border-b border-rule-soft">
                 <dt className="text-ink-muted">Application Edition:</dt>
-                <dd className="font-mono font-bold">Phase 3 (Admin CMS & Supabase Active)</dd>
+                <dd className="font-mono font-bold">The Law Times Editorial Edition (CMS & Database Active)</dd>
               </div>
               <div className="flex justify-between py-1 border-b border-rule-soft">
                 <dt className="text-ink-muted">Default Language:</dt>
