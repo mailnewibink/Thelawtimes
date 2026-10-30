@@ -1,6 +1,20 @@
 @import "tailwindcss";
 
 /* ==========================================================================
+   THE LAW TIMES — BLACKLETTER / OLD ENGLISH MASTHEAD FONT
+   Classic newspaper nameplate (Cloister Black / Historic Blackletter)
+   ========================================================================== */
+
+@font-face {
+  font-family: "Cloister Black";
+  src: url("/fonts/CloisterBlack.woff2") format("woff2"),
+       url("/fonts/CloisterBlack.ttf") format("truetype");
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ==========================================================================
    THE LAW TIMES — DESIGN TOKENS
    A restrained newsprint palette and an editorial type system.
    ========================================================================== */
@@ -17,8 +31,8 @@
   --color-rule-soft: #c3bcae; /* hairline dividers */
   --color-notice: #fbfaf6; /* formal notice surface */
 
-  /* Typography — font variables are provided by next/font in layout.tsx */
-  --font-blackletter: var(--font-unifraktur), "Old English Text MT", serif;
+  /* Typography — Cloister Black exactly matches traditional newspaper mastheads */
+  --font-blackletter: "Cloister Black", "Old English Text MT", var(--font-unifraktur), serif;
   --font-display: var(--font-playfair), "Times New Roman", serif;
   --font-serif: var(--font-source-serif), Georgia, "Times New Roman", serif;
   --font-sans: var(--font-franklin), "Franklin Gothic", "Helvetica Neue", Arial, sans-serif;
