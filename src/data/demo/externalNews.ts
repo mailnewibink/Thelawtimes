@@ -28,7 +28,7 @@ export const demoExternalNews: ExternalNewsItem[] = [
     publishedAt: "2026-10-28T10:00:00Z",
     category: "Hukum Pidana & Tata Negara",
     imageUrl: "/images/photos/supreme-court.jpg",
-    imageCredit: "Unsplash / Brandon Mowinkel",
+    imageCredit: "Wikimedia Commons / Mahkamah Agung RI",
   },
   {
     id: "ext-news-ma-pleno",

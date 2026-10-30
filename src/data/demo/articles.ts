@@ -430,9 +430,9 @@ export const demoArticles: Article[] = [
     byline: "Saluran Publikasi Kasus Klien",
     image: {
       src: "/images/photos/supreme-court.jpg",
-      alt: "Fasad Gedung Pengadilan dengan Pilar Neoklasik",
-      caption: "Publikasi resmi perkara berkekuatan hukum tetap pada Mahkamah Agung Republik Indonesia.",
-      credit: "Unsplash / Brandon Mowinkel",
+      alt: "Gedung Mahkamah Agung Republik Indonesia",
+      caption: "Gedung Mahkamah Agung Republik Indonesia di Jakarta Pusat sebagai benteng peradilan tertinggi.",
+      credit: "Wikimedia Commons / Mahkamah Agung RI",
     },
     sources: [
       {
