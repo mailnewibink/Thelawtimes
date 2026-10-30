@@ -35,9 +35,9 @@ export const demoArticles: Article[] = [
     byline: "Dr. Hendra Gunawan, S.H., M.H. (Advokat & Praktisi Hukum Perdata)",
     image: {
       src: "/images/photos/electronic-contract.jpg",
-      alt: "Penandatanganan Kontrak Elektronik dan Dokumen Digital melalui Komputer Laptop",
-      caption: "Penggunaan perangkat digital dalam penandatanganan kontrak komersial dan verifikasi transaksi elektronik tersertifikasi.",
-      credit: "Unsplash / John Schnobrich",
+      alt: "Instrumen Laptop dan Dokumen Digital Transaksi Elektronik",
+      caption: "Perangkat komputer jinjing dan dokumen digital dalam penyelenggaraan kontrak elektronik tersertifikasi.",
+      credit: "Unsplash / Christopher Gower",
     },
     sources: [
       {
@@ -80,9 +80,9 @@ export const demoArticles: Article[] = [
     byline: "Ronald Siregar, S.H., LL.M. (Konsultan Hukum Korporasi)",
     image: {
       src: "/images/photos/corporate-governance.jpg",
-      alt: "Rapat Direksi dan Manajemen Korporasi dalam Pengambilan Keputusan Bisnis",
-      caption: "Pertemuan direksi korporasi dalam evaluasi tata kelola dan kepatuhan perizinan perseroan.",
-      credit: "Unsplash / Hunters Race",
+      alt: "Ruang Rapat Direksi dan Meja Pertemuan Eksekutif Korporasi",
+      caption: "Fasilitas ruang sidang direksi dan pengambilan keputusan tata kelola perseroan.",
+      credit: "Unsplash / Nastuh Abootalebi",
     },
     sources: [
       {
@@ -158,9 +158,9 @@ export const demoArticles: Article[] = [
     byline: "Meja Redaksi Ketenagakerjaan The Law Times",
     image: {
       src: "/images/photos/employment-contract.jpg",
-      alt: "Penandatanganan Perjanjian Kerja dan Pemenuhan Hak Ketenagakerjaan",
-      caption: "Penyusunan perjanjian kerja waktu tertentu (PKWT) dan pemenuhan hak kompensasi pekerja.",
-      credit: "Unsplash / Cytonn Photography",
+      alt: "Berkas Perjanjian Kerja dan Instrumen Penandatanganan di Meja Kerja",
+      caption: "Naskah perjanjian kerja dan dokumen pemenuhan kompensasi statutori ketenagakerjaan.",
+      credit: "Unsplash / Wesley Tingey",
     },
     sources: [
       {
@@ -239,9 +239,9 @@ export const demoArticles: Article[] = [
     byline: "Meja Redaksi HKI The Law Times",
     image: {
       src: "/images/photos/trademark-registry.jpg",
-      alt: "Pencatatan Dokumen Resmi Berita Resmi Merek DJKI",
+      alt: "Pustaka Arsip Resmi Dokumentasi Peraturan dan Warta HKI",
       caption: "Dokumentasi publikasi statutori lembaran Berita Resmi Merek Seri-A DJKI Kemenkumham RI.",
-      credit: "Unsplash / Wesley Tingey",
+      credit: "Unsplash / Giammarco Boscaro",
     },
     sources: [
       {
@@ -277,9 +277,9 @@ export const demoArticles: Article[] = [
     byline: "Meja Redaksi HKI The Law Times",
     image: {
       src: "/images/photos/trademark-registry.jpg",
-      alt: "Pemeriksaan Berkas dan Pendaftaran Merek Baru di Portal PDKI",
+      alt: "Pustaka Arsip Resmi Dokumentasi Peraturan dan Warta HKI",
       caption: "Masa pengumuman publik permohonan pendaftaran merek untuk pengajuan surat sanggahan (oposisi).",
-      credit: "Unsplash / Wesley Tingey",
+      credit: "Unsplash / Giammarco Boscaro",
     },
     sources: [
       {
@@ -388,9 +388,9 @@ export const demoArticles: Article[] = [
     byline: "Koresponden Inovasi & Paten",
     image: {
       src: "/images/photos/umkm-innovation.jpg",
-      alt: "Inovasi Usaha Mikro dan Industri Kerajinan Lokal",
+      alt: "Produk Industri Kreatif dan Kemasan Komoditas Lokal",
       caption: "Fasilitas pembebasan biaya PNBP perlindungan paten dan merek bagi inventor kampus dan UMKM.",
-      credit: "Unsplash / Tim Mossholder",
+      credit: "Unsplash / Battlecreek Coffee",
     },
     sources: [
       {
@@ -430,9 +430,9 @@ export const demoArticles: Article[] = [
     byline: "Saluran Publikasi Kasus Klien",
     image: {
       src: "/images/photos/supreme-court.jpg",
-      alt: "Pilar Gedung Mahkamah Agung Republik Indonesia",
+      alt: "Fasad Gedung Pengadilan dengan Pilar Neoklasik",
       caption: "Publikasi resmi perkara berkekuatan hukum tetap pada Mahkamah Agung Republik Indonesia.",
-      credit: "Unsplash / Ian Hutchinson",
+      credit: "Unsplash / Brandon Mowinkel",
     },
     sources: [
       {
@@ -506,9 +506,9 @@ export const demoArticles: Article[] = [
     byline: "Kantor Hukum Kuasa Khusus Klien",
     image: {
       src: "/images/photos/commercial-product.jpg",
-      alt: "Pabrik Manufaktur dan Distribusi Produk Komersial SNOWCAN",
+      alt: "Fasilitas Logistik Pergudangan dan Distribusi Produk Komersial SNOWCAN",
       caption: "Peringatan hukum terbuka atas hak eksklusif perlindungan merek dagang dan sirkulasi produk di pasar.",
-      credit: "Unsplash / Chuttersnap",
+      credit: "Unsplash / Adrian Sulyok",
     },
     sources: [
       {

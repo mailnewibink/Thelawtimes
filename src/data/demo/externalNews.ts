@@ -28,7 +28,7 @@ export const demoExternalNews: ExternalNewsItem[] = [
     publishedAt: "2026-10-28T10:00:00Z",
     category: "Hukum Pidana & Tata Negara",
     imageUrl: "/images/photos/supreme-court.jpg",
-    imageCredit: "Unsplash / Ian Hutchinson",
+    imageCredit: "Unsplash / Brandon Mowinkel",
   },
   {
     id: "ext-news-ma-pleno",
@@ -67,7 +67,7 @@ export const demoExternalNews: ExternalNewsItem[] = [
     publishedAt: "2026-10-24T11:45:00Z",
     category: "Merek & Kekayaan Intelektual",
     imageUrl: "/images/photos/trademark-registry.jpg",
-    imageCredit: "Unsplash / Wesley Tingey",
+    imageCredit: "Unsplash / Giammarco Boscaro",
   },
   {
     id: "ext-news-kpk-stranas",
