@@ -1,77 +1,108 @@
 import { Metadata } from "next";
-import { getClientPublications, getAnnouncements } from "@/lib/content";
-import { EditorialSectionHeader } from "@/components/editorial/EditorialSectionHeader";
-import { ArticleListItem } from "@/components/editorial/ArticleListItem";
-import { AnnouncementNotice } from "@/components/editorial/AnnouncementNotice";
-import { Scale, Info } from "lucide-react";
+import { getClientPublications, getAnnouncements, getCases, getArticles } from "@/lib/content";
+import { CategoryHeader } from "@/components/editorial/CategoryHeader";
+import { CategoryFeaturedLead } from "@/components/editorial/CategoryFeaturedLead";
+import { PaginatedArticleListing } from "@/components/editorial/PaginatedArticleListing";
+import { CategorySidebar } from "@/components/editorial/CategorySidebar";
+import { Scale, ShieldAlert } from "lucide-react";
+import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Publikasi Perkara Klien & Pengumuman Resmi — The Law Times",
+  title: "Perkara & Putusan — Saluran Publikasi Perkara Resmi & Putusan Pengadilan | The Law Times",
   description:
-    "Saluran publikasi resmi perkara hukum klien, amar putusan pengadilan, panggilan sidang, dan pengumuman kepailitan terverifikasi.",
+    "Saluran utama publikasi resmi perkara hukum klien, amar putusan Mahkamah Agung, pengadilan niaga, panggilan sidang, dan pengumuman kepailitan terverifikasi.",
 };
 
-export default async function ClientCasePublicationsPage() {
-  const [clientArticles, announcements] = await Promise.all([
+export default async function PerkaraCategoryPage() {
+  const [clientArticles, allArticles, announcements, cases] = await Promise.all([
     getClientPublications(20),
+    getArticles(),
     getAnnouncements(),
+    getCases(),
   ]);
 
+  // Lead story: highest priority client publication
+  const featuredCase = clientArticles.find((a) => a.featured) || clientArticles[0];
+  const listCases = clientArticles.filter((a) => a.id !== featuredCase?.id);
+
+  // Secondary sidebar selected stories (from other articles with court/litigation context)
+  const sidebarSelectedStories = allArticles
+    .filter((a) => a.id !== featuredCase?.id && a.section !== "intellectual-property")
+    .slice(0, 4);
+
   return (
-    <div className="space-y-10">
-      {/* Page Header */}
-      <EditorialSectionHeader
-        title="Publikasi Perkara Klien & Pengumuman Resmi"
-        subtitle="Saluran publikasi hukum resmi, warta sengketa, dan keterbukaan putusan pengadilan"
-        kicker="Perkara Klien"
+    <div className="space-y-8">
+      {/* Category Broadside Header */}
+      <CategoryHeader
+        kicker="RUBRIK UTAMA PERKARA & PUTUSAN"
+        title="PERKARA & PUTUSAN"
+        editionInfo="LEMBARAN RESMI REKAPITULASI PUTUSAN DAN PERKARA HUKUM"
+        description="Saluran utama publikasi perkara hukum klien, penetapan peradilan, pembacaan amar putusan Mahkamah Agung, dan keterbukaan risalah kepailitan/PKPU."
+        breadcrumbs={[
+          { label: "Rubrikasi", href: "/" },
+          { label: "Perkara & Putusan" },
+        ]}
       />
 
+      {/* Featured Client Case Publication (Priority Layout) */}
+      {featuredCase && (
+        <section aria-label="Warta Utama Publikasi Perkara">
+          <CategoryFeaturedLead
+            article={featuredCase}
+            badgeLabel="PUBLIKASI PERKARA KLIEN"
+            showLegalNoticeBox={true}
+          />
+        </section>
+      )}
+
       {/* Editorial Transparency Callout */}
-      <div className="border border-rule bg-paper-dark/30 p-4 text-xs text-ink-muted flex items-start gap-3">
-        <Info className="w-4 h-4 text-ink shrink-0 mt-0.5" />
-        <p className="leading-relaxed">
-          <strong className="text-ink uppercase tracking-wider text-[0.7rem] block mb-0.5">
-            Pemberitahuan Transparansi Publikasi
-          </strong>
-          Halaman ini memuat publikasi perkara dan pengumuman resmi terkait klien The Law Times,
-          mencakup amar putusan pengadilan, panggilan sidang resmi, serta keterbukaan sengketa komersial
-          yang diterbitkan atas persetujuan para pihak dan otoritas peradilan berwenang.
-        </p>
+      <div className="border-y-2 border-ink py-2 bg-paper-light flex items-center justify-between text-xs px-2 flex-wrap gap-2">
+        <div className="flex items-center gap-2">
+          <ShieldAlert className="w-4 h-4 text-accent" />
+          <span className="font-sans font-bold uppercase tracking-wider text-[0.6875rem] text-ink">
+            Status Publikasi: Terverifikasi Dokumen Resmi Pengadilan & Berkas Kuasa Hukum
+          </span>
+        </div>
+        <div className="flex items-center gap-3 font-sans text-[0.625rem] uppercase tracking-wider text-ink-muted">
+          <span>Kompilasi Putusan 2026</span>
+          <span>•</span>
+          <Link href="/case-archive" className="hover:underline text-ink font-semibold">
+            Buka Arsip Putusan →
+          </Link>
+        </div>
       </div>
 
-      {/* Main Grid */}
+      {/* Main Grid: Articles Listing + Sidebar */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Left Column: Client Case Publications (Primary) */}
-        <section aria-label="Publikasi Kasus Terkait" className="lg:col-span-8 space-y-6">
-          <h2 className="font-serif font-bold text-base text-ink border-b border-rule pb-2 flex items-center gap-2">
-            <Scale className="w-4 h-4 text-accent" />
-            <span>Laporan & Putusan Perkara Klien</span>
-          </h2>
-
-          <div className="space-y-6">
-            {clientArticles.map((art) => (
-              <ArticleListItem
-                key={art.id}
-                article={art}
-                showImage
-                className="border-b border-rule-soft pb-6"
-              />
-            ))}
+        <section aria-label="Daftar Perkara & Putusan Terkini" className="lg:col-span-8 space-y-6">
+          <div className="border-b-2 border-ink pb-1 flex items-center justify-between">
+            <h2 className="font-serif font-bold text-base sm:text-lg text-ink uppercase tracking-wider flex items-center gap-2">
+              <Scale className="w-4 h-4 text-accent" />
+              <span>Publikasi Perkara Klien & Putusan Pengadilan</span>
+            </h2>
+            <span className="font-sans text-[0.625rem] text-ink-muted uppercase tracking-widest">
+              Total {clientArticles.length} Warta
+            </span>
           </div>
+
+          <PaginatedArticleListing
+            articles={listCases}
+            itemsPerPage={5}
+            highlightClientBadge={true}
+          />
         </section>
 
-        {/* Right Column: Court Summons & Official Notices */}
-        <aside aria-label="Panggilan Sidang & Berkas" className="lg:col-span-4 space-y-6 lg:border-l lg:border-rule-soft lg:pl-6">
-          <h2 className="font-serif font-bold text-base text-ink border-b border-rule pb-2">
-            Panggilan Sidang & Lelang
-          </h2>
-
-          <div className="space-y-4">
-            {announcements.map((ann) => (
-              <AnnouncementNotice key={ann.id} announcement={ann} compact />
-            ))}
-          </div>
-        </aside>
+        {/* Right Column: Secondary Sidebar */}
+        <div className="lg:col-span-4 lg:border-l lg:border-rule lg:pl-6">
+          <CategorySidebar
+            title="WARTA SIDANG & PERADILAN"
+            selectedStories={sidebarSelectedStories}
+            cases={cases}
+            announcements={announcements}
+            clientSupportNotice={true}
+          />
+        </div>
       </div>
     </div>
   );
