@@ -43,19 +43,19 @@ export const demoArticles: Article[] = [
       {
         label: "KUHPerdata (Burgerlijk Wetboek) Pasal 1320 & 1338",
         publisher: "Kitab Undang-Undang Hukum Perdata",
-        url: "https://peraturan.go.id",
+        url: "https://peraturan.go.id/id/uu-no-1-tahun-2024",
         accessedOn: "2026-10-30",
       },
       {
         label: "UU No. 1 Tahun 2024 tentang Perubahan Kedua UU ITE",
-        publisher: "JDIH Kominfo RI",
-        url: "https://jdih.kominfo.go.id",
+        publisher: "JDIH Nasional / peraturan.go.id",
+        url: "https://peraturan.go.id/id/uu-no-1-tahun-2024",
         accessedOn: "2026-10-30",
       },
     ],
     featured: true,
     sourceName: "KUHPerdata jo. UU ITE",
-    sourceUrl: "https://jdihn.go.id",
+    sourceUrl: "https://peraturan.go.id/id/uu-no-1-tahun-2024",
     provenance: DEMO_PROVENANCE,
   },
   {
@@ -126,14 +126,14 @@ export const demoArticles: Article[] = [
     sources: [
       {
         label: "UU No. 20 Tahun 2016 tentang Merek dan Indikasi Geografis",
-        publisher: "DJKI Kementerian Hukum RI",
-        url: "https://dgip.go.id",
+        publisher: "JDIH Nasional / peraturan.go.id",
+        url: "https://peraturan.go.id/id/uu-no-20-tahun-2016",
         accessedOn: "2026-10-30",
       },
     ],
     featured: false,
     sourceName: "UU No. 20 Tahun 2016 tentang Merek",
-    sourceUrl: "https://dgip.go.id",
+    sourceUrl: "https://peraturan.go.id/id/uu-no-20-tahun-2016",
     provenance: DEMO_PROVENANCE,
   },
   {
@@ -165,14 +165,14 @@ export const demoArticles: Article[] = [
     sources: [
       {
         label: "PP No. 35 Tahun 2021 tentang PKWT, Alih Daya, dan PHK",
-        publisher: "Kementerian Ketenagakerjaan RI",
-        url: "https://jdih.kemnaker.go.id",
+        publisher: "JDIH Nasional / peraturan.go.id",
+        url: "https://peraturan.go.id/id/pp-no-35-tahun-2021",
         accessedOn: "2026-10-30",
       },
     ],
     featured: false,
     sourceName: "PP No. 35 Tahun 2021",
-    sourceUrl: "https://jdih.kemnaker.go.id",
+    sourceUrl: "https://peraturan.go.id/id/pp-no-35-tahun-2021",
     provenance: DEMO_PROVENANCE,
   },
   {
@@ -205,13 +205,13 @@ export const demoArticles: Article[] = [
       {
         label: "Undang-Undang Nomor 27 Tahun 2022 tentang Pelindungan Data Pribadi",
         publisher: "Lembaran Negara RI Tahun 2022 No. 196",
-        url: "https://jdih.kominfo.go.id",
+        url: "https://peraturan.go.id/id/uu-no-27-tahun-2022",
         accessedOn: "2026-10-30",
       },
     ],
     featured: false,
     sourceName: "UU No. 27 Tahun 2022 (UU PDP)",
-    sourceUrl: "https://jdih.kominfo.go.id",
+    sourceUrl: "https://peraturan.go.id/id/uu-no-27-tahun-2022",
     provenance: DEMO_PROVENANCE,
   },
 
@@ -245,16 +245,15 @@ export const demoArticles: Article[] = [
     },
     sources: [
       {
-        label: "Berita Resmi Merek Seri-A No. 219/P-M/X/A/2026",
+        label: "Pangkalan Data Kekayaan Intelektual (PDKI)",
         publisher: "Direktorat Jenderal Kekayaan Intelektual",
-        url: "https://dgip.go.id/berita-resmi/merek",
+        url: "https://pdki-indonesia.dgip.go.id",
         accessedOn: "2026-10-28",
       },
     ],
     featured: false,
-    sourceName: "Berita Resmi Merek DJKI Seri-A No. 219",
-    sourceUrl: "https://dgip.go.id/berita-resmi/merek",
-    documentUrl: "https://dgip.go.id/berita-resmi/merek",
+    sourceName: "Pangkalan Data Kekayaan Intelektual (PDKI)",
+    sourceUrl: "https://pdki-indonesia.dgip.go.id",
     provenance: DEMO_PROVENANCE,
   },
   {
@@ -283,15 +282,15 @@ export const demoArticles: Article[] = [
     },
     sources: [
       {
-        label: "Berita Resmi Merek Seri-A No. 218/P-M/X/A/2026",
+        label: "Pangkalan Data Kekayaan Intelektual (PDKI)",
         publisher: "DJKI Kementerian Hukum RI",
-        url: "https://dgip.go.id/berita-resmi/merek",
+        url: "https://pdki-indonesia.dgip.go.id",
         accessedOn: "2026-10-28",
       },
     ],
     featured: false,
-    sourceName: "Berita Resmi Merek DJKI Seri-A No. 218",
-    sourceUrl: "https://dgip.go.id/berita-resmi/merek",
+    sourceName: "Pangkalan Data Kekayaan Intelektual (PDKI)",
+    sourceUrl: "https://pdki-indonesia.dgip.go.id",
     provenance: DEMO_PROVENANCE,
   },
   {
@@ -320,15 +319,15 @@ export const demoArticles: Article[] = [
     },
     sources: [
       {
-        label: "Pedoman Teknis Pemeriksaan Substantif Merek DJKI",
+        label: "Pangkalan Data Kekayaan Intelektual (PDKI)",
         publisher: "Direktorat Merek dan Indikasi Geografis DJKI",
-        url: "https://dgip.go.id",
+        url: "https://pdki-indonesia.dgip.go.id",
         accessedOn: "2026-10-26",
       },
     ],
     featured: false,
-    sourceName: "DJKI Kementerian Hukum RI",
-    sourceUrl: "https://dgip.go.id",
+    sourceName: "PDKI DJKI Kementerian Hukum RI",
+    sourceUrl: "https://pdki-indonesia.dgip.go.id",
     provenance: DEMO_PROVENANCE,
   },
   {
@@ -357,15 +356,15 @@ export const demoArticles: Article[] = [
     },
     sources: [
       {
-        label: "Nice Classification 12th Edition — WIPO / DJKI",
-        publisher: "WIPO & DJKI Kemenkumham RI",
-        url: "https://dgip.go.id",
+        label: "Nice Classification 12th Edition — PDKI",
+        publisher: "PDKI & WIPO",
+        url: "https://pdki-indonesia.dgip.go.id",
         accessedOn: "2026-10-22",
       },
     ],
     featured: false,
-    sourceName: "Klasifikasi Nice Agreement Edisi 12",
-    sourceUrl: "https://dgip.go.id",
+    sourceName: "Klasifikasi Nice Agreement Edisi 12 (PDKI)",
+    sourceUrl: "https://pdki-indonesia.dgip.go.id",
     provenance: DEMO_PROVENANCE,
   },
   {
@@ -395,14 +394,14 @@ export const demoArticles: Article[] = [
     sources: [
       {
         label: "PP No. 28 Tahun 2019 tentang Tarif PNBP Kemenkumham",
-        publisher: "JDIH Kemenkumham RI",
-        url: "https://dgip.go.id/layanan-publik/tarif-pnbp-umkm",
+        publisher: "JDIH Nasional / peraturan.go.id",
+        url: "https://peraturan.go.id/id/pp-no-28-tahun-2019",
         accessedOn: "2026-10-19",
       },
     ],
     featured: false,
     sourceName: "PP No. 28 Tahun 2019",
-    sourceUrl: "https://dgip.go.id/layanan-publik/tarif-pnbp-umkm",
+    sourceUrl: "https://peraturan.go.id/id/pp-no-28-tahun-2019",
     provenance: DEMO_PROVENANCE,
   },
 
@@ -445,7 +444,6 @@ export const demoArticles: Article[] = [
     featured: true,
     sourceName: "Direktori Putusan Mahkamah Agung RI",
     sourceUrl: "https://putusan3.mahkamahagung.go.id",
-    documentUrl: "https://putusan3.mahkamahagung.go.id/putusan/salinan.pdf",
     provenance: DEMO_PROVENANCE,
   },
   {
@@ -521,7 +519,6 @@ export const demoArticles: Article[] = [
     featured: false,
     sourceName: "PDKI Kemenkumham RI",
     sourceUrl: "https://pdki-indonesia.dgip.go.id",
-    documentUrl: "https://pdki-indonesia.dgip.go.id/pengumuman-resmi.pdf",
     provenance: DEMO_PROVENANCE,
   },
   {

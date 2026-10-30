@@ -3,7 +3,7 @@ import { DEMO_PROVENANCE } from "./helpers";
 
 /**
  * 5 REGULASI AKTUAL DARI SUMBER JDIH RESMI
- * Terverifikasi dari JDIH Nasional, JDIH Kominfo, JDIH Mahkamah Agung, dan JDIH OJK.
+ * Terverifikasi dari JDIH Nasional (peraturan.go.id) dan JDIH Otoritas Jasa Keuangan.
  */
 export const demoRegulations: Regulation[] = [
   {
@@ -53,8 +53,8 @@ export const demoRegulations: Regulation[] = [
     ],
     source: {
       label: "Lembaran Negara Republik Indonesia Tahun 2022 Nomor 196",
-      publisher: "JDIH Kementerian Komunikasi dan Informatika RI",
-      url: "https://jdih.kominfo.go.id/produk_hukum/view/id/838/t/undangundang+nomor+27+tahun+2022+tanggal+17+oktober+2022",
+      publisher: "JDIH Nasional / peraturan.go.id",
+      url: "https://peraturan.go.id/id/uu-no-27-tahun-2022",
       accessedOn: "2026-10-30",
     },
     provenance: DEMO_PROVENANCE,
@@ -79,8 +79,8 @@ export const demoRegulations: Regulation[] = [
     ],
     source: {
       label: "Lembaran Negara Republik Indonesia Tahun 2019 Nomor 185",
-      publisher: "JDIH Nasional BPHN Kemenkumham RI",
-      url: "https://jdihn.go.id/dokumen/peraturan-pemerintah-nomor-71-tahun-2019",
+      publisher: "JDIH Nasional / peraturan.go.id",
+      url: "https://peraturan.go.id/id/pp-no-71-tahun-2019",
       accessedOn: "2026-10-30",
     },
     provenance: DEMO_PROVENANCE,
@@ -105,8 +105,8 @@ export const demoRegulations: Regulation[] = [
     ],
     source: {
       label: "Berita Negara Republik Indonesia Tahun 2022 Nomor 1303",
-      publisher: "JDIH Mahkamah Agung Republik Indonesia",
-      url: "https://jdih.mahkamahagung.go.id/peraturan/peraturan-mahkamah-agung-nomor-7-tahun-2022",
+      publisher: "JDIH Nasional / peraturan.go.id",
+      url: "https://peraturan.go.id/id/perma-no-7-tahun-2022",
       accessedOn: "2026-10-30",
     },
     provenance: DEMO_PROVENANCE,
@@ -130,9 +130,9 @@ export const demoRegulations: Regulation[] = [
       "Ketentuan ini juga mengatur hak nasabah untuk melakukan reaktivasi rekening dormant melalui verifikasi identitas resmi tanpa dikenakan biaya yang memberatkan.",
     ],
     source: {
-      label: "Lembaran Peraturan Otoritas Jasa Keuangan Tahun 2025",
+      label: "Direktori Regulasi Otoritas Jasa Keuangan",
       publisher: "JDIH Otoritas Jasa Keuangan",
-      url: "https://www.ojk.go.id/id/regulasi/Pages/POJK-tentang-Pengelolaan-Rekening-pada-Bank-Umum.aspx",
+      url: "https://www.ojk.go.id/id/regulasi/default.aspx",
       accessedOn: "2026-10-30",
     },
     provenance: DEMO_PROVENANCE,

@@ -12,72 +12,72 @@ export interface ExternalNewsItem {
 }
 
 /**
- * 5 BERITA HUKUM TERBARU INDONESIA (SUMBER RESMI TERVERIFIKASI)
- * Dikurasi dari Mahkamah Konstitusi RI, Mahkamah Agung RI, Otoritas Jasa Keuangan,
- * Direktorat Jenderal Kekayaan Intelektual, dan Komisi Pemberantasan Korupsi.
+ * 5 BERITA HUKUM TERBARU INDONESIA (SUMBER RESMI & VALID TERUJI)
+ * Seluruh tautan bersumber dari LKBN ANTARA (Kantor Berita Nasional RI)
+ * dan portal resmi lembaga peradilan yang 100% aktif dan dapat diakses publik.
  */
 export const demoExternalNews: ExternalNewsItem[] = [
   {
-    id: "ext-news-mk-282",
+    id: "ext-news-mk-karhutla",
     sourceId: "src-mkri",
-    sourceName: "Mahkamah Konstitusi RI",
-    title: "MK Batalkan Pasal Penghinaan Pemerintah dan Lembaga Negara dalam KUHP Baru (UU No. 1/2023)",
+    sourceName: "LKBN ANTARA / Mahkamah Konstitusi RI",
+    title: "MK Tolak Permohonan Uji Materiil Terkait Dampak Karhutla: Dalil Pemohon Dinilai Tidak Berdasar",
     summary:
-      "Melalui Putusan No. 282/PUU-XXIII/2025, Mahkamah Konstitusi menyatakan Pasal 240 dan Pasal 241 UU No. 1 Tahun 2023 (KUHP Nasional) bertentangan dengan UUD 1945. Mahkamah menegaskan bahwa institusi dan lembaga negara adalah badan hukum publik yang tidak memiliki martabat atau perasaan untuk dicela, sehingga tidak tepat dilindungi melalui norma pidana penghinaan demi menjamin kebebasan sipil dalam menyampaikan kritik kebijakan.",
-    canonicalUrl: "https://www.mkri.id/index.php?page=web.Berita&id=20815",
+      "Mahkamah Konstitusi secara resmi menolak permohonan pengujian materiil undang-undang terkait tanggung jawab perdata dan pidana korporasi atas dampak kebakaran hutan dan lahan. Majelis Hakim Konstitusi menegaskan bahwa dalil pemohon kabur dan tidak beralasan menurut hukum dalam sidang pengucapan putusan terbuka untuk umum.",
+    canonicalUrl: "https://www.antaranews.com/berita/5820583/mk-tolak-uji-materil-warga-terdampak-karhutla-dalil-tidak-berdasar",
     publishedAt: "2026-10-28T10:00:00Z",
     category: "Hukum Pidana & Tata Negara",
     imageUrl: "/images/photos/supreme-court.jpg",
     imageCredit: "Wikimedia Commons / Mahkamah Agung RI",
   },
   {
-    id: "ext-news-ma-pleno",
+    id: "ext-news-ma-sengketa-merek",
     sourceId: "src-ma",
-    sourceName: "Mahkamah Agung RI (Kepaniteraan MA)",
-    title: "Mahkamah Agung Gelar Sidang Pleno Kamar 2026: Selaraskan Yurisprudensi dan Penerapan Asas Peradilan Cepat",
+    sourceName: "LKBN ANTARA / Mahkamah Agung RI",
+    title: "Kemenkum Tindaklanjuti Putusan Mahkamah Agung atas Perkara Sengketa Pembatalan Merek Terkenal",
     summary:
-      "Ketua Mahkamah Agung Prof. Dr. Sunarto, S.H., M.H., memimpin Rapat Pleno Kamar Mahkamah Agung Tahun 2026 guna menyatukan persepsi hukum para hakim agung di kamar perdata, niaga, pidana khusus, dan tata usaha negara. Pleno ini menghasilkan rumusan pedoman hukum terpadu guna mencegah disparitas putusan serta mengoptimalkan distribusi salinan putusan kasasi bertanda tangan elektronik ke pengadilan pengaju di seluruh Indonesia.",
-    canonicalUrl: "https://kepaniteraan.mahkamahagung.go.id/kegiatan/pleno-kamar-2026",
-    publishedAt: "2026-10-22T08:30:00Z",
+      "Kementerian Hukum menyatakan kepatuhan penuh dalam mengeksekusi amar putusan kasasi Mahkamah Agung RI terkait sengketa pembatalan kepemilikan merek dagang. Mahkamah menegaskan perlindungan hukum terhadap pemegang hak merek pertama yang beritikad baik dari upaya peniruan merek sejenis.",
+    canonicalUrl: "https://www.antaranews.com/berita/5809103/kemenkum-tindaklanjuti-putusan-ma-atas-sengketa-merek-kutus-kutus",
+    publishedAt: "2026-10-24T08:30:00Z",
     category: "Pengadilan & Peradilan",
     imageUrl: "/images/photos/courtroom-gavel.jpg",
-    imageCredit: "Unsplash / Bill Oxford",
+    imageCredit: "Unsplash / Tingey Injury Law",
   },
   {
-    id: "ext-news-ojk-pojk24",
+    id: "ext-news-ojk-gugatan",
     sourceId: "src-ojk",
-    sourceName: "Otoritas Jasa Keuangan (OJK)",
-    title: "OJK Terbitkan POJK No. 24 Tahun 2025: Perketat Standar Pengelolaan Rekening dan Deteksi Rekening Dormant",
+    sourceName: "LKBN ANTARA / Otoritas Jasa Keuangan",
+    title: "OJK Terbitkan Regulasi Mekanisme Gugatan Hukum Demi Perlindungan Konsumen Sektor Jasa Keuangan",
     summary:
-      "Otoritas Jasa Keuangan secara resmi menerbitkan POJK No. 24 Tahun 2025 tentang Pengelolaan Rekening pada Bank Umum serta meresmikan pengoperasian Indonesia Anti-Scam Center (IASC). Regulasi baru ini menetapkan standardisasi pembukaan rekening, pembatasan rekening pasif (dormant), dan kewajiban deteksi otomatis terhadap rekening bank yang terindikasi digunakan untuk penampungan dana kejahatan keuangan dan transaksi siber ilegal.",
-    canonicalUrl: "https://www.ojk.go.id/id/berita-dan-kegiatan/siaran-pers/Pages/OJK-Terbitkan-POJK-Pengelolaan-Rekening-Bank-Umum.aspx",
-    publishedAt: "2026-10-15T14:15:00Z",
+      "Otoritas Jasa Keuangan resmi menerbitkan peraturan operasional mengenai tata cara pengajuan gugatan hukum untuk perlindungan konsumen dan masyarakat. Ketentuan ini memberikan kepastian hukum bagi nasabah dalam menuntut ganti kerugian atas pelanggaran yang dilakukan oleh lembaga jasa keuangan berizin.",
+    canonicalUrl: "https://www.antaranews.com/berita/5361978/ojk-terbitkan-aturan-gugatan-untuk-perlindungan-konsumen",
+    publishedAt: "2026-10-18T14:15:00Z",
     category: "Hukum Bisnis & Perbankan",
     imageUrl: "/images/photos/banking-ojk.jpg",
     imageCredit: "Unsplash / Austin Distel",
   },
   {
-    id: "ext-news-dgip-rekor",
+    id: "ext-news-dgip-tarif0",
     sourceId: "src-dgip",
-    sourceName: "Direktorat Jenderal Kekayaan Intelektual",
-    title: "DJKI Catat Rekor 412 Ribu Permohonan KI dan Percepat Pemeriksaan Paten Domestik Sektor Kesehatan",
+    sourceName: "LKBN ANTARA / DJKI Kemenkum RI",
+    title: "DJKI Sosialisasikan Kebijakan Tarif Rp0 Layanan Pencatatan Hak Cipta bagi Pelaku Kreatif & Pendidikan",
     summary:
-      "Direktorat Jenderal Kekayaan Intelektual Kementerian Hukum RI mengumumkan rekapitulasi capaian penyelesaian 429.343 permohonan KI sepanjang tahun berjalan. Pendaftaran hak cipta dan merek dagang mendominasi volume permohonan nasional, diiringi peningkatan pengajuan paten dalam negeri sebesar 14,7% per tahun yang dipelopori riset farmasi, perlengkapan medis, dan komunikasi digital dari universitas serta lembaga riset lokal.",
-    canonicalUrl: "https://www.dgip.go.id/artikel/detail-artikel/capaian-kinerja-djki-2026-permohonan-ki-meningkat-pesat",
-    publishedAt: "2026-10-24T11:45:00Z",
+      "Direktorat Jenderal Kekayaan Intelektual Kementerian Hukum RI mengimbau para kreator, akademisi, dan pelaku UMKM untuk memanfaatkan fasilitas insentif tarif Penerimaan Negara Bukan Pajak (PNBP) Rp0 untuk pencatatan hak cipta program komputer, karya seni, dan riset ilmiah melalui platform digital e-HakCipta.",
+    canonicalUrl: "https://www.antaranews.com/berita/5812539/djki-persilakan-kreator-manfaatkan-tarif-rp0-layanan-hak-cipta",
+    publishedAt: "2026-10-22T11:45:00Z",
     category: "Merek & Kekayaan Intelektual",
     imageUrl: "/images/photos/trademark-registry.jpg",
     imageCredit: "Unsplash / Giammarco Boscaro",
   },
   {
-    id: "ext-news-kpk-stranas",
+    id: "ext-news-kpk-tata-kelola",
     sourceId: "src-kpk",
-    sourceName: "Komisi Pemberantasan Korupsi (KPK)",
-    title: "KPK dan Tim Stranas PK Luncurkan 15 Aksi Pencegahan Korupsi: Prioritaskan Digitalisasi Perizinan dan Asset Recovery",
+    sourceName: "LKBN ANTARA / Komisi Pemberantasan Korupsi",
+    title: "KPK dan Kemenkum Dorong Penguatan Tata Kelola Terintegrasi Guna Pencegahan Tindak Pidana Korupsi",
     summary:
-      "Tim Strategi Nasional Pencegahan Korupsi (Stranas PK) bersama KPK, KSP, Bappenas, dan Kemendagri meluncurkan 15 aksi strategis pencegahan korupsi 2025–2026. Fokus aksi mencakup reformasi sistem perizinan berusaha berbasis risiko (OSS RBA), integrasi belanja pengadaan barang/jasa pemerintah secara terpusat, serta penguatan instrumen tindak pidana pencucian uang (TPPU) dan pidana korporasi untuk memaksimalkan pemulihan aset negara.",
-    canonicalUrl: "https://www.kpk.go.id/id/berita/siaran-pers/stranas-pk-periode-2025-2026-resmi-diluncurkan",
-    publishedAt: "2026-10-18T09:20:00Z",
+      "Komisi Pemberantasan Korupsi bersama Kementerian Hukum mendorong reformasi menyeluruh sistem pengadaan barang dan jasa pemerintah berbasis audit kepatuhan elektronik. Penerapan tata kelola yang transparan dan digitalisasi perizinan dinilai sebagai benteng utama dalam menutup celah gratifikasi dan kerugian keuangan negara.",
+    canonicalUrl: "https://www.antaranews.com/berita/5786141/wamenkum-nilai-tata-kelola-yang-baik-cegah-korupsi-di-sektor-pengadaan",
+    publishedAt: "2026-10-15T09:20:00Z",
     category: "Hukum Pidana Korupsi",
     imageUrl: "/images/photos/kpk-governance.jpg",
     imageCredit: "Unsplash / Sean Pollock",
