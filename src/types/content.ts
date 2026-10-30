@@ -203,3 +203,46 @@ export interface Regulation {
   source: SourceReference;
   provenance: Provenance;
 }
+
+/* -------------------------------------------------------------------------- */
+/* Publication Services & Requests                                            */
+/* -------------------------------------------------------------------------- */
+
+export type PublicationServiceKey =
+  | "case_publication"
+  | "ruling_publication"
+  | "legal_opinion"
+  | "ip_publication"
+  | "sponsored_content";
+
+export interface PublicationServiceDetail {
+  key: PublicationServiceKey;
+  title: string;
+  subtitle: string;
+  description: string;
+  intendedContent: string[];
+  publicationProcess: string[];
+  editorialRequirements: string[];
+}
+
+export interface ClientPublicationRequest {
+  id: string;
+  referenceNumber: string;
+  applicantName: string;
+  organization: string | null;
+  email: string;
+  whatsapp: string;
+  publicationType: PublicationServiceKey;
+  proposedTitle: string;
+  shortDescription: string;
+  documentPath: string | null;
+  documentName: string | null;
+  documentSize: number | null;
+  documentType: string | null;
+  additionalMessage: string | null;
+  consentGiven: boolean;
+  status: "submitted" | "contacted" | "under_review" | "approved" | "rejected";
+  internalNotes: string | null;
+  createdAt: string;
+  updatedAt: string;
+}

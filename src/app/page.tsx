@@ -9,6 +9,7 @@ import {
 } from "@/lib/content";
 import { PaperDivider } from "@/components/ui/PaperDivider";
 import { ExternalNewsSection } from "@/components/editorial/ExternalNewsSection";
+import { PublicationCtaBox } from "@/components/editorial/PublicationCtaBox";
 import { formatDate } from "@/lib/utils";
 import {
   Scale,
@@ -324,13 +325,21 @@ export default async function FrontPage() {
           </div>
 
           {/* Quick Notice Box */}
-          <div className="border border-rule bg-paper-dark/30 p-3 text-xs space-y-1 mt-6">
-            <span className="kicker text-[0.62rem] uppercase text-ink font-bold block">
-              Pemberitahuan Publikasi Klien
-            </span>
+          <div className="border border-rule bg-paper-dark/30 p-3 text-xs space-y-1.5 mt-6">
+            <div className="flex items-center justify-between">
+              <span className="kicker text-[0.62rem] uppercase text-ink font-bold block">
+                Pemberitahuan Publikasi Klien
+              </span>
+              <Link
+                href="/publikasi-perkara"
+                className="text-[0.62rem] kicker uppercase font-bold text-accent hover:underline"
+              >
+                Publikasikan Perkara Anda →
+              </Link>
+            </div>
             <p className="font-serif text-[0.72rem] text-ink-muted leading-relaxed">
               Untuk mendaftarkan publikasi perkara, panggilan sidang, atau pengumuman hukum resmi,
-              hubungi saluran redaksi: <span className="font-mono text-ink">redaksi@thelawtimes.id</span>.
+              ajukan melalui saluran verifikasi redaksi The Law Times.
             </p>
           </div>
         </div>
@@ -554,6 +563,11 @@ export default async function FrontPage() {
           </div>
         </div>
       </section>
+
+      {/* ==================================================================== */}
+      {/* 2.4 SUBTLE BROADSHEET CTA: PUBLIKASIKAN PERKARA ANDA                */}
+      {/* ==================================================================== */}
+      <PublicationCtaBox variant="broadsheet" />
 
       {/* ==================================================================== */}
       {/* 2.5 EXTERNAL LEGAL NEWS AGGREGATOR SECTION                           */}

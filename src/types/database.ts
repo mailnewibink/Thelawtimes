@@ -38,10 +38,87 @@ export type SourceType =
 export type ReviewStatus = "pending" | "reviewed" | "rejected";
 export type EditorialDecision = "approved" | "changes_requested" | "rejected";
 export type AutomationStatus = "running" | "success" | "partial" | "failed";
+export type PublicationRequestType =
+  | "case_publication"
+  | "ruling_publication"
+  | "legal_opinion"
+  | "ip_publication"
+  | "sponsored_content";
+export type PublicationRequestStatus =
+  | "submitted"
+  | "contacted"
+  | "under_review"
+  | "approved"
+  | "rejected";
 
 export interface Database {
   public: {
     Tables: {
+      publication_requests: {
+        Row: {
+          id: string;
+          reference_number: string;
+          applicant_name: string;
+          organization: string | null;
+          email: string;
+          whatsapp: string;
+          publication_type: PublicationRequestType;
+          proposed_title: string;
+          short_description: string;
+          document_path: string | null;
+          document_name: string | null;
+          document_size: number | null;
+          document_type: string | null;
+          additional_message: string | null;
+          consent_given: boolean;
+          status: PublicationRequestStatus;
+          internal_notes: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          reference_number: string;
+          applicant_name: string;
+          organization?: string | null;
+          email: string;
+          whatsapp: string;
+          publication_type: PublicationRequestType;
+          proposed_title: string;
+          short_description: string;
+          document_path?: string | null;
+          document_name?: string | null;
+          document_size?: number | null;
+          document_type?: string | null;
+          additional_message?: string | null;
+          consent_given?: boolean;
+          status?: PublicationRequestStatus;
+          internal_notes?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          reference_number?: string;
+          applicant_name?: string;
+          organization?: string | null;
+          email?: string;
+          whatsapp?: string;
+          publication_type?: PublicationRequestType;
+          proposed_title?: string;
+          short_description?: string;
+          document_path?: string | null;
+          document_name?: string | null;
+          document_size?: number | null;
+          document_type?: string | null;
+          additional_message?: string | null;
+          consent_given?: boolean;
+          status?: PublicationRequestStatus;
+          internal_notes?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+      };
       profiles: {
         Row: {
           id: string;

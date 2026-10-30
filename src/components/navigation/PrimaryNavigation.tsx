@@ -10,6 +10,7 @@ export function PrimaryNavigation() {
   const navItems = [
     { label: "BERANDA", href: "/" },
     { label: "PERKARA & PUTUSAN", href: "/perkara" },
+    { label: "PUBLIKASI PERKARA", href: "/publikasi-perkara" },
     { label: "MEREK & HKI", href: "/merek-hki" },
     { label: "BERITA HUKUM", href: "/berita-hukum" },
     { label: "REGULASI", href: "/regulasi" },

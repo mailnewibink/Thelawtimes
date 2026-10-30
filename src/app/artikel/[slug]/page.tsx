@@ -7,6 +7,7 @@ import { ArticleMetadata } from "@/components/editorial/ArticleMetadata";
 import { PaperDivider } from "@/components/ui/PaperDivider";
 import { SocialShareBar } from "@/components/editorial/SocialShareBar";
 import { ArticleListItem } from "@/components/editorial/ArticleListItem";
+import { PublicationCtaBox } from "@/components/editorial/PublicationCtaBox";
 import { siteConfig } from "@/lib/site-config";
 import { Scale, FileText, ExternalLink, ArrowLeft } from "lucide-react";
 
@@ -307,6 +308,9 @@ export default async function ArticleDetailPage({ params }: ArticleDetailPagePro
 
       {/* Social Sharing Bar (Bottom) */}
       <SocialShareBar title={article.headline} url={canonicalUrl} />
+
+      {/* Subtle Broadsheet CTA for Legal Publication */}
+      <PublicationCtaBox variant="banner" />
 
       <PaperDivider variant="ornament" />
 

@@ -25,20 +25,22 @@ export interface NavItem {
 
 export const primaryNavigation: NavItem[] = [
   { label: "Halaman Utama", href: "/" },
-  { label: "Publikasi Perkara", href: "/perkara" },
-  { label: "Berita Hukum", href: "/berita-hukum" },
+  { label: "Perkara & Putusan", href: "/perkara" },
+  { label: "Publikasi Perkara", href: "/publikasi-perkara" },
   { label: "Merek & HKI", href: "/merek-hki" },
+  { label: "Berita Hukum", href: "/berita-hukum" },
   { label: "Regulasi", href: "/regulasi" },
   { label: "Tentang Kami", href: "/tentang-kami" },
 ];
 
 export const footerNavigation: NavItem[] = [
   { label: "Tentang The Law Times", href: "/tentang-kami" },
-  { label: "Publikasi Perkara", href: "/perkara" },
+  { label: "Publikasi Perkara", href: "/publikasi-perkara" },
+  { label: "Rubrik Perkara & Putusan", href: "/perkara" },
   { label: "Berita Hukum", href: "/berita-hukum" },
   { label: "Merek & HKI", href: "/merek-hki" },
   { label: "Regulasi", href: "/regulasi" },
-  { label: "Kebijakan Redaksi", href: "/editorial-policy" },
+  { label: "Kebijakan Redaksi", href: "/kebijakan-redaksi" },
   { label: "Kebijakan Ralat", href: "/corrections-policy" },
   { label: "Privasi", href: "/privacy-policy" },
   { label: "Kontak", href: "/contact" },
@@ -48,10 +50,12 @@ export const footerNavigation: NavItem[] = [
 export const staticRoutes = [
   "/",
   "/perkara",
+  "/publikasi-perkara",
   "/berita-hukum",
   "/merek-hki",
   "/regulasi",
   "/tentang-kami",
+  "/kebijakan-redaksi",
   "/editorial-policy",
   "/corrections-policy",
   "/privacy-policy",

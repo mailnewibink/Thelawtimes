@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import {
   LayoutDashboard,
   FileText,
+  Inbox,
   Rss,
   Settings,
   ExternalLink,
@@ -21,10 +22,11 @@ interface AdminSidebarProps {
 export function AdminSidebar({ className, onNavigate }: AdminSidebarProps) {
   const pathname = usePathname();
 
-  // Exactly 4 requested menus: Dashboard, Articles, External Sources, Settings
+  // Admin menus including Phase 7 Publication Requests
   const navItems = [
     { label: "Dashboard", href: "/admin", icon: LayoutDashboard },
     { label: "Articles", href: "/admin/articles", icon: FileText },
+    { label: "Publication Requests", href: "/admin/publication-requests", icon: Inbox },
     { label: "External Sources", href: "/admin/sources", icon: Rss },
     { label: "Settings", href: "/admin/settings", icon: Settings },
   ];

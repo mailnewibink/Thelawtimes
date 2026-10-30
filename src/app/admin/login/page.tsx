@@ -47,6 +47,24 @@ export default function AdminLoginPage() {
     }
   };
 
+  const handleDemoLogin = async () => {
+    setLoading(true);
+    setErrorMsg("");
+    try {
+      const res = await fetch("/api/admin/demo-login", { method: "POST" });
+      if (res.ok) {
+        router.push("/admin");
+        router.refresh();
+      } else {
+        setErrorMsg("Gagal mengaktifkan sesi demo.");
+      }
+    } catch (err: unknown) {
+      setErrorMsg(err instanceof Error ? err.message : "Terjadi kesalahan koneksi.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-paper flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md text-center">
@@ -102,6 +120,20 @@ export default function AdminLoginPage() {
                 className="w-full kicker border border-ink bg-ink text-paper py-2.5 px-4 text-xs hover:bg-paper hover:text-ink transition-colors disabled:opacity-50"
               >
                 {loading ? "Verifying Credentials..." : "Access Publishing Console"}
+              </button>
+            </div>
+
+            <div className="pt-2 text-center">
+              <span className="text-[0.6875rem] text-ink-muted uppercase tracking-wider block mb-2 font-mono">
+                — atau —
+              </span>
+              <button
+                type="button"
+                onClick={handleDemoLogin}
+                disabled={loading}
+                className="w-full font-serif text-xs border border-dashed border-ink/40 bg-paper hover:bg-paper-dark text-ink py-2 px-3 transition-colors flex items-center justify-center gap-1.5"
+              >
+                <span>Masuk Mode Evaluasi Redaksi (Demo Editor)</span>
               </button>
             </div>
           </form>

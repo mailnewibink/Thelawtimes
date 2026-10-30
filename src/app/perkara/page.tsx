@@ -11,6 +11,7 @@ import { CategoryFeaturedLead } from "@/components/editorial/CategoryFeaturedLea
 import { PaginatedArticleListing } from "@/components/editorial/PaginatedArticleListing";
 import { CategorySidebar } from "@/components/editorial/CategorySidebar";
 import { ExternalNewsSection } from "@/components/editorial/ExternalNewsSection";
+import { PublicationCtaBox } from "@/components/editorial/PublicationCtaBox";
 import { Scale, ShieldAlert } from "lucide-react";
 import Link from "next/link";
 
@@ -102,7 +103,8 @@ export default async function PerkaraCategoryPage() {
         </section>
 
         {/* Right Column: Secondary Sidebar */}
-        <div className="lg:col-span-4 lg:border-l lg:border-rule lg:pl-6">
+        <div className="lg:col-span-4 lg:border-l lg:border-rule lg:pl-6 space-y-6">
+          <PublicationCtaBox variant="compact" />
           <CategorySidebar
             title="WARTA SIDANG & PERADILAN"
             selectedStories={sidebarSelectedStories}
@@ -112,6 +114,9 @@ export default async function PerkaraCategoryPage() {
           />
         </div>
       </div>
+
+      {/* Subtle Broadsheet CTA Banner */}
+      <PublicationCtaBox variant="banner" />
 
       {/* External Legal News Section (Perkara & Putusan) */}
       <ExternalNewsSection

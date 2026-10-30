@@ -3,6 +3,7 @@ import {
   FileText,
   Clock,
   Rss,
+  Inbox,
   Plus,
   ArrowRight,
   ExternalLink,
@@ -10,9 +11,13 @@ import {
 import { getSupabaseServerClient } from "@/lib/supabase/server";
 import { AdminPageHeader } from "@/components/admin/AdminPageHeader";
 import { formatDate } from "@/lib/utils";
+import { getPublicationRequestStats } from "@/lib/repositories/publication-requests";
 
 export default async function AdminDashboardPage() {
-  const supabase = await getSupabaseServerClient();
+  const [supabase, pubStats] = await Promise.all([
+    getSupabaseServerClient(),
+    getPublicationRequestStats(),
+  ]);
 
   let publishedArticlesCount = 0;
   let draftsCount = 0;
@@ -64,10 +69,17 @@ export default async function AdminDashboardPage() {
       href: "/admin/articles?status=draft",
     },
     {
-      label: "Total External News Items",
+      label: "External News Items",
       value: externalNewsCount,
       icon: Rss,
       href: "/admin/sources",
+    },
+    {
+      label: "Publication Requests",
+      value: pubStats.total,
+      subValue: pubStats.submitted > 0 ? `${pubStats.submitted} Masuk Baru` : undefined,
+      icon: Inbox,
+      href: "/admin/publication-requests",
     },
   ];
 
@@ -87,8 +99,8 @@ export default async function AdminDashboardPage() {
         }
       />
 
-      {/* 3 Main Stat Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      {/* Main Stat Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {statCards.map((card) => {
           const Icon = card.icon;
           return (
@@ -103,8 +115,15 @@ export default async function AdminDashboardPage() {
                 </span>
                 <Icon className="w-4 h-4 text-ink-muted group-hover:text-ink transition-colors" />
               </div>
-              <div className="font-serif text-3xl sm:text-4xl font-bold text-ink">
-                {card.value}
+              <div className="flex items-baseline gap-2">
+                <span className="font-serif text-3xl sm:text-4xl font-bold text-ink">
+                  {card.value}
+                </span>
+                {"subValue" in card && card.subValue && (
+                  <span className="text-[0.6875rem] font-sans font-bold text-amber-800 bg-amber-100 px-1.5 py-0.5 border border-amber-300">
+                    {card.subValue}
+                  </span>
+                )}
               </div>
             </Link>
           );

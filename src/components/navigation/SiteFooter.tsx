@@ -10,11 +10,12 @@ export function SiteFooter() {
 
   const footerLinks = [
     { label: t("aboutTheLawTimes") || "Tentang The Law Times", href: "/tentang-kami" },
-    { label: "Publikasi Perkara", href: "/perkara" },
+    { label: "Layanan Publikasi Perkara", href: "/publikasi-perkara" },
+    { label: "Rubrik Perkara & Putusan", href: "/perkara" },
     { label: "Berita Hukum", href: "/berita-hukum" },
     { label: "Merek & HKI", href: "/merek-hki" },
     { label: "Regulasi", href: "/regulasi" },
-    { label: t("editorialPolicy") || "Kebijakan Redaksi", href: "/editorial-policy" },
+    { label: t("editorialPolicy") || "Kebijakan Redaksi", href: "/kebijakan-redaksi" },
     { label: t("correctionsPolicy") || "Kebijakan Ralat", href: "/corrections-policy" },
     { label: t("privacyPolicy") || "Kebijakan Privasi", href: "/privacy-policy" },
     { label: t("contactDesk") || "Kontak", href: "/contact" },
