@@ -16,6 +16,45 @@ import {
 import { fetchPublicCases, fetchCaseBySlug } from "./repositories/cases";
 import { fetchPublishedAnnouncements } from "./repositories/announcements";
 import { fetchPublishedRegulations } from "./repositories/regulations";
+import { demoExternalNews, type ExternalNewsItem } from "@/data/demo/externalNews";
+import { getSupabaseServerClient } from "./supabase/server";
+
+export async function getExternalNews(limit = 10, category?: string): Promise<ExternalNewsItem[]> {
+  try {
+    const supabase = await getSupabaseServerClient();
+    if (supabase) {
+      const query = (supabase as any)
+        .from("source_records")
+        .select("id, source_id, external_id, title, summary_abstract, canonical_url, source_date, metadata, sources(name)")
+        .eq("record_type", "external_news")
+        .order("source_date", { ascending: false })
+        .limit(limit);
+
+      const { data } = await query;
+      if (data && data.length > 0) {
+        return data.map((r: any) => ({
+          id: r.id,
+          sourceId: r.source_id,
+          sourceName: r.sources?.name || r.metadata?.sourceName || "Sumber Resmi",
+          title: r.title,
+          summary: r.summary_abstract || "",
+          canonicalUrl: r.canonical_url || "#",
+          publishedAt: r.source_date || new Date().toISOString(),
+          category: r.metadata?.category || "Berita Hukum",
+          imageUrl: r.metadata?.imageUrl || null,
+        }));
+      }
+    }
+  } catch {
+    // Fall back to demoExternalNews
+  }
+
+  let items = demoExternalNews;
+  if (category) {
+    items = items.filter((i) => i.category.toLowerCase().includes(category.toLowerCase()));
+  }
+  return items.slice(0, limit);
+}
 
 /**
  * Content repository façade.

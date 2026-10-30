@@ -1,28 +1,19 @@
-import { getSupabaseServerClient } from "@/lib/supabase/server";
 import { AdminPageHeader } from "@/components/admin/AdminPageHeader";
 import { ArticleForm } from "@/components/admin/ArticleForm";
 
-export default async function NewArticlePage() {
-  const supabase = await getSupabaseServerClient();
-  let categories: Array<{ id: string; name: string }> = [];
-
-  if (supabase) {
-    const { data } = await supabase.from("categories").select("id, name").order("sort_order");
-    categories = data || [];
-  }
-
+export default function NewArticlePage() {
   return (
     <div className="space-y-6">
       <AdminPageHeader
-        title="Draft New Article"
-        description="Compose new legal journalism, analysis, or statutory explainer."
+        title="Tulis Artikel Baru"
+        description="Buat warta hukum baru, publikasi perkara klien, artikel opini, atau kajian regulasi."
         breadcrumbs={[
           { label: "Articles", href: "/admin/articles" },
           { label: "New Article" },
         ]}
       />
 
-      <ArticleForm categories={categories} />
+      <ArticleForm />
     </div>
   );
 }

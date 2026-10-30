@@ -1,12 +1,11 @@
 import Link from "next/link";
 import {
   FileText,
-  Megaphone,
-  Briefcase,
-  Scale,
   Clock,
+  Rss,
   Plus,
   ArrowRight,
+  ExternalLink,
 } from "lucide-react";
 import { getSupabaseServerClient } from "@/lib/supabase/server";
 import { AdminPageHeader } from "@/components/admin/AdminPageHeader";
@@ -15,180 +14,180 @@ import { formatDate } from "@/lib/utils";
 export default async function AdminDashboardPage() {
   const supabase = await getSupabaseServerClient();
 
-  // Query real operational counts from database
   let publishedArticlesCount = 0;
   let draftsCount = 0;
-  let inReviewCount = 0;
-  let announcementsCount = 0;
-  let casesCount = 0;
-  let regulationsCount = 0;
+  let externalNewsCount = 0;
   let recentArticles: Array<{
     id: string;
     title: string;
     status: string;
     content_type: string;
+    publication_type?: string | null;
     updated_at: string;
+    slug: string;
   }> = [];
 
   if (supabase) {
     const [
       { count: pubCount },
       { count: draftCount },
-      { count: revCount },
-      { count: annCount },
-      { count: caseCount },
-      { count: regCount },
+      { count: extCount },
       { data: recent },
     ] = await Promise.all([
       supabase.from("articles").select("*", { count: "exact", head: true }).eq("status", "published"),
       supabase.from("articles").select("*", { count: "exact", head: true }).eq("status", "draft"),
-      supabase.from("articles").select("*", { count: "exact", head: true }).eq("status", "in_review"),
-      supabase.from("articles").select("*", { count: "exact", head: true }).eq("content_type", "announcement"),
-      supabase.from("cases").select("*", { count: "exact", head: true }),
-      supabase.from("legal_documents").select("*", { count: "exact", head: true }),
+      (supabase as any).from("source_records").select("*", { count: "exact", head: true }).eq("record_type", "external_news"),
       supabase
         .from("articles")
-        .select("id, title, status, content_type, updated_at")
+        .select("id, title, status, content_type, publication_type, updated_at, slug")
         .order("updated_at", { ascending: false })
-        .limit(5),
+        .limit(6),
     ]);
 
     publishedArticlesCount = pubCount || 0;
     draftsCount = draftCount || 0;
-    inReviewCount = revCount || 0;
-    announcementsCount = annCount || 0;
-    casesCount = caseCount || 0;
-    regulationsCount = regCount || 0;
-    recentArticles = recent || [];
+    externalNewsCount = extCount || 0;
+    recentArticles = (recent as any) || [];
   }
 
   const statCards = [
-    { label: "Published Articles", value: publishedArticlesCount, icon: FileText, href: "/admin/articles" },
-    { label: "Draft Articles", value: draftsCount, icon: Clock, href: "/admin/articles?status=draft" },
-    { label: "Awaiting Review", value: inReviewCount, icon: Clock, href: "/admin/review", alert: inReviewCount > 0 },
-    { label: "Announcements", value: announcementsCount, icon: Megaphone, href: "/admin/announcements" },
-    { label: "Case Dockets", value: casesCount, icon: Briefcase, href: "/admin/cases" },
-    { label: "Legal Instruments", value: regulationsCount, icon: Scale, href: "/admin/regulations" },
+    {
+      label: "Total Published Articles",
+      value: publishedArticlesCount,
+      icon: FileText,
+      href: "/admin/articles?status=published",
+    },
+    {
+      label: "Total Drafts",
+      value: draftsCount,
+      icon: Clock,
+      href: "/admin/articles?status=draft",
+    },
+    {
+      label: "Total External News Items",
+      value: externalNewsCount,
+      icon: Rss,
+      href: "/admin/sources",
+    },
   ];
 
   return (
     <div className="space-y-8">
       <AdminPageHeader
         title="Editorial Dashboard"
-        description="Operational overview of legal journalism, gazette announcements, and judicial records."
+        description="Ringkasan operasional manajemen publikasi artikel dan agregasi warta hukum eksternal."
         actions={
-          <div className="flex gap-2">
-            <Link
-              href="/admin/articles/new"
-              className="kicker inline-flex items-center gap-1.5 border border-ink bg-ink text-paper px-3 py-1.5 text-xs hover:bg-paper hover:text-ink transition-colors"
-            >
-              <Plus className="w-3.5 h-3.5" />
-              <span>New Article</span>
-            </Link>
-          </div>
+          <Link
+            href="/admin/articles/new"
+            className="kicker inline-flex items-center gap-1.5 border border-ink bg-ink text-paper px-3.5 py-2 text-xs hover:bg-paper hover:text-ink transition-colors font-bold uppercase tracking-wider"
+          >
+            <Plus className="w-4 h-4" />
+            <span>Tulis Artikel Baru</span>
+          </Link>
         }
       />
 
-      {/* Operational Metrics Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
-        {statCards.map((stat, idx) => {
-          const Icon = stat.icon;
+      {/* 3 Main Stat Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        {statCards.map((card) => {
+          const Icon = card.icon;
           return (
             <Link
-              key={idx}
-              href={stat.href}
-              className="border border-rule bg-paper-light p-3 flex flex-col justify-between hover:border-ink transition-colors"
+              key={card.label}
+              href={card.href}
+              className="border border-rule bg-paper-light p-5 hover:border-ink transition-colors block group"
             >
-              <div className="flex items-center justify-between text-ink-muted mb-2">
-                <span className="kicker text-[0.625rem]">{stat.label}</span>
-                <Icon className="w-3.5 h-3.5" />
+              <div className="flex items-center justify-between mb-2">
+                <span className="font-sans text-xs uppercase tracking-wider font-semibold text-ink-muted">
+                  {card.label}
+                </span>
+                <Icon className="w-4 h-4 text-ink-muted group-hover:text-ink transition-colors" />
               </div>
-              <div className="font-display text-2xl font-bold text-ink">
-                {stat.value}
+              <div className="font-serif text-3xl sm:text-4xl font-bold text-ink">
+                {card.value}
               </div>
             </Link>
           );
         })}
       </div>
 
-      {/* Workflow Quick Actions & Recent Content */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-        {/* Recent Articles */}
-        <section className="lg:col-span-8 border border-rule bg-paper-light p-5 space-y-4">
-          <div className="flex items-center justify-between border-b border-rule-soft pb-2">
-            <h2 className="kicker text-xs text-ink">Recently Updated Content</h2>
-            <Link href="/admin/articles" className="kicker text-[0.625rem] text-ink-muted hover:text-ink inline-flex items-center gap-1">
-              <span>View All</span>
-              <ArrowRight className="w-3 h-3" />
-            </Link>
+      {/* Recently Published & Edited Articles */}
+      <div className="border border-rule bg-paper-light p-6 space-y-4">
+        <div className="flex items-center justify-between border-b border-rule pb-3">
+          <div>
+            <h2 className="font-serif font-bold text-base text-ink">
+              Artikel Terbaru di Sistem
+            </h2>
+            <p className="font-serif text-xs text-ink-muted italic">
+              Warta artikel yang baru saja diterbitkan atau diperbarui oleh tim redaksi.
+            </p>
           </div>
+          <Link
+            href="/admin/articles"
+            className="kicker text-xs text-ink hover:underline flex items-center gap-1 uppercase tracking-wider"
+          >
+            Lihat Semua Artikel <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
+        </div>
 
-          {recentArticles.length === 0 ? (
-            <div className="py-8 text-center font-serif text-sm text-ink-muted italic">
-              No articles recorded in database yet. Click &quot;New Article&quot; to publish your first dispatch.
-            </div>
-          ) : (
-            <div className="divide-y divide-rule-soft">
-              {recentArticles.map((art) => (
-                <div key={art.id} className="py-2.5 flex items-center justify-between gap-4">
-                  <div className="min-w-0">
-                    <Link
-                      href={`/admin/articles/${art.id}/edit`}
-                      className="font-serif text-sm font-semibold text-ink hover:underline truncate block"
+        {recentArticles.length === 0 ? (
+          <div className="py-8 text-center text-xs text-ink-muted font-serif">
+            Belum ada artikel di database. Klik tombol &quot;Tulis Artikel Baru&quot; untuk memulai.
+          </div>
+        ) : (
+          <div className="divide-y divide-rule-soft">
+            {recentArticles.map((art) => (
+              <div
+                key={art.id}
+                className="py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2"
+              >
+                <div>
+                  <div className="flex items-center gap-2 mb-1">
+                    <span
+                      className={`text-[0.625rem] font-bold uppercase tracking-wider px-1.5 py-0.5 ${
+                        art.status === "published"
+                          ? "bg-green-100 text-green-900 border border-green-300"
+                          : "bg-amber-100 text-amber-900 border border-amber-300"
+                      }`}
                     >
+                      {art.status === "published" ? "Diterbitkan" : "Draft"}
+                    </span>
+                    <span className="text-[0.625rem] font-sans text-ink-muted uppercase tracking-wider">
+                      {art.publication_type === "client_publication"
+                        ? "Publikasi Perkara"
+                        : "Berita The Law Times"}
+                    </span>
+                  </div>
+                  <h3 className="font-serif text-sm font-bold text-ink hover:underline">
+                    <Link href={`/admin/articles/${art.id}/edit`}>
                       {art.title}
                     </Link>
-                    <div className="meta text-[0.6875rem] flex items-center gap-2 mt-0.5">
-                      <span className="uppercase">{art.content_type}</span>
-                      <span>·</span>
-                      <span>Updated {formatDate(art.updated_at.substring(0, 10), "short")}</span>
-                    </div>
-                  </div>
-                  <span className="kicker text-[0.625rem] border border-rule px-2 py-0.5 uppercase shrink-0">
-                    {art.status}
-                  </span>
+                  </h3>
                 </div>
-              ))}
-            </div>
-          )}
-        </section>
 
-        {/* Editorial Desk Actions */}
-        <section className="lg:col-span-4 border border-rule bg-paper-light p-5 space-y-4">
-          <h2 className="kicker text-xs text-ink border-b border-rule-soft pb-2">
-            Editorial Quick Actions
-          </h2>
-          <div className="space-y-2">
-            <Link
-              href="/admin/articles/new"
-              className="w-full flex items-center justify-between border border-rule p-2.5 hover:bg-paper-dark transition-colors text-xs font-serif"
-            >
-              <span>Draft Legal News Story</span>
-              <Plus className="w-3.5 h-3.5" />
-            </Link>
-            <Link
-              href="/admin/announcements"
-              className="w-full flex items-center justify-between border border-rule p-2.5 hover:bg-paper-dark transition-colors text-xs font-serif"
-            >
-              <span>Issue Official Gazette Notice</span>
-              <Megaphone className="w-3.5 h-3.5" />
-            </Link>
-            <Link
-              href="/admin/cases"
-              className="w-full flex items-center justify-between border border-rule p-2.5 hover:bg-paper-dark transition-colors text-xs font-serif"
-            >
-              <span>Archive Judicial Docket</span>
-              <Briefcase className="w-3.5 h-3.5" />
-            </Link>
-            <Link
-              href="/admin/review"
-              className="w-full flex items-center justify-between border border-rule p-2.5 hover:bg-paper-dark transition-colors text-xs font-serif"
-            >
-              <span>Review Submissions Queue</span>
-              <Clock className="w-3.5 h-3.5" />
-            </Link>
+                <div className="flex items-center gap-3 text-xs shrink-0 font-sans">
+                  <span className="text-ink-muted text-[0.6875rem]">
+                    {formatDate(art.updated_at, "short")}
+                  </span>
+                  <Link
+                    href={`/artikel/${art.slug}`}
+                    target="_blank"
+                    className="text-ink hover:underline flex items-center gap-1 text-[0.6875rem] font-semibold"
+                  >
+                    <span>Preview</span>
+                    <ExternalLink className="w-3 h-3" />
+                  </Link>
+                  <Link
+                    href={`/admin/articles/${art.id}/edit`}
+                    className="border border-rule px-2.5 py-1 text-xs hover:border-ink hover:bg-paper"
+                  >
+                    Edit
+                  </Link>
+                </div>
+              </div>
+            ))}
           </div>
-        </section>
+        )}
       </div>
     </div>
   );

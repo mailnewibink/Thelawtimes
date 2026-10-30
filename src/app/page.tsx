@@ -5,8 +5,10 @@ import {
   getArticles,
   getRegulations,
   getGeneralNews,
+  getExternalNews,
 } from "@/lib/content";
 import { PaperDivider } from "@/components/ui/PaperDivider";
+import { ExternalNewsSection } from "@/components/editorial/ExternalNewsSection";
 import { formatDate } from "@/lib/utils";
 import {
   Scale,
@@ -17,11 +19,12 @@ import {
 } from "lucide-react";
 
 export default async function FrontPage() {
-  const [clientPubs, generalNews, ipArticles, regulations] = await Promise.all([
+  const [clientPubs, generalNews, ipArticles, regulations, externalNews] = await Promise.all([
     getClientPublications(6),
     getGeneralNews(8),
     getArticles("intellectual-property"),
     getRegulations(),
+    getExternalNews(6),
   ]);
 
   // Priority 1: Main featured client-case publication
@@ -551,6 +554,14 @@ export default async function FrontPage() {
           </div>
         </div>
       </section>
+
+      {/* ==================================================================== */}
+      {/* 2.5 EXTERNAL LEGAL NEWS AGGREGATOR SECTION                           */}
+      {/* ==================================================================== */}
+      <ExternalNewsSection
+        news={externalNews}
+        title="WARTA HUKUM DARI SUMBER EKSTERNAL"
+      />
 
       {/* ==================================================================== */}
       {/* 3. BOTTOM REFERENCE BANNER: READ MORE AT WWW.THELAWTIMES.COM         */}

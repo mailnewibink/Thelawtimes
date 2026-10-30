@@ -2,7 +2,6 @@ import { notFound } from "next/navigation";
 import { getSupabaseServerClient } from "@/lib/supabase/server";
 import { AdminPageHeader } from "@/components/admin/AdminPageHeader";
 import { ArticleForm } from "@/components/admin/ArticleForm";
-import type { ArticleContentType, ArticleStatus } from "@/types/database";
 
 interface EditArticlePageProps {
   params: Promise<{ id: string }>;
@@ -12,74 +11,50 @@ export default async function EditArticlePage({ params }: EditArticlePageProps) 
   const { id } = await params;
   const supabase = await getSupabaseServerClient();
 
-  if (!supabase) {
-    notFound();
+  let articleData: any = null;
+
+  if (supabase) {
+    const { data } = await (supabase as any)
+      .from("articles")
+      .select("*")
+      .eq("id", id)
+      .maybeSingle();
+
+    if (data) {
+      articleData = {
+        id: data.id,
+        title: data.title || "",
+        slug: data.slug || "",
+        excerpt: data.excerpt || "",
+        body: data.body || "",
+        publicationType: data.publication_type || "general_news",
+        category: "Berita Hukum",
+        status: data.status === "published" ? "published" : "draft",
+        author: "Redaksi The Law Times",
+        publishedAt: data.published_at ? data.published_at.split("T")[0] : new Date().toISOString().split("T")[0],
+        featuredImagePath: data.featured_image_path || "/images/courthouse.jpg",
+        seoTitle: data.seo_title || "",
+        seoDescription: data.seo_description || "",
+      };
+    }
   }
 
-  const [artRes, catRes, relRes] = await Promise.all([
-    supabase.from("articles").select("*").eq("id", id).maybeSingle(),
-    supabase.from("categories").select("id, name").order("sort_order"),
-    supabase.from("article_categories").select("category_id").eq("article_id", id).maybeSingle(),
-  ]);
-
-  const article = artRes.data as {
-    id: string;
-    title: string;
-    slug: string;
-    excerpt: string | null;
-    body: string | null;
-    content_type: string;
-    publication_type?: "client_publication" | "general_news" | null;
-    status: string;
-    featured_image_path: string | null;
-    source_name?: string | null;
-    source_url?: string | null;
-    document_url?: string | null;
-    seo_title?: string | null;
-    seo_description?: string | null;
-    is_demo: boolean;
-  } | null;
-
-  const categories = (catRes.data as Array<{ id: string; name: string }> | null) || [];
-  const catRel = relRes.data as { category_id: string } | null;
-
-  if (!article) {
+  if (!articleData) {
     notFound();
   }
 
   return (
     <div className="space-y-6">
       <AdminPageHeader
-        title="Edit Article"
-        description={`Editing: "${article.title}"`}
+        title={`Edit: ${articleData.title}`}
+        description="Perbarui isi artikel, metadata penelusuran, atau ubah status penerbitan."
         breadcrumbs={[
           { label: "Articles", href: "/admin/articles" },
-          { label: "Edit" },
+          { label: "Edit Article" },
         ]}
       />
 
-      <ArticleForm
-        isEditing
-        categories={categories || []}
-        initialData={{
-          id: article.id,
-          title: article.title,
-          slug: article.slug,
-          excerpt: article.excerpt || "",
-          body: article.body || "",
-          contentType: article.content_type as ArticleContentType,
-          publicationType: (article.publication_type as "client_publication" | "general_news") || "general_news",
-          status: article.status as ArticleStatus,
-          categoryId: catRel?.category_id || "",
-          featuredImagePath: article.featured_image_path || "",
-          sourceName: article.source_name || "",
-          sourceUrl: article.source_url || "",
-          documentUrl: article.document_url || "",
-          seoTitle: article.seo_title || "",
-          seoDescription: article.seo_description || "",
-          isDemo: article.is_demo,
-        }}
-      />
+      <ArticleForm initialData={articleData} isEditing={true} />
     </div>
   );
 }

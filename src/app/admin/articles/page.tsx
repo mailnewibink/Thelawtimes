@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Plus, Search, Filter } from "lucide-react";
+import { Plus, Search, ExternalLink } from "lucide-react";
 import { getSupabaseServerClient } from "@/lib/supabase/server";
 import { AdminPageHeader } from "@/components/admin/AdminPageHeader";
 import { formatDate } from "@/lib/utils";
@@ -38,29 +38,29 @@ export default async function AdminArticlesPage({ searchParams }: AdminArticlesP
       query = query.eq("status", status);
     }
     if (type) {
-      query = query.eq("content_type", type);
+      query = query.eq("publication_type", type);
     }
     if (q) {
       query = query.ilike("title", `%${q}%`);
     }
 
     const { data } = await query;
-    articles = data || [];
+    articles = (data as any) || [];
   }
 
   return (
     <div className="space-y-6">
       <AdminPageHeader
-        title="Articles & Newsroom Dispatches"
-        description="Manage legal reporting, features, editorial explainers, and drafts."
+        title="Manajemen Artikel & Warta"
+        description="Kelola seluruh artikel, publikasi perkara klien, simpan draft, pratinjau, dan terbitkan warta."
         breadcrumbs={[{ label: "Articles" }]}
         actions={
           <Link
             href="/admin/articles/new"
-            className="kicker inline-flex items-center gap-1.5 border border-ink bg-ink text-paper px-3 py-1.5 text-xs hover:bg-paper hover:text-ink transition-colors"
+            className="kicker inline-flex items-center gap-1.5 border border-ink bg-ink text-paper px-3.5 py-2 text-xs hover:bg-paper hover:text-ink transition-colors font-bold uppercase tracking-wider"
           >
-            <Plus className="w-3.5 h-3.5" />
-            <span>New Article</span>
+            <Plus className="w-4 h-4" />
+            <span>Tulis Artikel Baru</span>
           </Link>
         }
       />
@@ -74,111 +74,141 @@ export default async function AdminArticlesPage({ searchParams }: AdminArticlesP
               type="search"
               name="q"
               defaultValue={q || ""}
-              placeholder="Filter by headline..."
+              placeholder="Cari berdasarkan judul warta..."
               className="w-full pl-8 pr-3 py-1.5 border border-rule bg-white text-ink text-xs focus:outline-none focus:border-ink font-serif"
             />
           </div>
+          {status && <input type="hidden" name="status" value={status} />}
+          {type && <input type="hidden" name="type" value={type} />}
           <button
             type="submit"
-            className="kicker border border-rule px-3 py-1.5 hover:bg-paper-dark"
+            className="border border-rule px-3 py-1.5 hover:border-ink hover:bg-paper font-sans font-semibold uppercase text-[0.625rem]"
           >
-            Search
+            Cari
           </button>
         </form>
 
-        <div className="flex items-center gap-2 font-sans">
-          <Filter className="w-3.5 h-3.5 text-ink-muted" />
+        {/* Filter links */}
+        <div className="flex items-center gap-2 font-sans text-xs">
+          <span className="text-ink-muted">Filter:</span>
           <Link
             href="/admin/articles"
-            className={`px-2 py-1 border ${!status ? "border-ink bg-ink text-paper font-bold" : "border-rule bg-white text-ink"}`}
+            className={`px-2 py-0.5 border ${
+              !status && !type
+                ? "bg-ink text-paper border-ink"
+                : "border-rule bg-white hover:border-ink"
+            }`}
           >
-            All
+            Semua
           </Link>
           <Link
             href="/admin/articles?status=published"
-            className={`px-2 py-1 border ${status === "published" ? "border-ink bg-ink text-paper font-bold" : "border-rule bg-white text-ink"}`}
+            className={`px-2 py-0.5 border ${
+              status === "published"
+                ? "bg-ink text-paper border-ink"
+                : "border-rule bg-white hover:border-ink"
+            }`}
           >
-            Published
+            Diterbitkan
           </Link>
           <Link
             href="/admin/articles?status=draft"
-            className={`px-2 py-1 border ${status === "draft" ? "border-ink bg-ink text-paper font-bold" : "border-rule bg-white text-ink"}`}
+            className={`px-2 py-0.5 border ${
+              status === "draft"
+                ? "bg-ink text-paper border-ink"
+                : "border-rule bg-white hover:border-ink"
+            }`}
           >
-            Drafts
+            Draft
           </Link>
           <Link
-            href="/admin/articles?status=in_review"
-            className={`px-2 py-1 border ${status === "in_review" ? "border-ink bg-ink text-paper font-bold" : "border-rule bg-white text-ink"}`}
+            href="/admin/articles?type=client_publication"
+            className={`px-2 py-0.5 border ${
+              type === "client_publication"
+                ? "bg-ink text-paper border-ink"
+                : "border-rule bg-white hover:border-ink"
+            }`}
           >
-            In Review
+            Publikasi Perkara
           </Link>
         </div>
       </div>
 
       {/* Articles Table */}
-      <div className="border border-rule bg-paper-light overflow-x-auto">
-        <table className="w-full text-left border-collapse text-xs">
-          <thead>
-            <tr className="border-b border-rule bg-paper-dark/60 font-sans font-bold uppercase text-[0.625rem] text-ink-muted tracking-wider">
-              <th className="p-3">Headline</th>
-              <th className="p-3">Rubrik / Type</th>
-              <th className="p-3">Workflow Status</th>
-              <th className="p-3">Demo Flag</th>
-              <th className="p-3">Last Updated</th>
-              <th className="p-3 text-right">Actions</th>
+      <div className="border border-rule bg-white overflow-hidden">
+        <table className="w-full text-left text-xs font-serif">
+          <thead className="bg-paper-dark/60 font-sans uppercase tracking-wider text-[0.625rem] border-b border-rule text-ink-muted">
+            <tr>
+              <th className="py-2.5 px-4">Judul Artikel</th>
+              <th className="py-2.5 px-4">Jenis</th>
+              <th className="py-2.5 px-4">Status</th>
+              <th className="py-2.5 px-4">Terakhir Diperbarui</th>
+              <th className="py-2.5 px-4 text-right">Aksi</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-rule-soft font-serif">
+          <tbody className="divide-y divide-rule-soft">
             {articles.length === 0 ? (
               <tr>
-                <td colSpan={6} className="p-8 text-center italic text-ink-muted">
-                  No articles found matching query criteria.
+                <td colSpan={5} className="py-8 text-center text-ink-muted">
+                  Tidak ada artikel yang cocok dengan kriteria pencarian.
                 </td>
               </tr>
             ) : (
               articles.map((art) => (
-                <tr key={art.id} className="hover:bg-paper-dark/30 transition-colors">
-                  <td className="p-3 font-semibold text-ink max-w-sm">
-                    <div className="flex items-center gap-1.5 flex-wrap">
-                      {art.publication_type === "client_publication" && (
-                        <span className="px-1.5 py-0.5 bg-ink text-paper text-[0.58rem] kicker font-bold uppercase tracking-wider">
-                          Klien
-                        </span>
-                      )}
-                      <Link href={`/admin/articles/${art.id}/edit`} className="hover:underline">
-                        {art.title}
-                      </Link>
-                    </div>
-                  </td>
-                  <td className="p-3 uppercase font-sans text-[0.625rem] text-ink-muted">
-                    {art.content_type}
-                  </td>
-                  <td className="p-3">
-                    <span
-                      className={`kicker text-[0.625rem] px-2 py-0.5 border ${
-                        art.status === "published"
-                          ? "border-ink bg-ink text-paper"
-                          : art.status === "in_review"
-                          ? "border-amber-800 bg-amber-100 text-amber-900"
-                          : "border-rule text-ink-muted"
-                      }`}
-                    >
-                      {art.status}
-                    </span>
-                  </td>
-                  <td className="p-3 font-mono text-[0.6875rem]">
-                    {art.is_demo ? "Demo Item" : "Verified Record"}
-                  </td>
-                  <td className="p-3 meta text-ink-muted">
-                    {formatDate(art.updated_at.substring(0, 10), "short")}
-                  </td>
-                  <td className="p-3 text-right">
+                <tr key={art.id} className="hover:bg-paper-light/50 transition-colors">
+                  <td className="py-3 px-4">
                     <Link
                       href={`/admin/articles/${art.id}/edit`}
-                      className="kicker text-[0.625rem] border border-rule px-2 py-1 hover:border-ink"
+                      className="font-bold text-ink hover:underline text-sm block"
                     >
-                      Edit
+                      {art.title}
                     </Link>
+                    <span className="font-mono text-[0.6875rem] text-ink-muted">
+                      /artikel/{art.slug}
+                    </span>
+                  </td>
+                  <td className="py-3 px-4 whitespace-nowrap font-sans text-[0.6875rem]">
+                    {art.publication_type === "client_publication" ? (
+                      <span className="font-bold text-accent">
+                        Publikasi Perkara
+                      </span>
+                    ) : (
+                      <span className="text-ink-muted">
+                        Berita The Law Times
+                      </span>
+                    )}
+                  </td>
+                  <td className="py-3 px-4 whitespace-nowrap">
+                    <span
+                      className={`text-[0.625rem] font-bold uppercase tracking-wider px-1.5 py-0.5 ${
+                        art.status === "published"
+                          ? "bg-green-100 text-green-900 border border-green-300"
+                          : "bg-amber-100 text-amber-900 border border-amber-300"
+                      }`}
+                    >
+                      {art.status === "published" ? "Diterbitkan" : "Draft"}
+                    </span>
+                  </td>
+                  <td className="py-3 px-4 whitespace-nowrap font-sans text-[0.6875rem] text-ink-muted">
+                    {formatDate(art.updated_at, "short")}
+                  </td>
+                  <td className="py-3 px-4 whitespace-nowrap text-right font-sans">
+                    <div className="flex items-center justify-end gap-2">
+                      <Link
+                        href={`/artikel/${art.slug}`}
+                        target="_blank"
+                        className="text-ink-muted hover:text-ink p-1"
+                        title="Preview"
+                      >
+                        <ExternalLink className="w-3.5 h-3.5" />
+                      </Link>
+                      <Link
+                        href={`/admin/articles/${art.id}/edit`}
+                        className="border border-rule px-2 py-0.5 text-[0.6875rem] hover:border-ink hover:bg-paper"
+                      >
+                        Edit
+                      </Link>
+                    </div>
                   </td>
                 </tr>
               ))

@@ -5,16 +5,9 @@ import { usePathname } from "next/navigation";
 import {
   LayoutDashboard,
   FileText,
-  Megaphone,
-  Briefcase,
-  Scale,
-  ShieldCheck,
-  FolderOpen,
-  ClipboardCheck,
-  Tags,
+  Rss,
   Settings,
   ExternalLink,
-  Sparkles,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { UserRole } from "@/types/database";
@@ -25,22 +18,15 @@ interface AdminSidebarProps {
   onNavigate?: () => void;
 }
 
-export function AdminSidebar({ userRole = "editor", className, onNavigate }: AdminSidebarProps) {
+export function AdminSidebar({ className, onNavigate }: AdminSidebarProps) {
   const pathname = usePathname();
 
+  // Exactly 4 requested menus: Dashboard, Articles, External Sources, Settings
   const navItems = [
     { label: "Dashboard", href: "/admin", icon: LayoutDashboard },
-    { label: "Articles & News", href: "/admin/articles", icon: FileText },
-    { label: "Review Queue", href: "/admin/review", icon: ClipboardCheck },
-    { label: "Sources & Pipeline", href: "/admin/sources", icon: Scale },
-    { label: "AI Intelligence", href: "/admin/ai-workspace", icon: Sparkles },
-    { label: "Announcements", href: "/admin/announcements", icon: Megaphone },
-    { label: "Case Archive", href: "/admin/cases", icon: Briefcase },
-    { label: "Regulations", href: "/admin/regulations", icon: Scale },
-    { label: "Intellectual Property", href: "/admin/intellectual-property", icon: ShieldCheck },
-    { label: "Documents & Files", href: "/admin/documents", icon: FolderOpen },
-    { label: "Categories", href: "/admin/categories", icon: Tags },
-    { label: "Settings & System", href: "/admin/settings", icon: Settings },
+    { label: "Articles", href: "/admin/articles", icon: FileText },
+    { label: "External Sources", href: "/admin/sources", icon: Rss },
+    { label: "Settings", href: "/admin/settings", icon: Settings },
   ];
 
   return (
@@ -50,14 +36,16 @@ export function AdminSidebar({ userRole = "editor", className, onNavigate }: Adm
         <div className="border-b border-rule pb-3">
           <Link href="/admin" className="block" onClick={onNavigate}>
             <span className="font-blackletter text-2xl text-ink">The Law Times</span>
-            <span className="block kicker text-[0.625rem] text-ink-muted mt-0.5">Editorial CMS</span>
+            <span className="block kicker text-[0.625rem] text-ink-muted mt-0.5">Admin & News CMS</span>
           </Link>
         </div>
 
         {/* Navigation Links */}
         <nav aria-label="Admin Navigation" className="space-y-1">
           {navItems.map((item) => {
-            const isActive = pathname === item.href || (item.href !== "/admin" && pathname.startsWith(item.href));
+            const isActive =
+              pathname === item.href ||
+              (item.href !== "/admin" && pathname.startsWith(item.href));
             const Icon = item.icon;
 
             return (
@@ -80,19 +68,16 @@ export function AdminSidebar({ userRole = "editor", className, onNavigate }: Adm
         </nav>
       </div>
 
-      {/* Footer Info & Quick Link to Site */}
-      <div className="border-t border-rule-soft pt-4 space-y-2">
+      {/* Footer link to public website */}
+      <div className="pt-4 border-t border-rule text-xs">
         <Link
           href="/"
           target="_blank"
-          className="flex items-center justify-between text-xs font-serif text-ink-muted hover:text-ink hover:underline p-1"
+          className="flex items-center gap-1.5 text-ink-muted hover:text-ink transition-colors"
         >
-          <span>View Public Broadsheet</span>
           <ExternalLink className="w-3.5 h-3.5" />
+          <span>Lihat Website Publik</span>
         </Link>
-        <div className="meta text-[0.625rem] text-ink-muted px-1">
-          Role: <strong className="uppercase text-ink font-sans">{userRole}</strong>
-        </div>
       </div>
     </aside>
   );
