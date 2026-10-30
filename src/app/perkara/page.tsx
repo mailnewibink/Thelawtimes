@@ -1,9 +1,16 @@
 import { Metadata } from "next";
-import { getClientPublications, getAnnouncements, getCases, getArticles } from "@/lib/content";
+import {
+  getClientPublications,
+  getAnnouncements,
+  getCases,
+  getArticles,
+  getExternalNews,
+} from "@/lib/content";
 import { CategoryHeader } from "@/components/editorial/CategoryHeader";
 import { CategoryFeaturedLead } from "@/components/editorial/CategoryFeaturedLead";
 import { PaginatedArticleListing } from "@/components/editorial/PaginatedArticleListing";
 import { CategorySidebar } from "@/components/editorial/CategorySidebar";
+import { ExternalNewsSection } from "@/components/editorial/ExternalNewsSection";
 import { Scale, ShieldAlert } from "lucide-react";
 import Link from "next/link";
 
@@ -14,11 +21,12 @@ export const metadata: Metadata = {
 };
 
 export default async function PerkaraCategoryPage() {
-  const [clientArticles, allArticles, announcements, cases] = await Promise.all([
+  const [clientArticles, allArticles, announcements, cases, externalNews] = await Promise.all([
     getClientPublications(20),
     getArticles(),
     getAnnouncements(),
     getCases(),
+    getExternalNews(3, "Perkara"),
   ]);
 
   // Lead story: highest priority client publication
@@ -104,6 +112,12 @@ export default async function PerkaraCategoryPage() {
           />
         </div>
       </div>
+
+      {/* External Legal News Section (Perkara & Putusan) */}
+      <ExternalNewsSection
+        news={externalNews}
+        title="WARTA SIDANG & PUTUSAN DARI SUMBER EKSTERNAL"
+      />
     </div>
   );
 }

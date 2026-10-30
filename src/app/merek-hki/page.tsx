@@ -1,9 +1,10 @@
 import { Metadata } from "next";
-import { getArticles, getAnnouncements } from "@/lib/content";
+import { getArticles, getAnnouncements, getExternalNews } from "@/lib/content";
 import { CategoryHeader } from "@/components/editorial/CategoryHeader";
 import { CategoryFeaturedLead } from "@/components/editorial/CategoryFeaturedLead";
 import { PaginatedArticleListing } from "@/components/editorial/PaginatedArticleListing";
 import { CategorySidebar } from "@/components/editorial/CategorySidebar";
+import { ExternalNewsSection } from "@/components/editorial/ExternalNewsSection";
 import { Sparkles, BookmarkCheck } from "lucide-react";
 import Link from "next/link";
 
@@ -14,9 +15,10 @@ export const metadata: Metadata = {
 };
 
 export default async function MerekHKICategoryPage() {
-  const [allArticles, announcements] = await Promise.all([
+  const [allArticles, announcements, externalNews] = await Promise.all([
     getArticles(),
     getAnnouncements(),
+    getExternalNews(3, "Merek"),
   ]);
 
   // Filter IP and trademark articles
@@ -117,6 +119,12 @@ export default async function MerekHKICategoryPage() {
           />
         </div>
       </div>
+
+      {/* External News for Merek & HKI */}
+      <ExternalNewsSection
+        news={externalNews}
+        title="WARTA HKI & MEREK DARI PANGKALAN RESMI"
+      />
     </div>
   );
 }
