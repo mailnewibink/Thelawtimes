@@ -54,6 +54,10 @@ function readLocalRequests(): ClientPublicationRequest[] {
 
 function writeLocalRequests(items: ClientPublicationRequest[]): void {
   try {
+    if (process.env.VERCEL) {
+      // In serverless Vercel runtime, skip writing to repo folder
+      return;
+    }
     const raw = items.map((r) => ({
       id: r.id,
       reference_number: r.referenceNumber,

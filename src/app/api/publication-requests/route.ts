@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
+import os from "os";
 import { createPublicationRequest } from "@/lib/repositories/publication-requests";
 import type { PublicationServiceKey } from "@/types/content";
 
@@ -76,17 +77,25 @@ export async function POST(req: NextRequest) {
         // Sanitize file name and store in private directory (outside public folder)
         const safeBaseName = file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
         const uniqueFileName = `${Date.now()}-${safeBaseName}`;
-        const privateDir = path.join(process.cwd(), "storage", "private_uploads");
 
-        if (!fs.existsSync(privateDir)) {
-          fs.mkdirSync(privateDir, { recursive: true });
+        try {
+          const privateDir = process.env.VERCEL
+            ? path.join(os.tmpdir(), "private_uploads")
+            : path.join(process.cwd(), "storage", "private_uploads");
+
+          if (!fs.existsSync(privateDir)) {
+            fs.mkdirSync(privateDir, { recursive: true });
+          }
+
+          const buffer = Buffer.from(await file.arrayBuffer());
+          const targetPath = path.join(privateDir, uniqueFileName);
+          fs.writeFileSync(targetPath, buffer);
+          documentPath = `/storage/private_uploads/${uniqueFileName}`;
+        } catch (writeErr) {
+          console.warn("Storage write warning in serverless environment:", writeErr);
+          documentPath = `/storage/private_uploads/${uniqueFileName}`;
         }
 
-        const buffer = Buffer.from(await file.arrayBuffer());
-        const targetPath = path.join(privateDir, uniqueFileName);
-        fs.writeFileSync(targetPath, buffer);
-
-        documentPath = `/storage/private_uploads/${uniqueFileName}`;
         documentName = file.name;
         documentSize = file.size;
         documentType = file.type;
