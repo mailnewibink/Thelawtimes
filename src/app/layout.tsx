@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: siteConfig.name,
+    title: `${siteConfig.name} — ${siteConfig.tagline}`,
     description: siteConfig.description,
     siteName: siteConfig.name,
     locale: "id_ID",
@@ -62,18 +62,18 @@ export const metadata: Metadata = {
     url: siteConfig.url,
     images: [
       {
-        url: `${siteConfig.url}/images/photos/supreme-court.jpg`,
+        url: `${siteConfig.url}/images/og-lawtimes.png`,
         width: 1200,
         height: 630,
-        alt: siteConfig.name,
+        alt: `${siteConfig.name} — ${siteConfig.tagline}`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: siteConfig.name,
+    title: `${siteConfig.name} — ${siteConfig.tagline}`,
     description: siteConfig.description,
-    images: [`${siteConfig.url}/images/photos/supreme-court.jpg`],
+    images: [`${siteConfig.url}/images/og-lawtimes.png`],
   },
 };
 
@@ -99,7 +99,7 @@ export default function RootLayout({
         url: siteConfig.url,
         logo: {
           "@type": "ImageObject",
-          url: `${siteConfig.url}/images/photos/supreme-court.jpg`,
+          url: `${siteConfig.url}/images/the-law-times-logo.png`,
         },
         sameAs: [
           "https://twitter.com",

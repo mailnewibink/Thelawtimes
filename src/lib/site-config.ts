@@ -8,11 +8,11 @@
  */
 export const siteConfig = {
   name: "The Law Times",
-  tagline: "Legal News & Announcements",
+  tagline: "Media Informasi & Publikasi Hukum",
   location: "Jakarta",
   description:
-    "The Law Times is an Indonesian legal publication and documentation archive covering legal news, official announcements, court and case records, regulation updates and intellectual property developments.",
-  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, ""),
+    "The Law Times adalah media informasi dan publikasi hukum independen yang menyajikan berita hukum terverifikasi, publikasi perkara, pendaftaran merek & HKI, regulasi, dan layanan konsultasi hukum.",
+  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://thelawtimes.id").replace(/\/$/, ""),
   isDemo: process.env.NEXT_PUBLIC_DEMO_MODE !== "false",
   /** Shown in place of any value that has not been verified. */
   unavailableLabel: "Not available",

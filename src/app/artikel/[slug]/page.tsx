@@ -108,7 +108,7 @@ export default async function ArticleDetailPage({ params }: ArticleDetailPagePro
           url: siteConfig.url,
           logo: {
             "@type": "ImageObject",
-            url: `${siteConfig.url}/images/photos/supreme-court.jpg`,
+            url: `${siteConfig.url}/images/the-law-times-logo.png`,
           },
         },
         image: article.image?.src
