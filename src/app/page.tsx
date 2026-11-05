@@ -52,15 +52,15 @@ export default async function FrontPage() {
   const regSubs = regulations.slice(1, 3);
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-6 sm:space-y-8 lg:space-y-10">
       {/* ==================================================================== */}
       {/* 1. HERO SECTION: FEATURED CLIENT STORY (LEFT) & BERITA PILIHAN (RIGHT)*/}
       {/* ==================================================================== */}
-      <section aria-label="Berita Utama & Pilihan" className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <section aria-label="Berita Utama & Pilihan" className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
         {/* LEFT COLUMN: Large Editorial Hero (7 cols on lg) */}
-        <div className="lg:col-span-7 space-y-4">
+        <div className="lg:col-span-7 space-y-3 sm:space-y-4">
           {featuredClient && (
-            <article className="space-y-4">
+            <article className="space-y-3 sm:space-y-4">
               {/* Category & Tag */}
               <div className="flex items-center gap-2">
                 <span className="bg-ink text-paper text-[0.68rem] kicker font-bold uppercase tracking-wider px-2 py-0.5">
@@ -72,8 +72,8 @@ export default async function FrontPage() {
                 </span>
               </div>
 
-              {/* Large Serif Headline */}
-              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold leading-[1.12] text-ink">
+              {/* Large Serif Headline — 34–38px mobile */}
+              <h2 className="article-headline text-ink">
                 <Link
                   href={`/artikel/${featuredClient.slug}`}
                   className="hover:underline decoration-1 underline-offset-4"
@@ -84,13 +84,13 @@ export default async function FrontPage() {
 
               {/* Short Article Deck / Excerpt */}
               {featuredClient.deck && (
-                <p className="font-serif text-lg sm:text-xl italic text-ink-muted leading-snug">
+                <p className="article-deck">
                   {featuredClient.deck}
                 </p>
               )}
 
               {/* Author & Publication Date */}
-              <div className="flex items-center gap-2 text-xs text-ink-muted font-sans font-semibold tracking-wider uppercase pb-2 border-b border-rule/50">
+              <div className="flex items-center gap-2 text-xs sm:text-[0.8125rem] text-ink-muted font-sans font-semibold tracking-wider uppercase pb-2 border-b border-rule/50">
                 <span>Oleh {featuredClient.byline || "Redaksi The Law Times"}</span>
                 <span className="text-rule-soft" aria-hidden="true">·</span>
                 <time dateTime={featuredClient.publishedAt}>
@@ -101,7 +101,7 @@ export default async function FrontPage() {
               {/* Large Landscape Photograph with Engraved Border */}
               {featuredClient.image && (
                 <figure className="space-y-1.5">
-                  <div className="relative aspect-[16/10] w-full border border-rule bg-paper-dark">
+                  <div className="relative aspect-[16/10] sm:aspect-[3/2] w-full border border-rule bg-paper-dark">
                     <Image
                       src={featuredClient.image.src}
                       alt={featuredClient.image.alt}
@@ -122,7 +122,7 @@ export default async function FrontPage() {
               )}
 
               {/* Lead Body Paragraph */}
-              <p className="font-serif text-base leading-relaxed text-ink-soft drop-cap">
+              <p className="font-serif text-[1.0625rem] sm:text-lg leading-relaxed text-ink-soft drop-cap">
                 {featuredClient.excerpt}
               </p>
 
@@ -242,19 +242,19 @@ export default async function FrontPage() {
         </div>
 
         {/* RIGHT COLUMN: BERITA PILIHAN (Numbered 01, 02, 03) (5 cols on lg) */}
-        <div className="lg:col-span-5 space-y-4 lg:border-l lg:border-ink/40 lg:pl-6">
+        <div className="lg:col-span-5 space-y-3 sm:space-y-4 lg:border-l lg:border-ink/40 lg:pl-6 pt-5 lg:pt-0 border-t lg:border-t-0 border-rule-soft">
           {/* Section Heading: BERITA PILIHAN */}
-          <div className="border-b-2 border-ink pb-2">
-            <h3 className="font-serif font-bold text-xl uppercase tracking-wider text-ink flex items-center justify-between">
+          <div className="border-b-2 border-ink pb-1.5 sm:pb-2">
+            <h3 className="font-serif font-bold text-lg sm:text-xl uppercase tracking-wider text-ink flex items-center justify-between">
               <span>BERITA PILIHAN</span>
-              <span className="font-sans text-[0.68rem] kicker text-ink-muted">
+              <span className="font-sans text-[0.65rem] sm:text-[0.68rem] kicker text-ink-muted">
                 PILIHAN REDAKSI
               </span>
             </h3>
           </div>
 
           {/* Stack of 3 numbered featured items */}
-          <div className="divide-y divide-rule/60 space-y-4 pt-1">
+          <div className="divide-y divide-rule/60 space-y-3 sm:space-y-4 pt-1">
             {editorialPicks.map((item, idx) => {
               const itemNumber = String(idx + 1).padStart(2, "0");
               const isClient = item.publicationType === "client_publication";
@@ -262,19 +262,19 @@ export default async function FrontPage() {
               return (
                 <article
                   key={item.id}
-                  className={idx > 0 ? "pt-4" : ""}
+                  className={idx > 0 ? "pt-3 sm:pt-4" : ""}
                 >
-                  <div className="flex gap-4 items-start">
+                  <div className="flex gap-3 sm:gap-4 items-start justify-between">
                     {/* Big Editorial Number */}
-                    <span className="font-serif font-bold text-3xl sm:text-4xl text-ink/75 leading-none shrink-0 w-8">
+                    <span className="font-serif font-bold text-2xl sm:text-4xl text-ink/75 leading-none shrink-0 w-6 sm:w-8">
                       {itemNumber}
                     </span>
 
-                    <div className="flex-1 space-y-1.5">
-                      {/* Category Label */}
-                      <div className="flex items-center gap-2">
+                    <div className="flex-1 min-w-0 space-y-1 sm:space-y-1.5">
+                      {/* Category Label + Date */}
+                      <div className="flex items-center gap-2 flex-wrap">
                         <span
-                          className={`text-[0.62rem] kicker uppercase font-bold tracking-wider px-1.5 py-0.2 border ${
+                          className={`text-[0.625rem] kicker uppercase font-bold tracking-wider px-1.5 py-0.5 border ${
                             isClient
                               ? "bg-ink text-paper border-ink"
                               : "bg-paper-dark text-ink border-rule"
@@ -282,13 +282,13 @@ export default async function FrontPage() {
                         >
                           {isClient ? "PUBLIKASI PERKARA" : item.category || "BERITA HUKUM"}
                         </span>
-                        <time className="text-[0.68rem] font-sans text-ink-muted">
+                        <time className="text-[0.6875rem] font-sans text-ink-muted">
                           {formatDate(item.publishedAt, "short")}
                         </time>
                       </div>
 
                       {/* Headline */}
-                      <h4 className="font-serif font-bold text-base leading-snug text-ink">
+                      <h4 className="font-serif font-bold text-base sm:text-lg leading-snug text-ink">
                         <Link
                           href={`/artikel/${item.slug}`}
                           className="hover:underline decoration-1 underline-offset-2"
@@ -297,21 +297,21 @@ export default async function FrontPage() {
                         </Link>
                       </h4>
 
-                      {/* Excerpt */}
-                      <p className="font-serif text-xs text-ink-muted leading-relaxed line-clamp-2">
+                      {/* Excerpt — max 2 lines on mobile */}
+                      <p className="font-serif text-xs sm:text-[0.8125rem] text-ink-muted leading-relaxed line-clamp-2">
                         {item.excerpt}
                       </p>
                     </div>
 
-                    {/* Small Thumbnail Image with border */}
+                    {/* Proportional Thumbnail Image with border */}
                     {item.image && (
-                      <div className="relative w-20 h-16 shrink-0 border border-rule bg-paper-dark">
+                      <div className="relative w-24 h-20 sm:w-28 sm:h-20 shrink-0 border border-rule bg-paper-dark overflow-hidden mt-0.5">
                         <Image
                           src={item.image.src}
                           alt={item.image.alt}
                           fill
                           className="object-cover"
-                          sizes="80px"
+                          sizes="(min-width: 640px) 112px, 96px"
                         />
                       </div>
                     )}

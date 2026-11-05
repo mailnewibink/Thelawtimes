@@ -154,7 +154,7 @@ export default function RootLayout({
                 <PrimaryNavigation />
                 <MobileNavigation />
               </Suspense>
-              <main id="main-content" className="mt-6">
+              <main id="main-content" className="mt-3 sm:mt-5 lg:mt-6">
                 {children}
               </main>
             </div>

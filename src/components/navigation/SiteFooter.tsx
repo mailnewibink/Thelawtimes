@@ -24,7 +24,7 @@ export function SiteFooter() {
   ];
 
   return (
-    <footer className="mt-16 border-t-[3px] border-ink bg-paper pt-8 pb-12">
+    <footer className="mt-10 sm:mt-16 border-t-[3px] border-ink bg-paper pt-6 sm:pt-8 pb-8 sm:pb-12">
       <div className="paper-container">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 mb-8">
           <div className="md:col-span-5">

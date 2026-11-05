@@ -21,7 +21,7 @@ export function ArticleMetadata({
   className,
 }: ArticleMetadataProps) {
   return (
-    <div className={cn("meta flex flex-wrap items-center gap-x-2 gap-y-1 text-xs", className)}>
+    <div className={cn("meta flex flex-wrap items-center gap-x-2 gap-y-1 text-[0.75rem] sm:text-[0.8125rem]", className)}>
       {provenance?.isDemo && <DemoBadge />}
       {publicationType === "client_publication" && (
         <>

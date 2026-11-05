@@ -46,12 +46,12 @@ export function FeaturedStory({ article, className }: FeaturedStoryProps) {
             {article.excerpt}
           </p>
         </div>
-        <div className="mt-4 pt-3 border-t border-rule-soft">
+        <div className="mt-3 sm:mt-4 pt-2.5 sm:pt-3 border-t border-rule-soft">
           <Link
             href={detailHref}
             className="kicker inline-flex items-center gap-1.5 text-xs text-ink hover:underline"
           >
-            Continue reading story
+            Lanjutkan Membaca
             <span aria-hidden="true">→</span>
           </Link>
         </div>

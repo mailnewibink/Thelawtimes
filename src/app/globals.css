@@ -100,39 +100,45 @@
    ========================================================================== */
 
 @layer components {
-  /* Centered paper container */
+  /* Centered paper container — optimized for 320px–430px mobile up to desktop */
   .paper-container {
     width: 100%;
     max-width: var(--container-paper);
     margin-inline: auto;
-    padding-inline: 1rem;
+    padding-inline: 1.25rem; /* 20px default on mobile */
+  }
+  @media (max-width: 22.5rem) {
+    .paper-container {
+      padding-inline: 1rem; /* 16px on extra small phones <= 360px */
+    }
   }
   @media (min-width: 40rem) {
     .paper-container {
-      padding-inline: 1.5rem;
+      padding-inline: 1.5rem; /* 24px on tablet */
     }
   }
   @media (min-width: 80rem) {
     .paper-container {
-      padding-inline: 2rem;
+      padding-inline: 2rem; /* 32px on wide desktop */
     }
   }
 
-  /* Small uppercase label used for kickers, categories and metadata */
+  /* Small uppercase label used for kickers, categories and metadata (12–14px) */
   .kicker {
     font-family: var(--font-sans);
-    font-size: 0.6875rem;
+    font-size: 0.75rem; /* 12px */
     font-weight: 700;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    line-height: 1.3;
+    line-height: 1.35;
   }
 
   .meta {
     font-family: var(--font-sans);
-    font-size: 0.75rem;
+    font-size: 0.8125rem; /* 13px */
     letter-spacing: 0.02em;
     color: var(--color-ink-muted);
+    line-height: 1.4;
   }
 
   /* Headline link — underline only on hover/focus */
@@ -149,19 +155,61 @@
     background-size: 100% 1px;
   }
 
-  /* Article body typography */
+  /* Article headline responsive typography (34–38px mobile, 1.12–1.16 leading) */
+  .article-headline {
+    font-family: var(--font-serif);
+    font-size: clamp(2.125rem, 7.5vw, 2.375rem); /* 34px - 38px */
+    line-height: 1.14;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+  @media (min-width: 40rem) {
+    .article-headline {
+      font-size: 2.5rem; /* 40px */
+      line-height: 1.15;
+    }
+  }
+  @media (min-width: 64rem) {
+    .article-headline {
+      font-size: 3rem; /* 48px */
+      line-height: 1.14;
+    }
+  }
+
+  /* Article deck / intro (20–24px mobile, 1.45–1.55 leading) */
+  .article-deck {
+    font-family: var(--font-serif);
+    font-size: clamp(1.25rem, 4.2vw, 1.375rem); /* 20px - 22px */
+    line-height: 1.48;
+    font-style: italic;
+    color: #38342d; /* High-contrast editorial ink */
+    text-wrap: pretty;
+  }
+  @media (min-width: 40rem) {
+    .article-deck {
+      font-size: 1.5rem; /* 24px */
+      line-height: 1.5;
+    }
+  }
+
+  /* Article body typography — optimized for long-form mobile reading (17px mobile / 18px desktop) */
   .prose-news {
     font-family: var(--font-serif);
-    font-size: 1.0625rem;
-    line-height: 1.7;
+    font-size: 1.0625rem; /* 17px */
+    line-height: 1.72;
     max-width: var(--container-measure);
+    overflow-wrap: break-word;
   }
   .prose-news > p + p {
-    margin-top: 1.1em;
+    margin-top: 1.15em;
   }
   @media (min-width: 48rem) {
     .prose-news {
-      font-size: 1.125rem;
+      font-size: 1.125rem; /* 18px */
+      line-height: 1.75;
     }
   }
 

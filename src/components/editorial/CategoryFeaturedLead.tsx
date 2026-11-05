@@ -16,8 +16,8 @@ export function CategoryFeaturedLead({
   showLegalNoticeBox = false,
 }: CategoryFeaturedLeadProps) {
   return (
-    <article className="border border-ink p-4 sm:p-6 bg-paper-light/30">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+    <article className="border border-ink p-3.5 sm:p-6 bg-paper-light/30">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6">
         {/* Left / Top: Image */}
         {article.image && (
           <figure className="lg:col-span-6 flex flex-col">
@@ -34,9 +34,9 @@ export function CategoryFeaturedLead({
                 {badgeLabel}
               </div>
             </div>
-            <figcaption className="mt-2 flex items-center justify-between text-[0.6875rem] text-ink-muted italic flex-wrap gap-1 border-b border-rule/30 pb-1">
-              <span>{article.image.caption || article.headline}</span>
-              <span className="font-sans text-[0.625rem] not-italic text-ink-muted/90 shrink-0">
+            <figcaption className="mt-1.5 flex items-center justify-between text-[0.65rem] sm:text-[0.6875rem] text-ink-muted italic flex-wrap gap-1 border-b border-rule/30 pb-1">
+              <span className="truncate max-w-[65%]">{article.image.caption || article.headline}</span>
+              <span className="font-sans text-[0.58rem] sm:text-[0.625rem] not-italic text-ink-muted/90 shrink-0">
                 {article.image.credit ? `Sumber: ${article.image.credit} • ` : ""}Gambar hanya ilustrasi
               </span>
             </figcaption>
@@ -46,8 +46,8 @@ export function CategoryFeaturedLead({
         {/* Right / Content */}
         <div className={article.image ? "lg:col-span-6 flex flex-col justify-between" : "lg:col-span-12 flex flex-col justify-between"}>
           <div>
-            <div className="flex items-center gap-2 mb-2">
-              <span className="font-sans text-[0.6875rem] uppercase tracking-wider font-bold text-accent">
+            <div className="flex items-center gap-2 mb-1.5 sm:mb-2">
+              <span className="font-sans text-[0.6875rem] uppercase tracking-wider font-bold text-accent kicker">
                 {article.category || "HUKUM"}
               </span>
               <span className="text-rule font-serif text-xs">•</span>
@@ -59,19 +59,19 @@ export function CategoryFeaturedLead({
               </time>
             </div>
 
-            <h2 className="font-serif text-2xl sm:text-3xl font-bold leading-tight text-ink mb-3">
+            <h2 className="font-serif text-xl sm:text-2xl lg:text-3xl font-bold leading-snug text-ink mb-2">
               <Link href={`/artikel/${article.slug}`} className="hover:underline decoration-1">
                 {article.headline}
               </Link>
             </h2>
 
             {article.deck && (
-              <p className="font-serif text-sm sm:text-base italic text-ink-muted font-medium mb-3 leading-snug">
+              <p className="font-serif text-sm sm:text-base italic text-ink-muted font-medium mb-2 leading-snug">
                 {article.deck}
               </p>
             )}
 
-            <p className="font-serif text-sm text-ink-soft leading-relaxed line-clamp-4 mb-4">
+            <p className="font-serif text-xs sm:text-sm text-ink-soft leading-relaxed line-clamp-3 mb-3">
               {article.excerpt}
             </p>
           </div>

@@ -36,7 +36,7 @@ export function CategoryHeader({
               {kicker}
             </p>
           )}
-          <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-black text-ink tracking-tight uppercase leading-none">
+          <h1 className="font-serif text-2xl sm:text-4xl md:text-5xl font-black text-ink tracking-tight uppercase leading-none">
             {title}
           </h1>
         </div>

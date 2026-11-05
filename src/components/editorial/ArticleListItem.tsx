@@ -66,8 +66,8 @@ export function ArticleListItem({
         )}
       </div>
       {article.byline && (
-        <p className="meta mt-2 text-xs italic">
-          By {article.byline}
+        <p className="meta mt-1.5 sm:mt-2 text-xs italic">
+          Oleh: {article.byline}
         </p>
       )}
     </article>

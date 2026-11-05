@@ -9,6 +9,7 @@ import { SocialShareBar } from "@/components/editorial/SocialShareBar";
 import { ArticleListItem } from "@/components/editorial/ArticleListItem";
 import { PublicationCtaBox } from "@/components/editorial/PublicationCtaBox";
 import { siteConfig } from "@/lib/site-config";
+import { formatDate } from "@/lib/utils";
 import { Scale, FileText, ExternalLink, ArrowLeft } from "lucide-react";
 
 interface ArticleDetailPageProps {
@@ -148,7 +149,7 @@ export default async function ArticleDetailPage({ params }: ArticleDetailPagePro
   };
 
   return (
-    <article className="mx-auto max-w-4xl space-y-8">
+    <article className="mx-auto max-w-4xl space-y-5 sm:space-y-8">
       {/* JSON-LD Script */}
       <script
         type="application/ld+json"
@@ -156,64 +157,88 @@ export default async function ArticleDetailPage({ params }: ArticleDetailPagePro
       />
 
       {/* Back to section link */}
-      <div className="border-b border-rule-soft pb-2 flex items-center justify-between text-xs">
+      <div className="border-b border-rule-soft pb-1.5 sm:pb-2 flex items-center justify-between text-xs">
         <Link
           href={isClientPub ? "/perkara" : "/berita-hukum"}
-          className="kicker inline-flex items-center gap-1.5 text-ink-muted hover:text-ink font-bold uppercase transition-colors"
+          className="kicker inline-flex items-center gap-1.5 text-ink-muted hover:text-ink font-bold uppercase transition-colors text-[0.6875rem] sm:text-xs"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
           <span>{isClientPub ? "Kembali ke Publikasi Perkara" : "Kembali ke Berita Hukum"}</span>
         </Link>
 
-        <span className="text-[0.68rem] kicker uppercase font-mono text-ink-muted">
+        <span className="text-[0.65rem] sm:text-[0.68rem] kicker uppercase font-mono text-ink-muted">
           ID: {article.slug}
         </span>
       </div>
 
       {/* Client Publication Transparency Notice */}
       {isClientPub && (
-        <div className="border-l-4 border-ink bg-paper-dark/40 p-4 text-xs space-y-1">
-          <div className="flex items-center gap-1.5 text-ink font-bold uppercase tracking-wider text-[0.7rem] kicker">
-            <Scale className="w-4 h-4 text-accent" />
-            <span>Publikasi Khusus Klien & Perkara Terkait</span>
+        <div className="border-l-4 border-ink bg-paper-dark/40 p-3 sm:p-4 text-xs space-y-1">
+          <div className="flex items-center gap-1.5 text-ink font-bold uppercase tracking-wider text-[0.6875rem] sm:text-[0.7rem] kicker">
+            <Scale className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-accent" />
+            <span>Publikasi Khusus Klien &amp; Perkara Terkait</span>
           </div>
-          <p className="text-ink-muted text-[0.75rem] leading-relaxed">
+          <p className="text-ink-muted text-[0.72rem] sm:text-[0.75rem] leading-relaxed">
             Artikel ini diterbitkan sebagai saluran resmi pengumuman hukum, keterbukaan sengketa, dan putusan
             perkara peradilan terkait klien. Materi ini disajikan untuk kepentingan transparansi dan catatan publik resmi.
           </p>
         </div>
       )}
 
-      {/* Article Header */}
-      <header className="space-y-4">
-        <ArticleMetadata
-          publishedAt={article.publishedAt}
-          category={article.category}
-          byline={article.byline}
-          publicationType={article.publicationType}
-          provenance={article.provenance}
-        />
+      {/* Article Header — strict hierarchy: Category/Date -> Headline -> Intro/Deck -> Byline */}
+      <header className="space-y-2.5 sm:space-y-4">
+        {/* 1. CATEGORY / RUBRIC + DATE */}
+        <div className="flex flex-wrap items-center gap-2 text-xs">
+          {isClientPub && (
+            <span className="px-1.5 py-0.5 bg-ink text-paper text-[0.625rem] kicker uppercase font-bold tracking-wider">
+              Publikasi Klien
+            </span>
+          )}
+          <span className="font-sans font-bold uppercase tracking-wider text-xs sm:text-[0.8125rem] text-accent kicker">
+            {article.category || "HUKUM"}
+          </span>
+          <span aria-hidden="true" className="text-rule-soft">·</span>
+          <time dateTime={article.publishedAt} className="font-sans text-xs sm:text-[0.8125rem] text-ink-muted uppercase tracking-wider">
+            {formatDate(article.publishedAt, "short")}
+          </time>
+        </div>
 
-        <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold leading-[1.15] text-ink">
+        {/* 2. HEADLINE — 34–38px mobile, bold, line-height 1.14 */}
+        <h1 className="article-headline text-ink">
           {article.headline}
         </h1>
 
+        {/* 3. INTRO / EXCERPT — 20–24px mobile, italic, line-height 1.48 */}
         {article.deck && (
-          <p className="font-serif text-xl sm:text-2xl italic text-ink-muted leading-snug">
+          <p className="article-deck">
             {article.deck}
           </p>
         )}
+
+        {/* 4. AUTHOR + DATE / BYLINE — compact metadata */}
+        <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-rule-soft/60 text-xs sm:text-[0.8125rem] text-ink-muted font-sans">
+          <div className="flex items-center gap-1.5 tracking-wider uppercase font-semibold">
+            <span>Oleh:</span>
+            <span className="text-ink font-bold">{article.byline || "Dewan Redaksi The Law Times"}</span>
+          </div>
+          <div className="text-[0.72rem] sm:text-[0.75rem] text-ink-muted/80">
+            {formatDate(article.publishedAt, "long")}
+          </div>
+        </div>
       </header>
 
-      {/* Social Sharing Bar */}
+      {/* 5. EDITORIAL DIVIDER */}
+      <div className="pt-0.5 pb-0.5">
+        <PaperDivider variant="thin" />
+      </div>
+
+      {/* Social Sharing Bar — compact on mobile */}
       <SocialShareBar title={article.headline} url={canonicalUrl} />
 
-      <PaperDivider variant="thin" />
-
-      {/* Featured Image */}
+      {/* 6. HERO IMAGE & 7. IMAGE CAPTION */}
       {article.image && (
-        <figure className="my-6 space-y-2">
-          <div className="relative aspect-[3/2] w-full border border-rule bg-paper-dark overflow-hidden">
+        <figure className="my-4 sm:my-6 space-y-1.5">
+          <div className="relative aspect-[16/10] sm:aspect-[3/2] w-full border border-rule bg-paper-dark overflow-hidden">
             <Image
               src={article.image.src}
               alt={article.image.alt}
@@ -223,16 +248,16 @@ export default async function ArticleDetailPage({ params }: ArticleDetailPagePro
               priority
             />
           </div>
-          <figcaption className="meta text-xs italic flex items-center justify-between flex-wrap gap-2 border-b border-rule/50 pb-2">
-            <span>{article.image.caption || article.headline}</span>
-            <span className="font-sans text-[0.6875rem] not-italic text-ink-muted/90 shrink-0">
+          <figcaption className="meta text-[0.6875rem] sm:text-xs italic flex items-center justify-between flex-wrap gap-2 border-b border-rule/50 pb-1.5 text-ink-muted/85">
+            <span className="truncate max-w-[70%]">{article.image.caption || article.headline}</span>
+            <span className="font-sans text-[0.625rem] sm:text-[0.6875rem] not-italic text-ink-muted/75 shrink-0">
               {article.image.credit ? `Sumber: ${article.image.credit} • ` : ""}Gambar hanya ilustrasi
             </span>
           </figcaption>
         </figure>
       )}
 
-      {/* Article Body */}
+      {/* 8. ARTICLE CONTENT */}
       <div className="prose-news drop-cap mx-auto text-ink-soft space-y-4">
         {article.body.map((paragraph, idx) => (
           <p key={idx}>{paragraph}</p>
@@ -241,7 +266,7 @@ export default async function ArticleDetailPage({ params }: ArticleDetailPagePro
 
       {/* Supporting Documents & Official Sources Box */}
       {(article.sourceUrl || article.documentUrl || article.sources.length > 0) && (
-        <div className="border border-rule bg-paper-dark/20 p-4 space-y-3 my-8 text-xs">
+        <div className="border border-rule bg-paper-dark/20 p-3 sm:p-4 space-y-2.5 sm:space-y-3 my-5 sm:my-8 text-xs">
           <div className="border-b border-rule pb-1.5 flex items-center justify-between">
             <span className="kicker uppercase font-bold text-[0.68rem] text-ink flex items-center gap-1.5">
               <FileText className="w-3.5 h-3.5 text-accent" />
