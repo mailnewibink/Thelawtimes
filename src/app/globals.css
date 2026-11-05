@@ -179,18 +179,18 @@
     }
   }
 
-  /* Article deck / intro (15–17px mobile, 1.48–1.52 leading) */
+  /* Article deck / intro (50% smaller on mobile: ~11.5px–13px, 1.45 leading) */
   .article-deck {
     font-family: var(--font-serif);
-    font-size: clamp(0.9375rem, 3.2vw, 1.0625rem); /* ~15px - 17px on mobile */
-    line-height: 1.5;
+    font-size: clamp(0.72rem, 2.2vw, 0.8125rem); /* ~11.5px - 13px on mobile */
+    line-height: 1.45;
     font-style: italic;
-    color: #38342d; /* High-contrast editorial ink */
+    color: #454037; /* Refined editorial ink */
     text-wrap: pretty;
   }
   @media (min-width: 40rem) {
     .article-deck {
-      font-size: 1.25rem; /* 20px on tablet/desktop */
+      font-size: 1rem; /* 16px on tablet/desktop */
       line-height: 1.5;
     }
   }

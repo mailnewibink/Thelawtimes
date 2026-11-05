@@ -215,15 +215,18 @@ export default async function ArticleDetailPage({ params }: ArticleDetailPagePro
           </p>
         )}
 
-        {/* 4. AUTHOR + DATE / BYLINE */}
-        <div className="flex flex-wrap items-center justify-between gap-1.5 mt-3 sm:mt-5 pt-2 sm:pt-3 border-t border-rule-soft/60 text-xs sm:text-[0.8125rem] text-ink-muted font-sans">
-          <div className="flex items-center gap-1.5 tracking-wider uppercase font-semibold text-[0.6875rem] sm:text-xs">
+        {/* 4. AUTHOR + DATE / BYLINE — compact, 40% smaller byline & single-line date */}
+        <div className="flex items-center justify-between gap-2 mt-2.5 sm:mt-4 pt-1.5 sm:pt-2.5 border-t border-rule-soft/60 text-[0.58rem] sm:text-xs text-ink-muted font-sans">
+          <div className="flex items-center gap-1 tracking-wider uppercase font-semibold text-[0.58rem] sm:text-xs truncate max-w-[65%] sm:max-w-none">
             <span>Oleh:</span>
-            <span className="text-ink font-bold">{article.byline || "Dewan Redaksi The Law Times"}</span>
+            <span className="text-ink font-bold truncate">{article.byline || "Dewan Redaksi The Law Times"}</span>
           </div>
-          <div className="text-[0.65rem] sm:text-[0.75rem] text-ink-muted/80">
-            {formatDate(article.publishedAt, "long")}
-          </div>
+          <time
+            dateTime={article.publishedAt}
+            className="text-[0.58rem] sm:text-[0.72rem] text-ink-muted/80 whitespace-nowrap shrink-0 font-medium uppercase"
+          >
+            {formatDate(article.publishedAt, "short")}
+          </time>
         </div>
       </header>
 

@@ -89,11 +89,16 @@ export default async function FrontPage() {
                 </p>
               )}
 
-              {/* Author & Publication Date */}
-              <div className="flex items-center gap-2 text-xs sm:text-[0.8125rem] text-ink-muted font-sans font-semibold tracking-wider uppercase pb-2 border-b border-rule/50">
-                <span>Oleh {featuredClient.byline || "Redaksi The Law Times"}</span>
-                <span className="text-rule-soft" aria-hidden="true">·</span>
-                <time dateTime={featuredClient.publishedAt}>
+              {/* Author & Publication Date — compact, 40% smaller byline & single-line date */}
+              <div className="flex items-center justify-between gap-2 text-[0.58rem] sm:text-[0.6875rem] text-ink-muted font-sans font-semibold tracking-wider uppercase pb-1.5 border-b border-rule/50">
+                <span className="truncate max-w-[65%] sm:max-w-none">
+                  Oleh {featuredClient.byline || "Redaksi The Law Times"}
+                </span>
+                <span className="text-rule-soft hidden sm:inline" aria-hidden="true">·</span>
+                <time
+                  dateTime={featuredClient.publishedAt}
+                  className="whitespace-nowrap shrink-0 text-ink-muted/90 font-medium text-[0.58rem] sm:text-[0.65rem]"
+                >
                   {formatDate(featuredClient.publishedAt, "short")}
                 </time>
               </div>
