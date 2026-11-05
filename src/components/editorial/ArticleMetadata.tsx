@@ -21,11 +21,11 @@ export function ArticleMetadata({
   className,
 }: ArticleMetadataProps) {
   return (
-    <div className={cn("meta flex flex-wrap items-center gap-x-2 gap-y-1 text-[0.75rem] sm:text-[0.8125rem]", className)}>
+    <div className={cn("meta flex flex-wrap items-center gap-x-2 gap-y-1 text-[0.6875rem] sm:text-xs", className)}>
       {provenance?.isDemo && <DemoBadge />}
       {publicationType === "client_publication" && (
         <>
-          <span className="px-1.5 py-0.5 bg-ink text-paper text-[0.62rem] kicker uppercase font-bold tracking-wider">
+          <span className="px-1.5 py-0.5 bg-ink text-paper text-[0.6rem] kicker uppercase font-bold tracking-wider">
             Publikasi Klien
           </span>
           <span aria-hidden="true" className="text-rule-soft">·</span>
@@ -37,11 +37,11 @@ export function ArticleMetadata({
           <span aria-hidden="true" className="text-rule-soft">·</span>
         </>
       )}
-      <time dateTime={publishedAt}>{formatDate(publishedAt, "short")}</time>
+      <time dateTime={publishedAt} className="whitespace-nowrap shrink-0">{formatDate(publishedAt, "short")}</time>
       {byline && (
         <>
           <span aria-hidden="true" className="text-rule-soft">·</span>
-          <span>By {byline}</span>
+          <span className="truncate max-w-[200px] sm:max-w-none">Oleh {byline}</span>
         </>
       )}
     </div>

@@ -90,19 +90,19 @@ export function PublicationCtaBox({
     <aside
       aria-label="Pengumuman Layanan Publikasi Perkara"
       className={cn(
-        "border-2 border-ink bg-paper-light p-6 sm:p-8 space-y-4 text-ink text-center max-w-4xl mx-auto",
+        "border-2 border-ink bg-paper-light p-4 sm:p-8 space-y-3 sm:space-y-4 text-ink text-center max-w-4xl mx-auto",
         className
       )}
     >
-      <div className="flex items-center justify-center gap-3">
+      <div className="flex items-center justify-center gap-2 sm:gap-3">
         <span className="text-xs text-accent font-serif" aria-hidden="true">✱</span>
-        <p className="kicker text-[0.6875rem] text-accent uppercase font-bold tracking-[0.24em]">
+        <p className="kicker text-[0.625rem] sm:text-[0.6875rem] text-accent uppercase font-bold tracking-[0.16em] sm:tracking-[0.24em]">
           Layanan Publikasi Hukum & Berkas Perkara
         </p>
         <span className="text-xs text-accent font-serif" aria-hidden="true">✱</span>
       </div>
 
-      <h2 className="font-serif text-xl sm:text-3xl font-extrabold uppercase tracking-tight">
+      <h2 className="font-serif text-lg sm:text-2xl md:text-3xl font-extrabold uppercase tracking-tight">
         Publikasikan Perkara Anda di The Law Times
       </h2>
 

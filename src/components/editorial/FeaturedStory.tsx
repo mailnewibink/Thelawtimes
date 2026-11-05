@@ -38,7 +38,7 @@ export function FeaturedStory({ article, className }: FeaturedStoryProps) {
             className="mb-3"
           />
           {article.deck && (
-            <p className="font-serif text-lg italic text-ink-muted leading-snug mb-4">
+            <p className="article-deck mb-3">
               {article.deck}
             </p>
           )}

@@ -207,12 +207,12 @@ export default async function FrontPage() {
                 </div>
 
                 {/* Action Buttons matching reference image */}
-                <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-ink/20">
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 pt-2 border-t border-ink/20">
                   <a
                     href="https://pdki-indonesia.dgip.go.id"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 border border-ink bg-ink text-paper px-3 py-1.5 text-[0.68rem] kicker uppercase font-bold hover:bg-paper hover:text-ink transition-colors"
+                    className="inline-flex items-center justify-center gap-1.5 border border-ink bg-ink text-paper px-3 py-1.5 text-[0.65rem] sm:text-[0.68rem] kicker uppercase font-bold hover:bg-paper hover:text-ink transition-colors text-center"
                   >
                     <span>Lihat Data Resmi di PDKI Indonesia</span>
                     <ExternalLink className="w-3 h-3" />
@@ -223,7 +223,7 @@ export default async function FrontPage() {
                       href={featuredClient.documentUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 border border-ink bg-paper text-ink px-3 py-1.5 text-[0.68rem] kicker uppercase font-bold hover:bg-ink hover:text-paper transition-colors"
+                      className="inline-flex items-center justify-center gap-1.5 border border-ink bg-paper text-ink px-3 py-1.5 text-[0.65rem] sm:text-[0.68rem] kicker uppercase font-bold hover:bg-ink hover:text-paper transition-colors text-center"
                     >
                       <Download className="w-3 h-3" />
                       <span>Unduh Pengumuman (PDF)</span>
@@ -269,17 +269,17 @@ export default async function FrontPage() {
                   key={item.id}
                   className={idx > 0 ? "pt-3 sm:pt-4" : ""}
                 >
-                  <div className="flex gap-3 sm:gap-4 items-start justify-between">
+                  <div className="flex gap-2.5 sm:gap-4 items-start justify-between">
                     {/* Big Editorial Number */}
-                    <span className="font-serif font-bold text-2xl sm:text-4xl text-ink/75 leading-none shrink-0 w-6 sm:w-8">
+                    <span className="font-serif font-bold text-xl sm:text-4xl text-ink/75 leading-none shrink-0 w-5 sm:w-8">
                       {itemNumber}
                     </span>
 
                     <div className="flex-1 min-w-0 space-y-1 sm:space-y-1.5">
-                      {/* Category Label + Date */}
-                      <div className="flex items-center gap-2 flex-wrap">
+                      {/* Category Label + Date — single-line date */}
+                      <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
                         <span
-                          className={`text-[0.625rem] kicker uppercase font-bold tracking-wider px-1.5 py-0.5 border ${
+                          className={`text-[0.56rem] sm:text-[0.625rem] kicker uppercase font-bold tracking-wider px-1.5 py-0.2 border ${
                             isClient
                               ? "bg-ink text-paper border-ink"
                               : "bg-paper-dark text-ink border-rule"
@@ -287,13 +287,13 @@ export default async function FrontPage() {
                         >
                           {isClient ? "PUBLIKASI PERKARA" : item.category || "BERITA HUKUM"}
                         </span>
-                        <time className="text-[0.6875rem] font-sans text-ink-muted">
+                        <time className="text-[0.58rem] sm:text-[0.6875rem] font-sans text-ink-muted whitespace-nowrap shrink-0">
                           {formatDate(item.publishedAt, "short")}
                         </time>
                       </div>
 
                       {/* Headline */}
-                      <h4 className="font-serif font-bold text-base sm:text-lg leading-snug text-ink">
+                      <h4 className="font-serif font-bold text-sm sm:text-lg leading-snug text-ink">
                         <Link
                           href={`/artikel/${item.slug}`}
                           className="hover:underline decoration-1 underline-offset-2"
@@ -303,20 +303,20 @@ export default async function FrontPage() {
                       </h4>
 
                       {/* Excerpt — max 2 lines on mobile */}
-                      <p className="font-serif text-xs sm:text-[0.8125rem] text-ink-muted leading-relaxed line-clamp-2">
+                      <p className="font-serif text-[0.6875rem] sm:text-[0.8125rem] text-ink-muted leading-relaxed line-clamp-2">
                         {item.excerpt}
                       </p>
                     </div>
 
                     {/* Proportional Thumbnail Image with border */}
                     {item.image && (
-                      <div className="relative w-24 h-20 sm:w-28 sm:h-20 shrink-0 border border-rule bg-paper-dark overflow-hidden mt-0.5">
+                      <div className="relative w-20 h-16 sm:w-28 sm:h-20 shrink-0 border border-rule bg-paper-dark overflow-hidden mt-0.5">
                         <Image
                           src={item.image.src}
                           alt={item.image.alt}
                           fill
                           className="object-cover"
-                          sizes="(min-width: 640px) 112px, 96px"
+                          sizes="(min-width: 640px) 112px, 80px"
                         />
                       </div>
                     )}
@@ -407,8 +407,8 @@ export default async function FrontPage() {
                 <p className="font-serif text-xs leading-relaxed text-ink-muted line-clamp-3">
                   {ipLead.excerpt}
                 </p>
-                <div className="text-[0.65rem] font-sans text-ink-muted pt-1">
-                  <time dateTime={ipLead.publishedAt}>{formatDate(ipLead.publishedAt, "short")}</time>
+                <div className="text-[0.62rem] sm:text-[0.65rem] font-sans text-ink-muted pt-1">
+                  <time dateTime={ipLead.publishedAt} className="whitespace-nowrap shrink-0">{formatDate(ipLead.publishedAt, "short")}</time>
                 </div>
               </article>
             )}
@@ -483,8 +483,8 @@ export default async function FrontPage() {
                 <p className="font-serif text-xs leading-relaxed text-ink-muted line-clamp-3">
                   {newsLead.excerpt}
                 </p>
-                <div className="text-[0.65rem] font-sans text-ink-muted pt-1">
-                  <time dateTime={newsLead.publishedAt}>{formatDate(newsLead.publishedAt, "short")}</time>
+                <div className="text-[0.62rem] sm:text-[0.65rem] font-sans text-ink-muted pt-1">
+                  <time dateTime={newsLead.publishedAt} className="whitespace-nowrap shrink-0">{formatDate(newsLead.publishedAt, "short")}</time>
                 </div>
               </article>
             )}
@@ -605,10 +605,10 @@ export default async function FrontPage() {
       {/* ==================================================================== */}
       <div className="pt-4 pb-2">
         <PaperDivider variant="double" />
-        <div className="border-y-2 border-ink py-2 my-1 text-center font-sans font-extrabold text-xs sm:text-sm tracking-[0.2em] uppercase text-ink flex items-center justify-center gap-3">
-          <span aria-hidden="true" className="text-base text-accent">✱</span>
-          <span>BACA ARSIP & WARTA LENGKAP DI WWW.THELAWTIMES.COM</span>
-          <span aria-hidden="true" className="text-base text-accent">✱</span>
+        <div className="border-y-2 border-ink py-2 my-1 text-center font-sans font-extrabold text-[0.62rem] sm:text-xs tracking-wider sm:tracking-[0.2em] uppercase text-ink flex items-center justify-center gap-2 sm:gap-3">
+          <span aria-hidden="true" className="text-xs sm:text-base text-accent">✱</span>
+          <span className="truncate">BACA ARSIP &amp; WARTA LENGKAP DI WWW.THELAWTIMES.ID</span>
+          <span aria-hidden="true" className="text-xs sm:text-base text-accent">✱</span>
         </div>
         <PaperDivider variant="double" />
       </div>

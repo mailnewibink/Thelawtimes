@@ -24,7 +24,7 @@ export function RegulationListItem({ regulation, className }: RegulationListItem
           </span>
           <div className="flex items-center gap-2">
             {regulation.provenance.isDemo && <DemoBadge />}
-            <span className="meta text-xs">
+            <span className="meta text-xs whitespace-nowrap shrink-0">
               {formatDate(regulation.publishedAt, "short")}
             </span>
           </div>

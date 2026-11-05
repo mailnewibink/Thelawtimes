@@ -46,8 +46,8 @@ export function DemoContentNotice({
         aria-label="Informasi kurasi redaksi"
         className={cn("bg-ink text-paper", className)}
       >
-        <p className="paper-container py-1.5 text-center font-sans text-[0.6875rem] leading-snug tracking-wide sm:text-xs">
-          <strong className="font-bold uppercase tracking-[0.14em]">Edisi Informasi Hukum Resmi</strong>
+        <p className="paper-container py-1 sm:py-1.5 text-center font-sans text-[0.6rem] sm:text-xs leading-snug tracking-wide">
+          <strong className="font-bold uppercase tracking-[0.1em] sm:tracking-[0.14em]">Edisi Informasi Hukum Resmi</strong>
           <span aria-hidden="true"> · </span>
           <span>Materi bersumber dari dokumen perundang-undangan, direktori putusan peradilan, dan pangkalan data DJKI & JDIHN.</span>
         </p>
