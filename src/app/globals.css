@@ -155,11 +155,11 @@
     background-size: 100% 1px;
   }
 
-  /* Article headline responsive typography (34–38px mobile, 1.12–1.16 leading) */
+  /* Article headline responsive typography (28–32px mobile, 1.12–1.18 leading) */
   .article-headline {
     font-family: var(--font-serif);
-    font-size: clamp(2.125rem, 7.5vw, 2.375rem); /* 34px - 38px */
-    line-height: 1.14;
+    font-size: clamp(1.75rem, 6vw, 2rem); /* 28px - 32px on mobile */
+    line-height: 1.15;
     font-weight: 700;
     letter-spacing: -0.015em;
     text-wrap: balance;
@@ -168,13 +168,13 @@
   }
   @media (min-width: 40rem) {
     .article-headline {
-      font-size: 2.5rem; /* 40px */
+      font-size: 2.375rem; /* 38px */
       line-height: 1.15;
     }
   }
   @media (min-width: 64rem) {
     .article-headline {
-      font-size: 3rem; /* 48px */
+      font-size: 2.875rem; /* 46px */
       line-height: 1.14;
     }
   }

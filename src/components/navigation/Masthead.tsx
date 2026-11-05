@@ -142,14 +142,14 @@ export function Masthead() {
           </div>
         </div>
 
-        {/* The Law Times Main Title */}
-        <h1 className="font-blackletter text-4xl sm:text-7xl md:text-8xl lg:text-9xl tracking-tight text-ink font-normal my-0 leading-[1.02]">
+        {/* The Law Times Main Title — enlarged by 25–30% on mobile for strong brand presence */}
+        <h1 className="font-blackletter text-[2.85rem] xs:text-[3.25rem] sm:text-7xl md:text-8xl lg:text-9xl tracking-tight text-ink font-normal my-0 leading-[0.98]">
           <Link href="/" className="hover:opacity-95 transition-opacity">
             {siteConfig.name}
           </Link>
         </h1>
 
-        <p className="font-serif italic text-[0.6875rem] sm:text-sm text-ink-muted mt-0.5 sm:mt-1 tracking-wide line-clamp-1">
+        <p className="font-serif italic text-[0.6875rem] sm:text-sm text-ink-muted mt-1 tracking-wide line-clamp-1">
           Lembaran Pengumuman Hukum Resmi &amp; Dokumentasi Peradilan Indonesia
         </p>
       </div>

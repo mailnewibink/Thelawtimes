@@ -21,8 +21,8 @@ export function ArticleHeadline({
   const sizeClasses = {
     sm: "font-serif text-base sm:text-lg font-bold leading-snug",
     md: "font-serif text-lg sm:text-xl font-bold leading-snug",
-    lg: "font-serif text-2xl sm:text-3xl font-bold leading-tight",
-    xl: "font-serif text-[2.125rem] sm:text-4xl lg:text-5xl font-bold leading-[1.14] tracking-tight",
+    lg: "font-serif text-xl sm:text-2xl font-bold leading-tight",
+    xl: "font-serif text-[1.75rem] sm:text-3xl lg:text-5xl font-bold leading-[1.15] tracking-tight",
   };
 
   return (

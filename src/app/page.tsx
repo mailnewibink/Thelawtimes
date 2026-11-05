@@ -72,7 +72,7 @@ export default async function FrontPage() {
                 </span>
               </div>
 
-              {/* Large Serif Headline — 34–38px mobile */}
+              {/* Editorial Serif Headline — 28–32px mobile */}
               <h2 className="article-headline text-ink">
                 <Link
                   href={`/artikel/${featuredClient.slug}`}

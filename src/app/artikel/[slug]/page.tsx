@@ -149,7 +149,7 @@ export default async function ArticleDetailPage({ params }: ArticleDetailPagePro
   };
 
   return (
-    <article className="mx-auto max-w-4xl space-y-5 sm:space-y-8">
+    <article className="mx-auto max-w-4xl space-y-5 sm:space-y-6">
       {/* JSON-LD Script */}
       <script
         type="application/ld+json"
@@ -185,8 +185,8 @@ export default async function ArticleDetailPage({ params }: ArticleDetailPagePro
         </div>
       )}
 
-      {/* Article Header — strict hierarchy: Category/Date -> Headline -> Intro/Deck -> Byline */}
-      <header className="space-y-2.5 sm:space-y-4">
+      {/* Article Header — strict hierarchy & compact spacing: Category -> Headline: 16px -> Excerpt: 20px -> Author: 20px */}
+      <header>
         {/* 1. CATEGORY / RUBRIC + DATE */}
         <div className="flex flex-wrap items-center gap-2 text-xs">
           {isClientPub && (
@@ -203,20 +203,20 @@ export default async function ArticleDetailPage({ params }: ArticleDetailPagePro
           </time>
         </div>
 
-        {/* 2. HEADLINE — 34–38px mobile, bold, line-height 1.14 */}
-        <h1 className="article-headline text-ink">
+        {/* 2. HEADLINE — Category -> Headline: 16px (mt-4), font-size 28–32px mobile */}
+        <h1 className="article-headline text-ink mt-4">
           {article.headline}
         </h1>
 
-        {/* 3. INTRO / EXCERPT — 20–24px mobile, italic, line-height 1.48 */}
+        {/* 3. INTRO / EXCERPT — Headline -> Excerpt: 20–24px (mt-5) */}
         {article.deck && (
-          <p className="article-deck">
+          <p className="article-deck mt-5">
             {article.deck}
           </p>
         )}
 
-        {/* 4. AUTHOR + DATE / BYLINE — compact metadata */}
-        <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-rule-soft/60 text-xs sm:text-[0.8125rem] text-ink-muted font-sans">
+        {/* 4. AUTHOR + DATE / BYLINE — Excerpt -> Author/date: 20–24px (mt-5 pt-3) */}
+        <div className="flex flex-wrap items-center justify-between gap-2 mt-5 pt-3 border-t border-rule-soft/60 text-xs sm:text-[0.8125rem] text-ink-muted font-sans">
           <div className="flex items-center gap-1.5 tracking-wider uppercase font-semibold">
             <span>Oleh:</span>
             <span className="text-ink font-bold">{article.byline || "Dewan Redaksi The Law Times"}</span>
@@ -227,17 +227,15 @@ export default async function ArticleDetailPage({ params }: ArticleDetailPagePro
         </div>
       </header>
 
-      {/* 5. EDITORIAL DIVIDER */}
-      <div className="pt-0.5 pb-0.5">
+      {/* 5. EDITORIAL DIVIDER & SOCIAL SHARE BAR */}
+      <div className="mt-5 space-y-2">
         <PaperDivider variant="thin" />
+        <SocialShareBar title={article.headline} url={canonicalUrl} />
       </div>
 
-      {/* Social Sharing Bar — compact on mobile */}
-      <SocialShareBar title={article.headline} url={canonicalUrl} />
-
-      {/* 6. HERO IMAGE & 7. IMAGE CAPTION */}
+      {/* 6. HERO IMAGE & 7. IMAGE CAPTION — Author/date -> Image: 20–24px (mt-5) */}
       {article.image && (
-        <figure className="my-4 sm:my-6 space-y-1.5">
+        <figure className="mt-5 space-y-1.5">
           <div className="relative aspect-[16/10] sm:aspect-[3/2] w-full border border-rule bg-paper-dark overflow-hidden">
             <Image
               src={article.image.src}
@@ -258,7 +256,7 @@ export default async function ArticleDetailPage({ params }: ArticleDetailPagePro
       )}
 
       {/* 8. ARTICLE CONTENT */}
-      <div className="prose-news drop-cap mx-auto text-ink-soft space-y-4">
+      <div className="prose-news drop-cap mx-auto text-ink-soft space-y-4 mt-5 sm:mt-6">
         {article.body.map((paragraph, idx) => (
           <p key={idx}>{paragraph}</p>
         ))}
