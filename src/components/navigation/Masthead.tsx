@@ -155,16 +155,16 @@ export function Masthead() {
       </div>
 
       {/* 4. REFERENCE BANNER: JAKARTA * PENGUMUMAN * DATE */}
-      <div className="mt-0.5 sm:mt-1 border-y-2 border-ink py-1 sm:py-1.5 px-1.5 sm:px-2 bg-paper-dark/20 text-center font-sans font-bold text-xs sm:text-sm tracking-wider text-ink flex items-center justify-between">
-        <div className="w-1/4 text-left tracking-[0.14em] sm:tracking-[0.2em] uppercase font-bold text-[0.62rem] sm:text-xs">
+      <div className="mt-0.5 sm:mt-1 border-y-2 border-ink py-1 sm:py-1.5 px-1 sm:px-2 bg-paper-dark/20 text-center font-sans font-bold text-xs sm:text-sm tracking-wider text-ink flex items-center justify-between gap-1">
+        <div className="text-left tracking-[0.1em] sm:tracking-[0.2em] uppercase font-bold text-[0.58rem] sm:text-xs shrink-0">
           JAKARTA
         </div>
-        <div className="w-2/4 text-center flex items-center justify-center gap-1.5 sm:gap-3 uppercase font-extrabold tracking-[0.14em] sm:tracking-[0.18em] text-[0.62rem] sm:text-xs truncate">
-          <span aria-hidden="true" className="text-xs sm:text-sm">✱</span>
-          <span>PENGUMUMAN &amp; WARTA HUKUM</span>
-          <span aria-hidden="true" className="text-xs sm:text-sm">✱</span>
+        <div className="text-center flex items-center justify-center gap-1 sm:gap-2 uppercase font-extrabold tracking-[0.06em] sm:tracking-[0.16em] text-[0.56rem] sm:text-xs px-0.5 truncate">
+          <span aria-hidden="true" className="text-[0.55rem] sm:text-xs text-accent">✱</span>
+          <span className="whitespace-nowrap">PENGUMUMAN &amp; WARTA HUKUM</span>
+          <span aria-hidden="true" className="text-[0.55rem] sm:text-xs text-accent">✱</span>
         </div>
-        <div className="w-1/4 text-right tracking-[0.12em] sm:tracking-[0.16em] uppercase font-bold text-[0.6rem] sm:text-xs">
+        <div className="text-right tracking-[0.08em] sm:tracking-[0.16em] uppercase font-bold text-[0.56rem] sm:text-xs shrink-0">
           <time dateTime="2026-10-30">30 OKTOBER 2026</time>
         </div>
       </div>

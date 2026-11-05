@@ -155,11 +155,11 @@
     background-size: 100% 1px;
   }
 
-  /* Article headline responsive typography (28–32px mobile, 1.12–1.18 leading) */
+  /* Article headline responsive typography (20–24px mobile, 1.22 leading) */
   .article-headline {
     font-family: var(--font-serif);
-    font-size: clamp(1.75rem, 6vw, 2rem); /* 28px - 32px on mobile */
-    line-height: 1.15;
+    font-size: clamp(1.25rem, 4.8vw, 1.45rem); /* ~20px - 23px on mobile */
+    line-height: 1.22;
     font-weight: 700;
     letter-spacing: -0.015em;
     text-wrap: balance;
@@ -168,29 +168,29 @@
   }
   @media (min-width: 40rem) {
     .article-headline {
-      font-size: 2.375rem; /* 38px */
-      line-height: 1.15;
+      font-size: 2.125rem; /* 34px */
+      line-height: 1.18;
     }
   }
   @media (min-width: 64rem) {
     .article-headline {
-      font-size: 2.875rem; /* 46px */
+      font-size: 2.75rem; /* 44px */
       line-height: 1.14;
     }
   }
 
-  /* Article deck / intro (20–24px mobile, 1.45–1.55 leading) */
+  /* Article deck / intro (15–17px mobile, 1.48–1.52 leading) */
   .article-deck {
     font-family: var(--font-serif);
-    font-size: clamp(1.25rem, 4.2vw, 1.375rem); /* 20px - 22px */
-    line-height: 1.48;
+    font-size: clamp(0.9375rem, 3.2vw, 1.0625rem); /* ~15px - 17px on mobile */
+    line-height: 1.5;
     font-style: italic;
     color: #38342d; /* High-contrast editorial ink */
     text-wrap: pretty;
   }
   @media (min-width: 40rem) {
     .article-deck {
-      font-size: 1.5rem; /* 24px */
+      font-size: 1.25rem; /* 20px on tablet/desktop */
       line-height: 1.5;
     }
   }

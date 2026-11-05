@@ -149,7 +149,7 @@ export default async function ArticleDetailPage({ params }: ArticleDetailPagePro
   };
 
   return (
-    <article className="mx-auto max-w-4xl space-y-5 sm:space-y-6">
+    <article className="mx-auto max-w-4xl space-y-3.5 sm:space-y-6">
       {/* JSON-LD Script */}
       <script
         type="application/ld+json"
@@ -157,85 +157,85 @@ export default async function ArticleDetailPage({ params }: ArticleDetailPagePro
       />
 
       {/* Back to section link */}
-      <div className="border-b border-rule-soft pb-1.5 sm:pb-2 flex items-center justify-between text-xs">
+      <div className="border-b border-rule-soft pb-1 sm:pb-2 flex items-center justify-between text-xs">
         <Link
           href={isClientPub ? "/perkara" : "/berita-hukum"}
-          className="kicker inline-flex items-center gap-1.5 text-ink-muted hover:text-ink font-bold uppercase transition-colors text-[0.6875rem] sm:text-xs"
+          className="kicker inline-flex items-center gap-1 text-ink-muted hover:text-ink font-bold uppercase transition-colors text-[0.625rem] sm:text-xs"
         >
-          <ArrowLeft className="w-3.5 h-3.5" />
+          <ArrowLeft className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
           <span>{isClientPub ? "Kembali ke Publikasi Perkara" : "Kembali ke Berita Hukum"}</span>
         </Link>
 
-        <span className="text-[0.65rem] sm:text-[0.68rem] kicker uppercase font-mono text-ink-muted">
+        <span className="text-[0.6rem] sm:text-[0.68rem] kicker uppercase font-mono text-ink-muted hidden xs:inline">
           ID: {article.slug}
         </span>
       </div>
 
       {/* Client Publication Transparency Notice */}
       {isClientPub && (
-        <div className="border-l-4 border-ink bg-paper-dark/40 p-3 sm:p-4 text-xs space-y-1">
-          <div className="flex items-center gap-1.5 text-ink font-bold uppercase tracking-wider text-[0.6875rem] sm:text-[0.7rem] kicker">
-            <Scale className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-accent" />
+        <div className="border-l-2 sm:border-l-4 border-ink bg-paper-dark/40 px-2.5 py-1.5 sm:p-4 text-xs space-y-0.5 sm:space-y-1">
+          <div className="flex items-center gap-1.5 text-ink font-bold uppercase tracking-wider text-[0.65rem] sm:text-[0.7rem] kicker">
+            <Scale className="w-3 h-3 sm:w-4 sm:h-4 text-accent shrink-0" />
             <span>Publikasi Khusus Klien &amp; Perkara Terkait</span>
           </div>
-          <p className="text-ink-muted text-[0.72rem] sm:text-[0.75rem] leading-relaxed">
+          <p className="text-ink-muted text-[0.6875rem] sm:text-[0.75rem] leading-relaxed line-clamp-2 sm:line-clamp-none">
             Artikel ini diterbitkan sebagai saluran resmi pengumuman hukum, keterbukaan sengketa, dan putusan
             perkara peradilan terkait klien. Materi ini disajikan untuk kepentingan transparansi dan catatan publik resmi.
           </p>
         </div>
       )}
 
-      {/* Article Header — strict hierarchy & compact spacing: Category -> Headline: 16px -> Excerpt: 20px -> Author: 20px */}
+      {/* Article Header — strict hierarchy & compact spacing */}
       <header>
         {/* 1. CATEGORY / RUBRIC + DATE */}
-        <div className="flex flex-wrap items-center gap-2 text-xs">
+        <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 text-xs">
           {isClientPub && (
             <span className="px-1.5 py-0.5 bg-ink text-paper text-[0.625rem] kicker uppercase font-bold tracking-wider">
               Publikasi Klien
             </span>
           )}
-          <span className="font-sans font-bold uppercase tracking-wider text-xs sm:text-[0.8125rem] text-accent kicker">
+          <span className="font-sans font-bold uppercase tracking-wider text-[0.6875rem] sm:text-[0.8125rem] text-accent kicker">
             {article.category || "HUKUM"}
           </span>
           <span aria-hidden="true" className="text-rule-soft">·</span>
-          <time dateTime={article.publishedAt} className="font-sans text-xs sm:text-[0.8125rem] text-ink-muted uppercase tracking-wider">
+          <time dateTime={article.publishedAt} className="font-sans text-[0.6875rem] sm:text-[0.8125rem] text-ink-muted uppercase tracking-wider">
             {formatDate(article.publishedAt, "short")}
           </time>
         </div>
 
-        {/* 2. HEADLINE — Category -> Headline: 16px (mt-4), font-size 28–32px mobile */}
-        <h1 className="article-headline text-ink mt-4">
+        {/* 2. HEADLINE */}
+        <h1 className="article-headline text-ink mt-2 sm:mt-4">
           {article.headline}
         </h1>
 
-        {/* 3. INTRO / EXCERPT — Headline -> Excerpt: 20–24px (mt-5) */}
+        {/* 3. INTRO / EXCERPT */}
         {article.deck && (
-          <p className="article-deck mt-5">
+          <p className="article-deck mt-2.5 sm:mt-4">
             {article.deck}
           </p>
         )}
 
-        {/* 4. AUTHOR + DATE / BYLINE — Excerpt -> Author/date: 20–24px (mt-5 pt-3) */}
-        <div className="flex flex-wrap items-center justify-between gap-2 mt-5 pt-3 border-t border-rule-soft/60 text-xs sm:text-[0.8125rem] text-ink-muted font-sans">
-          <div className="flex items-center gap-1.5 tracking-wider uppercase font-semibold">
+        {/* 4. AUTHOR + DATE / BYLINE */}
+        <div className="flex flex-wrap items-center justify-between gap-1.5 mt-3 sm:mt-5 pt-2 sm:pt-3 border-t border-rule-soft/60 text-xs sm:text-[0.8125rem] text-ink-muted font-sans">
+          <div className="flex items-center gap-1.5 tracking-wider uppercase font-semibold text-[0.6875rem] sm:text-xs">
             <span>Oleh:</span>
             <span className="text-ink font-bold">{article.byline || "Dewan Redaksi The Law Times"}</span>
           </div>
-          <div className="text-[0.72rem] sm:text-[0.75rem] text-ink-muted/80">
+          <div className="text-[0.65rem] sm:text-[0.75rem] text-ink-muted/80">
             {formatDate(article.publishedAt, "long")}
           </div>
         </div>
       </header>
 
       {/* 5. EDITORIAL DIVIDER & SOCIAL SHARE BAR */}
-      <div className="mt-5 space-y-2">
+      <div className="mt-3 sm:mt-5 space-y-1.5 sm:space-y-2">
         <PaperDivider variant="thin" />
         <SocialShareBar title={article.headline} url={canonicalUrl} />
       </div>
 
-      {/* 6. HERO IMAGE & 7. IMAGE CAPTION — Author/date -> Image: 20–24px (mt-5) */}
+      {/* 6. HERO IMAGE & 7. IMAGE CAPTION */}
       {article.image && (
-        <figure className="mt-5 space-y-1.5">
+        <figure className="mt-3 sm:mt-5 space-y-1 sm:space-y-1.5">
           <div className="relative aspect-[16/10] sm:aspect-[3/2] w-full border border-rule bg-paper-dark overflow-hidden">
             <Image
               src={article.image.src}
@@ -246,17 +246,17 @@ export default async function ArticleDetailPage({ params }: ArticleDetailPagePro
               priority
             />
           </div>
-          <figcaption className="meta text-[0.6875rem] sm:text-xs italic flex items-center justify-between flex-wrap gap-2 border-b border-rule/50 pb-1.5 text-ink-muted/85">
+          <figcaption className="meta text-[0.65rem] sm:text-xs italic flex items-center justify-between flex-wrap gap-1.5 border-b border-rule/50 pb-1 text-ink-muted/85">
             <span className="truncate max-w-[70%]">{article.image.caption || article.headline}</span>
-            <span className="font-sans text-[0.625rem] sm:text-[0.6875rem] not-italic text-ink-muted/75 shrink-0">
-              {article.image.credit ? `Sumber: ${article.image.credit} • ` : ""}Gambar hanya ilustrasi
+            <span className="font-sans text-[0.58rem] sm:text-[0.6875rem] not-italic text-ink-muted/75 shrink-0">
+              {article.image.credit ? `Sumber: ${article.image.credit} • ` : ""}Gambar ilustrasi
             </span>
           </figcaption>
         </figure>
       )}
 
       {/* 8. ARTICLE CONTENT */}
-      <div className="prose-news drop-cap mx-auto text-ink-soft space-y-4 mt-5 sm:mt-6">
+      <div className="prose-news drop-cap mx-auto text-ink-soft space-y-3.5 sm:space-y-4 mt-4 sm:mt-6">
         {article.body.map((paragraph, idx) => (
           <p key={idx}>{paragraph}</p>
         ))}
